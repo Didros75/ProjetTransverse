@@ -4,10 +4,8 @@ from math import*
 
 def trajectory(v0,theta,t,g) :
     Xposition = v0 * cos(theta) * t
-    Yposition = (-1/2) * ((g*t)^2) * v0 * sin(theta) * t
-    coordonnee = []
-    coordonnee[0] = Xposition
-    coordonnee[1] = Yposition
+    Yposition = (-1/2) * ((g*t)**2) * v0 * sin(theta) * t
+    coordonnee = [Xposition,Yposition]
     return coordonnee
 
 def power(dt) : #dt est le delta de temps qui permet de savoir combien de temps l'utilisateur a gardé la souris cliqué pour la jauge de puissance
