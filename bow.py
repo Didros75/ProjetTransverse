@@ -5,10 +5,15 @@ from equation_trajectoire import *
 class Bow():
     def __init__(self):
         self.images = [
-            pygame.image.load("assets/l0_arc1.png"),
-            pygame.image.load("assets/l0_arc2.png"),
-            pygame.image.load("assets/l0_arc3.png"),
-            pygame.image.load("assets/l0_arc4.png"),
+            pygame.transform.scale(pygame.image.load("assets/l0_arc1.png"), (
+            pygame.image.load("assets/l0_arc1.png").get_width() // 3,
+            pygame.image.load("assets/l0_arc1.png").get_height() // 3)),
+            pygame.transform.scale(pygame.image.load("assets/l0_arc2.png"), (
+            pygame.image.load("assets/l0_arc2.png").get_width() // 3,
+            pygame.image.load("assets/l0_arc2.png").get_height() // 3)),
+            pygame.transform.scale(pygame.image.load("assets/l0_arc3.png"), (
+            pygame.image.load("assets/l0_arc3.png").get_width() // 3,
+            pygame.image.load("assets/l0_arc3.png").get_height() // 3))
         ]
         self.current_image_index = 0
         self.image = self.images[self.current_image_index]
@@ -21,7 +26,7 @@ class Bow():
         self.aiming=False
         self.gravity=9.8
         self.animation_timer = 0
-        self.animation_speed = 20
+        self.animation_speed = 10
 
     def animation(self, dt):
         self.animation_timer += dt
