@@ -1,8 +1,8 @@
 from math import*
 
-#trajectory equation of arrow and portal, v0 is initial speed, theta is the initial angle, t is time, g is the gravity
+#équation de trajectoire de la flèche et du portail, v0 est la vitesse initiale, theta est l'angle initial, t est le temps, g est la gravité
 
-def trajectoire(v0,theta,t,g) :
+def trajectory(v0,theta,t,g) :
     Xposition = v0 * cos(theta) * t
     Yposition = (-1/2) * ((g*t)^2) * v0 * sin(theta) * t
     coordonnee = []
@@ -10,8 +10,11 @@ def trajectoire(v0,theta,t,g) :
     coordonnee[1] = Yposition
     return coordonnee
 
-def power(dt) : #dt is the time that us
-    Pmin = 50 #minimal power
-    CP = 2 #coefficient of proportionnality of the power from the arrow
+def power(dt) : #dt est le delta de temps qui permet de savoir combien de temps l'utilisateur a gardé la souris cliqué pour la jauge de puissance
+    Pmin = 50 #puissance minimal
+    Pmax = 500 #puissance maximal
+    CP = 2 #coefficient de proportionnalité de la puissance de la flèche
     P = CP * dt + Pmin
+    if P > Pmax :
+        P = Pmax
     return P
