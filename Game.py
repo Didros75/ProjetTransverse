@@ -34,7 +34,7 @@ angle=0
 t=0
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
-    screen.fill(white)
+    map.load_map()
     if player.rect.colliderect(sol_test):
         player.collisions([sol_test])
     else:
