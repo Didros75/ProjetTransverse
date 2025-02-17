@@ -92,6 +92,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
         self.rect.x = self.position_x
 
+
     def max_speed(self, maxi) :
         min(-maxi, max(self.speed_x, maxi))
         if abs(self.speed_x) > maxi :
