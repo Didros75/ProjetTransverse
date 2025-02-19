@@ -13,3 +13,10 @@ def power(dt) : #dt est le temps que l'utilisateur reste cliqué sur le bouton g
     CP = 2 #coefficient de proportionnalité de la puissance de la flèche
     P = CP * dt + Pmin
     return P
+
+def angle(posiX_joueur,posiY_joueur,posiX_souris,posiY_souris): #calcul de l'angle de tir à l'aide de la souris
+    delta_x  = posiX_souris-posiX_joueur
+    delta_y = posiY_joueur-posiY_souris
+    thetarad = atan2(delta_y, delta_x)
+    return thetarad
+
