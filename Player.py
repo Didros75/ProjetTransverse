@@ -20,18 +20,21 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.RIGHT = RIGHT
         self.SPACE = SPACE
         self.facingLeft = False
+        self.aiming=False
 
         self.sprites_right = [pygame.image.load(f"assets\l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
+        self.sprites_right_aiming = [pygame.image.load(f"assets\l0_aiming_anime{i}.png") for i in range(1, 5)]
+        self.sprites_left_aiming = [pygame.transform.flip(img, True, False) for img in self.sprites_right_aiming]
         self.sprites_idle = [pygame.image.load(f"assets\l0_sprite_{i}.png") for i in range(1, 5)]
         self.sprite_index = 0
         self.image = self.sprites_right[0]
         self.animation_speed = 0.2
         self.frame_count = 0
-        self.image = pygame.transform.scale(self.image, (80, 100))
+        self.image = pygame.transform.scale(self.image, (40, 50))
         self.rect = pygame.Rect(position_x, position_y, self.image.get_height(), self.image.get_width())
 
-    def animate(self):
+    def animate(self, angle=0):
 
         if self.LEFT or self.RIGHT:
             self.frame_count += self.animation_speed
@@ -54,8 +57,15 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.image = self.sprites_idle[int(self.sprite_index)]
 
         else:
-            self.frame_count = 0  # Reset animation quand il ne bouge pas
+            self.frame_count = 0
             self.image = self.sprites_left[0] if self.facingLeft else self.sprites_right[0]
+
+        if self.aiming:
+            self.frame_count += self.animation_speed
+            if -math.pi/2 <= angle <= math.pi/2:
+                self.image = self.sprites_right_aiming[int(self.sprite_index)]
+            else:
+                self.image = self.sprites_left_aiming[int(self.sprite_index)]
 
     def get_position(self) :
         return (self.position_x, self.position_y)
@@ -72,8 +82,8 @@ class ThePlayer(pygame.sprite.Sprite) :
     def death(self) :
         pass
 
-    def draw(self, ref) :
-        self.image = pygame.transform.scale(self.image, (80, 100))
+    def draw(self, ref):
+        self.image = pygame.transform.scale(self.image, (40, 50))
         ref.blit(self.image, (self.position_x, self.position_y))
 
     def move_x(self, dt) :
@@ -87,6 +97,8 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.max_speed(8)
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
         self.rect.x = self.position_x
+
+
 
 
     def max_speed(self, maxi) :
@@ -127,7 +139,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                 self.speed_y = 0
                 #self.position_y = tile.pos_y
                 self.acceleration_y = 0
-                self.position_y = tile.rectangle.top - 75
+                self.position_y = tile.rectangle.top - 37
                 #self.rect.bottom = self.position_y
             elif self.speed_y > 0 :
                 self.speed_y = 0
