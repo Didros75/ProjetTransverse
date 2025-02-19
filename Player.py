@@ -1,7 +1,7 @@
 import math
 import pygame
 from pygame.examples.cursors import image
-
+import Map
 
 class ThePlayer(pygame.sprite.Sprite) :
     def __init__(self, position_x, position_y, gravity = 0.6, LEFT = False, RIGHT = False, SPACE = False) :
@@ -20,7 +20,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.RIGHT = RIGHT
         self.SPACE = SPACE
         self.facingLeft = False
-
 
         self.sprites_right = [pygame.image.load(f"assets\l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
@@ -58,7 +57,6 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.frame_count = 0  # Reset animation quand il ne bouge pas
             self.image = self.sprites_left[0] if self.facingLeft else self.sprites_right[0]
 
-
     def get_position(self) :
         return (self.position_x, self.position_y)
 
@@ -67,8 +65,6 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.isjumping = True
             self.speed_y=14
             self.isgrounded = False
-
-
 
     def pos(self) :
         return self.position_x, self.position_y
@@ -108,10 +104,33 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect.y = self.position_y
 
-    def collisions(self, wall):
+    """def collisions(self, wall):
         self.isgrounded = True
         self.speed_y=0
         self.acceleration_y=0
         for wall_rect in wall:
             self.rect.bottom=wall_rect.top
-            self.position_y=self.rect.y
+            self.position_y=self.rect.y"""
+
+    def hit_something(self, tiles) :
+        tiles_hits = []
+        for tile in tiles :
+            if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel :
+                tiles_hits.append(tile)
+        return tiles_hits
+
+    def hit_y(self, tiles) :
+        collisions = self.hit_something(tiles)
+        for tile in collisions :
+            if self.speed_y < 0 :
+                self.isgrounded = True
+                self.speed_y = 0
+                #self.position_y = tile.pos_y
+                self.acceleration_y = 0
+                self.position_y = tile.rectangle.top - 75
+                #self.rect.bottom = self.position_y
+            elif self.speed_y > 0 :
+                self.speed_y = 0
+                self.acceleration_y = 0
+                self.position_y = tile.rectangle.bottom
+                #self.rect.bottom = self.position_y

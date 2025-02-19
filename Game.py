@@ -9,6 +9,7 @@ import equation_trajectoire
 from Player import ThePlayer
 from bow import Bow
 from bow import Portals
+#from test import isgrounded
 
 pygame.init()
 width=1000
@@ -27,18 +28,18 @@ black=(0,0,0)
 clock=pygame.time.Clock()
 target_fps=60
 
-sol_test=pygame.Rect(0, 100, 500, 50)
+isgrounded=False
+
+#sol_test=pygame.Rect(0, 100, 500, 50)
 aiming=False
 shoted=False
 angle=0
 t=0
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
-    map.load_map()
-    if player.rect.colliderect(sol_test):
-        player.collisions([sol_test])
-    else:
-        player.isgrounded=False
+
+    tiles = map.load_map()
+    player.hit_y(tiles)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -85,7 +86,7 @@ while game:
     if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)
     player.animate()
-    pygame.draw.rect(screen, black, sol_test)
+    #pygame.draw.rect(screen, black, sol_test)
     player.move_y(dt)
     player.move_x(dt)
     player.draw(screen)
