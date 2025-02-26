@@ -39,8 +39,8 @@ while game:
     dt=clock.tick(60) * 0.001 * target_fps
 
     tiles = map.load_map()
-    player.hit_y(tiles)
     player.hit_x(tiles)
+    #player.hit_y(tiles)
     if player.death() == 1 :
         player = ThePlayer(0, 0)
 

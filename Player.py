@@ -108,8 +108,8 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.isgrounded = False
         return tiles_hits
 
-    def hit_y(self, tiles) :
-        collisions = self.hit_something(tiles)
+    def hit_y(self, collisions) :
+        #collisions = self.hit_something(tiles)
         for tile in collisions :
             if self.speed_y < 0 and not self.isgrounded :
                     self.isgrounded = True
@@ -127,12 +127,15 @@ class ThePlayer(pygame.sprite.Sprite) :
     def hit_x(self, tiles) :
         collisions = self.hit_something(tiles)
         for tile in collisions :
-            #if tile.rectangle.top < self.position_y + 48 :
+            if tile.rectangle.top < self.position_y + 45 :
                 if self.speed_x > 0 :
                     self.speed_x = 0
-                    self.position_x = tile.rectangle.left - 48
-                    self.rect.x = self.position_x   # ?
-                else : # self.speed_x < 0 :
+                    self.position_x = tile.rectangle.left - 40
+                    self.rect.x = self.position_x
+                    collisions.remove(tile)
+                elif self.speed_x < 0 :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right
-                    self.rect.x = self.position_x  # ?"""
+                    self.rect.x = self.position_x
+                    collisions.remove(tile)
+        self.hit_y(collisions)
