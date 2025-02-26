@@ -17,7 +17,7 @@ height=700
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(10, 10)
+player = ThePlayer(0, 0)
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
@@ -40,6 +40,9 @@ while game:
 
     tiles = map.load_map()
     player.hit_y(tiles)
+    player.hit_x(tiles)
+    if player.death() == 1 :
+        player = ThePlayer(0, 0)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
