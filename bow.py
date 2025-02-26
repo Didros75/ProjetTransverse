@@ -12,6 +12,8 @@ class Bow():
             )
             for i in range(1, 5)
         ]
+
+        self.arrow_image=pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width()*3,pygame.image.load("assets/Arrow.png").get_height()*3))
         self.current_image_index = 0
         self.image = self.images[self.current_image_index]
         self.rect = self.image.get_rect()

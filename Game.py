@@ -10,14 +10,14 @@ from Player import ThePlayer
 from bow import Bow
 from bow import Portals
 #from test import isgrounded
-
+puissance = 0
 pygame.init()
-width=1000
-height=700
+width=900
+height=600
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(0, 0)
+player = ThePlayer(10, 10)
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
@@ -34,40 +34,50 @@ isgrounded=False
 aiming=False
 shoted=False
 angle=0
+angle2=0
 t=0
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
 
     tiles = map.load_map()
     player.hit_x(tiles)
-    #player.hit_y(tiles)
-    if player.death() == 1 :
-        player = ThePlayer(0, 0)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
             pygame.quit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_d:
-                player.facingLeft=False
-                player.RIGHT=True
-            if event.key == pygame.K_q:
-                player.facingLeft=True
-                player.LEFT=True
-            if event.key == pygame.K_SPACE:
-                if player.isgrounded:
-                    player.jump()
+            if player.aiming==False:
+                if event.key == pygame.K_d:
+                    player.facingLeft=False
+                    player.RIGHT=True
+                if event.key == pygame.K_q:
+                    player.facingLeft=True
+                    player.LEFT=True
+                if event.key == pygame.K_SPACE:
+                    if player.isgrounded:
+                        player.jump()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button==1:
-                aiming=True
-        if event.type == pygame.MOUSEBUTTONUP:
-            if event.button==1 and shoted==False:
 
-                angle=equation_trajectoire.angle(player.position_x, player.position_y, mouse.get_pos()[0], mouse.get_pos()[1])
-                t=0
-                print(angle)
+            if event.button==1:
+
+                if shoted==False:
+                    t = 0
+                    player.RIGHT=False
+                    player.LEFT=False
+                    player.aiming = True
+                    aiming=True
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            if event.button==1 and shoted==False and aiming==True:
+
+                angle = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0], mouse.get_pos()[1])
+                puissance=t
+                t = 0
+                px = player.position_x
+                py = player.position_y
                 shoted=True
+                player.aiming=False
                 aiming=False
 
         if event.type == pygame.KEYUP:
@@ -78,24 +88,29 @@ while game:
             if event.key == pygame.K_SPACE:
                 player.isjumping=False
 
+    angle2 = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
+                                        mouse.get_pos()[1])
 
 
     if shoted:
-        pygame.draw.rect(screen, black, (bow.shot(t, 200, angle, player.position_x, -player.position_y)[0], -bow.shot(t, 200, angle, player.position_x, -player.position_y)[1], 50, 50))
-        if -bow.shot(t, 200, angle, player.position_x, -player.position_y)[1]>height:
+        if puissance>=15:
+            puissance=15
+        coordonées=bow.shot(t, puissance*25, angle, px, -py)
+        screen.blit(bow.arrow_image, (coordonées[0], -coordonées[1]))
+        if -coordonées[1]>height:
             portal_blue.state=True
             shoted=False
+            t=0
 
     if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)
-    player.animate()
-    #pygame.draw.rect(screen, black, sol_test)
+    player.animate(angle2)
     player.move_y(dt)
     player.move_x(dt)
     player.draw(screen)
     t+=0.1
     if aiming:
-        bow.animation(dt)
+        bow.animation(dt, angle2)
         screen.blit(bow.image, (player.position_x,player.position_y))
 
 
