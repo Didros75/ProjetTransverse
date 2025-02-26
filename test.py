@@ -1,4 +1,4 @@
-import math
+"""import math
 import pygame
 
 pygame.init()
@@ -115,4 +115,4 @@ while continuer:
     if temps%100==0:
         print(temps/100)
 
-pygame.quit()
+pygame.quit()"""

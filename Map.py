@@ -14,7 +14,6 @@ class Tile() :
         self.rectangle = pygame.Rect(y, x, 30, 30)
 
     def draw(self, surface) :
-
         surface.blit(self.image, (self.pos_x, self.pos_y))
 
 class Create_map() :

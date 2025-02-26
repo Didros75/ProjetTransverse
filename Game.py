@@ -17,8 +17,8 @@ height=700
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(10, 10)
-bow=Bow()
+player = ThePlayer(0, 0)
+bow = Bow()
 map = Create_map("Map.csv", screen)
 
 portal_blue=Portals((0, 0, 20, 50),"blue", screen)
@@ -29,8 +29,6 @@ clock=pygame.time.Clock()
 target_fps=60
 
 isgrounded=False
-
-#sol_test=pygame.Rect(0, 100, 500, 50)
 aiming=False
 shoted=False
 angle=0
@@ -39,7 +37,12 @@ while game:
     dt=clock.tick(60) * 0.001 * target_fps
 
     tiles = map.load_map()
+    player.hit_x(tiles)
     player.hit_y(tiles)
+    if player.death() == 1 :
+        player = ThePlayer(0, 0)
+
+    # pygame.draw.rect(screen, (0, 0, 255),[150, 150, 10, 10], 1)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -75,8 +78,6 @@ while game:
             if event.key == pygame.K_SPACE:
                 player.isjumping=False
 
-
-
     if shoted:
         pygame.draw.rect(screen, black, (bow.shot(t, 200, angle, player.position_x, -player.position_y)[0], -bow.shot(t, 200, angle, player.position_x, -player.position_y)[1], 50, 50))
         if -bow.shot(t, 200, angle, player.position_x, -player.position_y)[1]>height:
@@ -86,7 +87,9 @@ while game:
     if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)
     player.animate()
+
     #pygame.draw.rect(screen, black, sol_test)
+
     player.move_y(dt)
     player.move_x(dt)
     player.draw(screen)
@@ -94,6 +97,5 @@ while game:
     if aiming:
         bow.animation(dt)
         screen.blit(bow.image, (player.position_x,player.position_y))
-
 
     pygame.display.flip()
