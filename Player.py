@@ -30,7 +30,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.sprites_idle = [pygame.image.load(f"assets\l0_sprite_{i}.png") for i in range(1, 5)]
         self.sprite_index = 0
         self.image = self.sprites_right[0]
-        self.animation_speed = 0.2
+        self.animation_speed = 0.15
         self.frame_count = 0
         self.image = self.sprites_right[0]
         self.image = pygame.transform.scale(self.image, (55, 70))
@@ -51,7 +51,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                 self.facingLeft = True
 
         elif self.speed_x<=0.5:
-            self.sprite_index += 0.2
+            self.sprite_index += self.animation_speed
             if self.sprite_index >= len(self.sprites_idle):
                 self.sprite_index = 0
             self.image = self.sprites_idle[int(self.sprite_index)]
