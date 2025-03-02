@@ -111,16 +111,20 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.rect.y = self.position_y
 
     def hit_something(self, tiles) :
-        tiles_hits = []
+        tilesx_hits = []
+        tilesy_hits = []
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel :
-                tiles_hits.append(tile)
-        if tiles_hits == [] :
+                if tile.rectangle.top < self.rect.top and tile.rectangle.bottom < self.rect.bottom :
+                    tilesx_hits.append(tile)
+                else :
+                    tilesy_hits.append(tile)
+        if tilesy_hits == [] : # or tilesx_hits == [] :
             self.isgrounded = False
-        return tiles_hits
+        return tilesx_hits, tilesy_hits
 
-    def hit_y(self, collisions) :
-        #collisions = self.hit_something(tiles)
+    def hit_y(self, tiles) :
+        collisions = self.hit_something(tiles)[1]
         for tile in collisions :
             if self.speed_y < 0 and not self.isgrounded :
                     self.isgrounded = True
@@ -129,24 +133,20 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - 49
                     self.rect.bottom = self.position_y
-            if self.speed_y > 0 :
+            if self.speed_y > 0 : #and tile.rectangle.top < self.rect.bottom:
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom
                     self.rect.top = self.position_y  # ?
 
     def hit_x(self, tiles) :
-        collisions = self.hit_something(tiles)
+        collisions = self.hit_something(tiles)[0]
         for tile in collisions :
-            if tile.rectangle.top < self.position_y + 45 :
                 if self.speed_x > 0 :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.left - 40
                     self.rect.x = self.position_x
-                    collisions.remove(tile)
                 elif self.speed_x < 0 :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right
                     self.rect.x = self.position_x
-                    collisions.remove(tile)
-        self.hit_y(collisions)

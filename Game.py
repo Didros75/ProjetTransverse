@@ -40,7 +40,7 @@ while game:
     dt=clock.tick(60) * 0.001 * target_fps
 
     tiles = map.load_map()
-    player.hit_x(tiles)
+    player.hit_x(tiles), player.hit_y(tiles)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
