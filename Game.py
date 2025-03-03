@@ -110,9 +110,9 @@ while game:
     player.draw(screen)
     t+=0.1
     player.rectx.left=player.rect.left-5
-    pygame.draw.rect(screen, black, player.rect)
-    pygame.draw.rect(screen, white, player.rectx)
-    print(player.isgrounded)
+    #pygame.draw.rect(screen, black, player.rect)
+    #pygame.draw.rect(screen, white, player.rectx)
+
     if aiming:
         bow.animation(dt, angle2)
         screen.blit(bow.image, (player.position_x,player.position_y))
