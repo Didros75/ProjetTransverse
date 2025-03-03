@@ -42,6 +42,7 @@ while game:
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
 
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
@@ -90,7 +91,6 @@ while game:
 
     angle2 = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
-
 
     if shoted:
         if puissance>=15:
