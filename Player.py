@@ -82,7 +82,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         return self.state
 
     def draw(self, ref) :
-        self.image = pygame.transform.scale(self.image, (45, 55))
+        self.image = pygame.transform.scale(self.image, (40, 50))
         ref.blit(self.image, (self.position_x, self.position_y))
 
     def move_x(self, dt) :
@@ -115,7 +115,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         tilesy_hits = []
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel :
-                if tile.rectangle.top < self.rect.top and tile.rectangle.bottom < self.rect.bottom :
+                if tile.rectangle.top < self.rect.top and tile.rectangle.bottom < self.rect.bottom and self.rect.bottom  < tile.rectangle.top :
                     tilesx_hits.append(tile)
                 else :
                     tilesy_hits.append(tile)
@@ -131,7 +131,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.isjumping = False
                     self.speed_y = 0
                     self.acceleration_y = 0
-                    self.position_y = tile.rectangle.top - 49
+                    self.position_y = tile.rectangle.top - 45
                     self.rect.bottom = self.position_y
             if self.speed_y > 0 : #and tile.rectangle.top < self.rect.bottom:
                     self.speed_y = 0
