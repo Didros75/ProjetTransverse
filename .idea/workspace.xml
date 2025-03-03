@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="collisions suite">
+      <change beforePath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Map.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
+    </list>
+    <list id="82521ffd-ba2b-4533-a68b-d6de39ff9e20" name="Changes by julie" comment="">
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
     </list>
     <list id="b7c23c61-f75e-44cb-b337-bdb47df906e3" name="Changes by morin" comment="Changes by morin" />
@@ -32,10 +41,36 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Didros75/ProjetTransverse&quot;,
-    &quot;accountId&quot;: &quot;7f0ef339-dd80-4a81-bf33-6f43f43eee82&quot;
+    &quot;url&quot;: &quot;https://github.com/Didros75/ProjetTransverse.git&quot;,
+    &quot;accountId&quot;: &quot;fca163a7-1853-484e-904e-35a4d0a654d0&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Game.py">
+      <ranges>
+        <range start1="43" end1="43" start2="43" end2="44" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="92" end1="93" start2="93" end2="93" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="111" end1="111" start2="111" end2="115" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/Player.py">
+      <ranges>
+        <range start1="35" end1="37" start2="35" end2="39" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="67" end1="68" start2="69" end2="69" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="70" end1="71" start2="71" end2="72" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="98" end1="98" start2="99" end2="100" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="111" end1="111" start2="113" end2="114" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="116" end1="118" start2="119" end2="121" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="119" end1="120" start2="122" end2="123" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="121" end1="121" start2="124" end2="125" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="123" end1="123" start2="127" end2="129" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="133" end1="135" start2="139" end2="142" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="140" end1="140" start2="147" end2="148" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="148" end1="148" start2="156" end2="157" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+        <range start1="152" end1="152" start2="161" end2="162" changelist="82521ffd-ba2b-4533-a68b-d6de39ff9e20" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -102,7 +137,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
+        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
       </set>
     </attachedChunks>
   </component>
@@ -193,23 +229,7 @@
       <option name="project" value="LOCAL" />
       <updated>1740582226632</updated>
     </task>
-    <task id="LOCAL-00010" summary="collisions suite">
-      <option name="closed" value="true" />
-      <created>1740583513166</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1740583513166</updated>
-    </task>
-    <task id="LOCAL-00011" summary="collisions suite">
-      <option name="closed" value="true" />
-      <created>1740937183642</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1740937183642</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +259,6 @@
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1739809780340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741013669673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

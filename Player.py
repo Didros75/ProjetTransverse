@@ -109,6 +109,7 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.speed_y = -30
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect.y = self.position_y
+        self.rectx.y = self.position_y
 
     def hit_something(self, tiles) :
         tilesx_hits = []
@@ -134,6 +135,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.position_y = tile.rectangle.top - 45
                     self.rect.bottom = self.position_y
             if self.speed_y > 0 : #and tile.rectangle.top < self.rect.bottom:
+
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom
