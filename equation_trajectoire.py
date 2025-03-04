@@ -19,4 +19,3 @@ def angle(posiX_joueur,posiY_joueur,posiX_souris,posiY_souris): #calcul de l'ang
     delta_y = posiY_joueur-posiY_souris
     thetarad = atan2(delta_y, delta_x)
     return thetarad
-
