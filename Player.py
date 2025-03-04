@@ -33,8 +33,10 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.animation_speed = 0.15
         self.frame_count = 0
         self.image = self.sprites_right[0]
-        self.image = pygame.transform.scale(self.image, (55, 70))
-        self.rect = pygame.Rect(position_x, position_y, self.image.get_height() - 30, self.image.get_width())
+        #self.image = pygame.transform.scale(self.image, (55, 70))
+        self.rect = pygame.Rect(position_x, position_y, 40, 50)
+        self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 50, 40)
+
 
     def animate(self, angle=0):
         if self.LEFT or self.RIGHT:
@@ -66,15 +68,14 @@ class ThePlayer(pygame.sprite.Sprite) :
             else:
                 self.image = self.sprites_left_aiming[int(self.sprite_index)]
 
-
     def get_position(self) :
-        return (self.position_x, self.position_y)
+        return self.position_x, self.position_y
 
     def jump(self) :
         if self.isgrounded :
             self.isjumping = True
             self.speed_y = 14
-            self.isgrounded = False
+
 
     def death(self) :
         if self.position_y > 700 :
@@ -96,6 +97,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.max_speed(8)
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
         self.rect.x = self.position_x
+        self.rectx.x = self.position_x
 
     def max_speed(self, maxi) :
         min(-maxi, max(self.speed_x, maxi))
@@ -109,44 +111,64 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.speed_y = -30
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect.y = self.position_y
+        self.rectx.y = self.position_y+5
 
     def hit_something(self, tiles) :
         tilesx_hits = []
         tilesy_hits = []
-        for tile in tiles :
-            if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel :
-                if tile.rectangle.top < self.rect.top and tile.rectangle.bottom < self.rect.bottom and self.rect.bottom  < tile.rectangle.top :
-                    tilesx_hits.append(tile)
-                else :
+        if 0>self.speed_y>-0.6:
+            self.speed_y = 0
+        for tile in tiles:
+            if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel:
+                if self.rect.bottom > tile.rectangle.top > self.rect.top:  # Collision sol
                     tilesy_hits.append(tile)
-        if tilesy_hits == [] : # or tilesx_hits == [] :
-            self.isgrounded = False
+
+                elif self.rect.top < tile.rectangle.bottom < self.rect.bottom:  # Collision plafond
+                    tilesy_hits.append(tile)
+
+            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.ciel:
+                if self.rectx.right > tile.rectangle.left >= self.rectx.left:
+                    tilesx_hits.append(tile)
+
+                elif self.rectx.left < tile.rectangle.right <= self.rectx.right:
+                    tilesx_hits.append(tile)
+
+        self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in tilesy_hits)
+
+
+
+
+
         return tilesx_hits, tilesy_hits
 
     def hit_y(self, tiles) :
+
         collisions = self.hit_something(tiles)[1]
         for tile in collisions :
-            if self.speed_y < 0 and not self.isgrounded :
-                    self.isgrounded = True
+            if self.speed_y < 0 :
                     self.isjumping = False
                     self.speed_y = 0
                     self.acceleration_y = 0
-                    self.position_y = tile.rectangle.top - 45
-                    self.rect.bottom = self.position_y
+                    self.position_y = tile.rectangle.top - 50
+                    self.rect.bottom = self.position_y + 50
+                    self.rectx.bottom = self.position_y + 50
             if self.speed_y > 0 : #and tile.rectangle.top < self.rect.bottom:
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom
                     self.rect.top = self.position_y  # ?
+                    self.rectx.top = self.position_y + 5
 
     def hit_x(self, tiles) :
         collisions = self.hit_something(tiles)[0]
         for tile in collisions :
                 if self.speed_x > 0 :
                     self.speed_x = 0
-                    self.position_x = tile.rectangle.left - 40
-                    self.rect.x = self.position_x
+                    self.rect.right = tile.rectangle.left
+                    self.position_x=self.rect.x
+                    self.rectx.x = self.position_x
                 elif self.speed_x < 0 :
                     self.speed_x = 0
-                    self.position_x = tile.rectangle.right
-                    self.rect.x = self.position_x
+                    self.rect.left = tile.rectangle.right
+                    self.position_x=self.rect.x
+                    self.rectx.x = self.position_x

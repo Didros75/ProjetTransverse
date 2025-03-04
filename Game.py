@@ -42,6 +42,7 @@ while game:
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
 
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
@@ -91,7 +92,6 @@ while game:
     angle2 = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
 
-
     if shoted:
         if puissance>=15:
             puissance=15
@@ -109,6 +109,10 @@ while game:
     player.move_x(dt)
     player.draw(screen)
     t+=0.1
+    player.rectx.left=player.rect.left-5
+    #pygame.draw.rect(screen, black, player.rect)
+    #pygame.draw.rect(screen, white, player.rectx)
+
     if aiming:
         bow.animation(dt, angle2)
         screen.blit(bow.image, (player.position_x,player.position_y))
