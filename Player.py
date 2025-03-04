@@ -34,8 +34,8 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.frame_count = 0
         self.image = self.sprites_right[0]
         #self.image = pygame.transform.scale(self.image, (55, 70))
-        self.rect = pygame.Rect(position_x, position_y, 40, 50)
-        self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 50, 40)
+        self.rect = pygame.Rect(position_x - 10, position_y, 30, 50)
+        self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
 
 
     def animate(self, angle=0):
@@ -111,7 +111,7 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.speed_y = -30
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect.y = self.position_y
-        self.rectx.y = self.position_y+5
+        self.rectx.y = self.position_y+10
 
     def hit_something(self, tiles) :
         tilesx_hits = []
@@ -134,7 +134,6 @@ class ThePlayer(pygame.sprite.Sprite) :
                     tilesx_hits.append(tile)
 
         self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in tilesy_hits)
-
 
 
 
@@ -163,12 +162,13 @@ class ThePlayer(pygame.sprite.Sprite) :
         collisions = self.hit_something(tiles)[0]
         for tile in collisions :
                 if self.speed_x > 0 :
+
                     self.speed_x = 0
-                    self.rect.right = tile.rectangle.left
-                    self.position_x=self.rect.x
-                    self.rectx.x = self.position_x
+                    self.rect.right = tile.rectangle.left - 5
+                    self.rectx.right = tile.rectangle.left
+                    self.position_x = self.rectx.left
                 elif self.speed_x < 0 :
                     self.speed_x = 0
-                    self.rect.left = tile.rectangle.right
-                    self.position_x=self.rect.x
-                    self.rectx.x = self.position_x
+                    self.rect.left = tile.rectangle.right + 10
+                    self.rectx.left = tile.rectangle.right + 10
+                    self.position_x = self.rectx.left
