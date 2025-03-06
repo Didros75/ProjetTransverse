@@ -64,6 +64,9 @@ class Arrow() :
             return True
         return False
 
+
+    # COLLISIONS EN DEHORS DU CADRE
+
     def show(self, screen) :
         screen.blit(self.image, (self.position_x, self.position_y))
 
