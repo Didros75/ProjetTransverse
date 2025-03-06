@@ -7,7 +7,7 @@ from pygame import mouse
 
 import equation_trajectory
 from Player import ThePlayer
-from bow import Bow
+from bow import Bow, Arrow
 from bow import Portals
 #from test import isgrounded
 power = 0
@@ -21,7 +21,7 @@ player = ThePlayer(10, 10)
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
-portal_blue=Portals((0, 0, 20, 50),"blue", screen)
+# portal_blue=Portals((0, 0, 20, 50),"blue", screen)
 portal_green=Portals((0, 0, 20, 50),"green", screen)
 white=(255,255,255)
 black=(0,0,0)
@@ -92,26 +92,23 @@ while game:
     angle2 = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
 
-    if shoted:
+    if shoted :
+        position = player.get_position()
+        arrow = Arrow(position)
         if power>=15:
             power=15
-        coordinate=bow.shot(t, power*25, angle, px, -py)
-        screen.blit(bow.arrow_image, (coordinate[0], -coordinate[1]))
-        if -coordinate[1]>height:
-            portal_blue.state=True
-            shoted=False
-            t=0
+        arrow.shot(t, power*25, angle, px, -py)
+        arrow.show(screen)
+        shoted = arrow.collision(tiles)
 
-    if portal_blue.state==True:
-        portal_blue.apparition(player.position_x, player.position_y)
+    """if portal_blue.state==True:
+        portal_blue.apparition(player.position_x, player.position_y)"""
     player.animate(angle2)
     player.move_y(dt)
     player.move_x(dt)
     player.draw(screen)
     t+=0.1
     player.rectx.left=player.rect.left-5
-    #pygame.draw.rect(screen, black, player.rect)
-    #pygame.draw.rect(screen, white, player.rectx)
 
     if aiming:
         bow.animation(dt, angle2)

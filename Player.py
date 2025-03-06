@@ -119,14 +119,14 @@ class ThePlayer(pygame.sprite.Sprite) :
         if 0>self.speed_y>-0.6:
             self.speed_y = 0
         for tile in tiles:
-            if self.rect.colliderect(tile.rectangle) and tile.image != Map.ciel:
+            if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky:
                 if self.rect.bottom > tile.rectangle.top > self.rect.top:  # Collision sol
                     tilesy_hits.append(tile)
 
                 elif self.rect.top < tile.rectangle.bottom < self.rect.bottom:  # Collision plafond
                     tilesy_hits.append(tile)
 
-            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.ciel:
+            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.sky:
                 if self.rectx.right > tile.rectangle.left >= self.rectx.left:
                     tilesx_hits.append(tile)
 
@@ -134,10 +134,6 @@ class ThePlayer(pygame.sprite.Sprite) :
                     tilesx_hits.append(tile)
 
         self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in tilesy_hits)
-
-
-
-
         return tilesx_hits, tilesy_hits
 
     def hit_y(self, tiles) :
@@ -162,7 +158,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         collisions = self.hit_something(tiles)[0]
         for tile in collisions :
                 if self.speed_x > 0 :
-
                     self.speed_x = 0
                     self.rect.right = tile.rectangle.left - 5
                     self.rectx.right = tile.rectangle.left
