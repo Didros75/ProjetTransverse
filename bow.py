@@ -3,6 +3,7 @@ import math
 import equation_trajectoire
 
 class Bow():
+
     def __init__(self):
         self.images = [
             pygame.transform.scale(
@@ -35,8 +36,6 @@ class Bow():
             self.image = self.images[self.current_image_index]
 
             self.image = pygame.transform.rotate(self.image, angle * (180 / math.pi))
-
-
 
     def shot(self, dt, v0, tetha, x, y):
         return equation_trajectoire.trajectory(v0, tetha, dt, self.gravity, x, y)

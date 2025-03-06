@@ -17,7 +17,10 @@ height=600
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(10, 10)
+
+initial_position = (0,0)
+
+player = ThePlayer(initial_position[0], initial_position[1])
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
@@ -41,6 +44,8 @@ while game:
 
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
+    if player.death() == 1 :
+        player = ThePlayer(initial_position[0], initial_position[1])
 
 
     for event in pygame.event.get():
@@ -97,10 +102,6 @@ while game:
             puissance=15
         coordonées=bow.shot(t, puissance*25, angle, px, -py)
         screen.blit(bow.arrow_image, (coordonées[0], -coordonées[1]))
-        if -coordonées[1]>height:
-            portal_blue.state=True
-            shoted=False
-            t=0
 
     if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)
@@ -110,8 +111,6 @@ while game:
     player.draw(screen)
     t+=0.1
     player.rectx.left=player.rect.left-5
-    #pygame.draw.rect(screen, black, player.rect)
-    #pygame.draw.rect(screen, white, player.rectx)
 
     if aiming:
         bow.animation(dt, angle2)
