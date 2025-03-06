@@ -17,7 +17,10 @@ height=600
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(10, 10)
+
+initial_position = (0,0)
+
+player = ThePlayer(initial_position[0], initial_position[1])
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
@@ -41,6 +44,8 @@ while game:
 
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
+    if player.death() == 1 :
+        player = ThePlayer(initial_position[0], initial_position[1])
 
 
     for event in pygame.event.get():
