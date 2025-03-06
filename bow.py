@@ -1,6 +1,6 @@
 import pygame
 import math
-import equation_trajectoire
+import equation_trajectory
 
 class Bow():
 
@@ -37,8 +37,8 @@ class Bow():
 
             self.image = pygame.transform.rotate(self.image, angle * (180 / math.pi))
 
-    def shot(self, dt, v0, tetha, x, y):
-        return equation_trajectoire.trajectory(v0, tetha, dt, self.gravity, x, y)
+    def shot(self, dt, v0, theta, x, y):
+        return equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
 
 class Portals():
     def __init__(self, portal_rect, color, screen):

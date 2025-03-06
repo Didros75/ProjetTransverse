@@ -1,6 +1,6 @@
 import pygame
 import math
-import equation_trajectoire
+import equation_trajectory
 
-class portail():
+class portal():
     def __init__(self):

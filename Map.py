@@ -1,9 +1,9 @@
 import csv
 import pygame
 
-ciel = pygame.image.load('carrés/ciel.jpg')
-herbe =pygame.image.load('carrés/herbes.jpg')
-sol = pygame.image.load('carrés/sol.jpg')
+sky = pygame.image.load('carrés/ciel.jpg')
+grass =pygame.image.load('carrés/herbes.jpg')
+ground = pygame.image.load('carrés/sol.jpg')
 
 class Tile() :
     def __init__(self, image, x, y) :
@@ -44,11 +44,11 @@ class Create_map() :
         for x in range(len(map)) :
             for y in range(len(map[x])) :
                 if map[x][y] == "-1" :
-                    tiles.append(Tile(ciel, x * self.size_tile, y * self.size_tile))
+                    tiles.append(Tile(sky, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "1" :
-                    tiles.append(Tile(herbe, x * self.size_tile, y * self.size_tile))
+                    tiles.append(Tile(grass, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "2" :
-                    tiles.append(Tile(sol, x * self.size_tile, y * self.size_tile))
+                    tiles.append(Tile(ground, x * self.size_tile, y * self.size_tile))
         return tiles
 
     def load_map(self) :

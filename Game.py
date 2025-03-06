@@ -5,22 +5,19 @@ from Map import Create_map
 
 from pygame import mouse
 
-import equation_trajectoire
+import equation_trajectory
 from Player import ThePlayer
 from bow import Bow
 from bow import Portals
 #from test import isgrounded
-puissance = 0
+power = 0
 pygame.init()
 width=900
 height=600
 screen = pygame.display.set_mode((width, height))
 
 game = True
-
-initial_position = (0,0)
-
-player = ThePlayer(initial_position[0], initial_position[1])
+player = ThePlayer(10, 10)
 bow=Bow()
 map = Create_map("Map.csv", screen)
 
@@ -44,8 +41,6 @@ while game:
 
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
-    if player.death() == 1 :
-        player = ThePlayer(initial_position[0], initial_position[1])
 
 
     for event in pygame.event.get():
@@ -77,8 +72,8 @@ while game:
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button==1 and shoted==False and aiming==True:
 
-                angle = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0], mouse.get_pos()[1])
-                puissance=t
+                angle = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0], mouse.get_pos()[1])
+                power=t
                 t = 0
                 px = player.position_x
                 py = player.position_y
@@ -94,14 +89,18 @@ while game:
             if event.key == pygame.K_SPACE:
                 player.isjumping=False
 
-    angle2 = equation_trajectoire.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
+    angle2 = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
 
     if shoted:
-        if puissance>=15:
-            puissance=15
-        coordonées=bow.shot(t, puissance*25, angle, px, -py)
-        screen.blit(bow.arrow_image, (coordonées[0], -coordonées[1]))
+        if power>=15:
+            power=15
+        coordinate=bow.shot(t, power*25, angle, px, -py)
+        screen.blit(bow.arrow_image, (coordinate[0], -coordinate[1]))
+        if -coordinate[1]>height:
+            portal_blue.state=True
+            shoted=False
+            t=0
 
     if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)
@@ -111,6 +110,8 @@ while game:
     player.draw(screen)
     t+=0.1
     player.rectx.left=player.rect.left-5
+    #pygame.draw.rect(screen, black, player.rect)
+    #pygame.draw.rect(screen, white, player.rectx)
 
     if aiming:
         bow.animation(dt, angle2)
