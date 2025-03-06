@@ -22,6 +22,6 @@ def angle(posiX_player,posiY_player,posiX_mouse,posiY_mouse): #calcul de l'angle
 
 def angle_arrow(v0,theta,t,g):
     Vx = v0 * cos(theta)
-    Vy = -g*t + v0 * sin(theta)
+    Vy = -g*t*10 + v0 * sin(theta)
     theta_radiant=atan2(Vy , Vx)
     return theta_radiant

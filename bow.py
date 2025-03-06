@@ -50,6 +50,8 @@ class Arrow() :
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
+        print(equation_trajectory.angle_arrow(v0, theta, dt, self.gravity)*180/math.pi)
+        self.image=pygame.transform.rotate(self.image, equation_trajectory.angle_arrow(v0, theta, dt, self.gravity)*180/math.pi)
         self.position_x = coordinate[0]
         self.position_y = -coordinate[1]
         self.rect.left = coordinate[0]
