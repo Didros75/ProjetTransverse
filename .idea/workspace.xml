@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="collisions suite">
-      <change beforePath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_03_2025_11_46__Changes_.xml" beforeDir="false" />
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="mot + position intitiale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741014164660</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="mot + position intitiale">
+      <option name="closed" value="true" />
+      <created>1741267126373</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1741267126373</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +243,8 @@
     <MESSAGE value="collisions suite" />
     <MESSAGE value="tentative de resolution de bugs et portails" />
     <MESSAGE value="Changes by julie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by julie" />
+    <MESSAGE value="mot + position intitiale" />
+    <option name="LAST_COMMIT_MESSAGE" value="mot + position intitiale" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
