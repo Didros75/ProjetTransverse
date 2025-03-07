@@ -104,7 +104,7 @@ while game:
             power=15
         arrow.shot(t, power*25, angle, px, -py)
         arrow.show(screen)
-        shoted = arrow.collision(tiles)
+        shoted = arrow.collision(tiles, height, width)
 
     """if portal_blue.state==True:
         portal_blue.apparition(player.position_x, player.position_y)"""
