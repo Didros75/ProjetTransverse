@@ -19,8 +19,8 @@ screen = pygame.display.set_mode((width, height))
 game = True
 player = ThePlayer(10, 10)
 bow=Bow()
-portal_1=portal()
-portal_2=portal()
+portal_1=portal(100, 180)
+portal_2=portal(550, 220)
 map = Create_map("Map.csv", screen)
 
 
@@ -130,7 +130,10 @@ while game:
                     (20, height - power_bar.get_height() + 18))
 
     portal_1.animate()
+    portal_2.animate()
     screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
-    #pygame.draw.rect(screen, (0, 0, 0), portal_1.rect)
+    screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
+    portal_1.state=-1
+    portal_2.state=-2
 
     pygame.display.flip()
