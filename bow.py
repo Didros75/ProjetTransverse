@@ -64,17 +64,14 @@ class Arrow() :
         self.rect.left = coordinate[0]
         self.rect.top = -coordinate[1]
 
-    def collision(self, tiles) :
+    def collision(self, tiles, height, width) :
         hit_something = []
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
                 hit_something.append(tile)
-        if hit_something == [] :
-            return True
-        return False
-
-
-    # COLLISIONS EN DEHORS DU CADRE
+        if hit_something != [] or self.position_y > height or self.position_x > width :
+            return False
+        return True
 
     def show(self, screen) :
         screen.blit(self.image, (self.position_x, self.position_y))

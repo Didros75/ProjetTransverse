@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="tourner la fleche">
-      <change afterPath="$PROJECT_DIR$/assets/arrow_picto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal_5.png" afterDir="false" />
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="mot + position intitiale">
+      <change beforePath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +34,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Didros75/ProjetTransverse.git&quot;,
-    &quot;accountId&quot;: &quot;fca163a7-1853-484e-904e-35a4d0a654d0&quot;
+    &quot;url&quot;: &quot;https://github.com/Didros75/ProjetTransverse&quot;,
+    &quot;accountId&quot;: &quot;7f0ef339-dd80-4a81-bf33-6f43f43eee82&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -105,8 +104,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
-        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
       </set>
     </attachedChunks>
   </component>
@@ -125,9 +123,6 @@
       <workItem from="1739179304912" duration="27274000" />
       <workItem from="1739797266085" duration="11777000" />
       <workItem from="1741014883291" duration="4001000" />
-      <workItem from="1741101626209" duration="101000" />
-      <workItem from="1741119050237" duration="893000" />
-      <workItem from="1741332478049" duration="6104000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -217,31 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741014164660</updated>
     </task>
-    <task id="LOCAL-00012" summary="collisions terminées">
+    <task id="LOCAL-00012" summary="mot + position intitiale">
       <option name="closed" value="true" />
-      <created>1741119941786</created>
+      <created>1741267126373</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1741119941786</updated>
+      <updated>1741267126373</updated>
     </task>
-    <task id="LOCAL-00013" summary="tourner la fleche">
-      <option name="closed" value="true" />
-      <created>1741284907660</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1741284907660</updated>
-    </task>
-    <task id="LOCAL-00014" summary="tourner la fleche">
-      <option name="closed" value="true" />
-      <created>1741339340006</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1741339340006</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,14 +245,13 @@
     <MESSAGE value="collisions suite" />
     <MESSAGE value="tentative de resolution de bugs et portails" />
     <MESSAGE value="Changes by julie" />
-    <MESSAGE value="collisions terminées" />
-    <MESSAGE value="tourner la fleche" />
-    <option name="LAST_COMMIT_MESSAGE" value="tourner la fleche" />
+    <MESSAGE value="mot + position intitiale" />
+    <option name="LAST_COMMIT_MESSAGE" value="mot + position intitiale" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741339099312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741018922404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
