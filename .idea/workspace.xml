@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="tourner la fleche">
-      <change afterPath="$PROJECT_DIR$/assets/portal_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/power_bar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/arrow_picto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/portal_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/portal_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/portal_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/portal_5.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l0_sprite_portailbleu1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l0_sprite_portailbleu2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l0_sprite_portailbleu3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l0_sprite_portailbleu4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/l0_sprite_portailbleu5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/equation_trajectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/equation_trajectory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +127,7 @@
       <workItem from="1741014883291" duration="4001000" />
       <workItem from="1741101626209" duration="101000" />
       <workItem from="1741119050237" duration="893000" />
-      <workItem from="1741332478049" duration="5632000" />
+      <workItem from="1741332478049" duration="6104000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -240,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741284907660</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tourner la fleche">
+      <option name="closed" value="true" />
+      <created>1741339340006</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1741339340006</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +274,6 @@
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741339074625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741339099312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
