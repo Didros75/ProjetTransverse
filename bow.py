@@ -27,6 +27,8 @@ class Bow():
         self.gravity = 9.8
         self.animation_timer = 0
         self.animation_speed = 10
+        self.rect_x, self.rect_y, self.rect_size = 0, 0, 0
+        self.state=1
 
     def animation(self, dt, angle):
         self.animation_timer += dt
@@ -40,6 +42,12 @@ class Bow():
     def shot(self, dt, v0, theta, x, y):
         return equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
 
+    def draw_rectangle(self, screen, t, rect_x, rect_y):
+        self.rect_size = min(t*9, 143)
+        color = (0, 0, 0)
+        pygame.draw.rect(screen, color, (rect_x, rect_y, self.rect_size, 20))
+
+
 class Arrow() :
     def __init__(self, position) :
         self.gravity = 9.8
@@ -50,8 +58,7 @@ class Arrow() :
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
-        print(equation_trajectory.angle_arrow(v0, theta, dt, self.gravity)*180/math.pi)
-        self.image=pygame.transform.rotate(self.image, equation_trajectory.angle_arrow(v0, theta, dt, self.gravity)*180/math.pi)
+        self.image=pygame.transform.rotate(self.image, equation_trajectory.angle_arrow(v0, theta, dt, self.gravity*10)*180/math.pi)
         self.position_x = coordinate[0]
         self.position_y = -coordinate[1]
         self.rect.left = coordinate[0]

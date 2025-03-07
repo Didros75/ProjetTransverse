@@ -33,7 +33,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.animation_speed = 0.15
         self.frame_count = 0
         self.image = self.sprites_right[0]
-        #self.image = pygame.transform.scale(self.image, (55, 70))
         self.rect = pygame.Rect(position_x - 10, position_y, 30, 50)
         self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
 

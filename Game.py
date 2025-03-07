@@ -8,8 +8,8 @@ from pygame import mouse
 import equation_trajectory
 from Player import ThePlayer
 from bow import Bow, Arrow
-from bow import Portals
-#from test import isgrounded
+from Portal import portal
+
 power = 0
 pygame.init()
 width=900
@@ -19,18 +19,19 @@ screen = pygame.display.set_mode((width, height))
 game = True
 player = ThePlayer(10, 10)
 bow=Bow()
+portal_1=portal()
+portal_2=portal()
 map = Create_map("Map.csv", screen)
 
-# portal_blue=Portals((0, 0, 20, 50),"blue", screen)
-portal_green=Portals((0, 0, 20, 50),"green", screen)
+
 white=(255,255,255)
 black=(0,0,0)
 clock=pygame.time.Clock()
 target_fps=60
-
+power_bar=pygame.image.load("assets/power_bar.png")
+power_bar=pygame.transform.scale(power_bar,(225,75))
 isgrounded=False
 
-#sol_test=pygame.Rect(0, 100, 500, 50)
 aiming=False
 shoted=False
 angle=0
@@ -48,7 +49,7 @@ while game:
             game = False
             pygame.quit()
         if event.type == pygame.KEYDOWN:
-            if player.aiming==False:
+            if not player.aiming:
                 if event.key == pygame.K_d:
                     player.facingLeft=False
                     player.RIGHT=True
@@ -58,6 +59,8 @@ while game:
                 if event.key == pygame.K_SPACE:
                     if player.isgrounded:
                         player.jump()
+                if event.key == pygame.K_e:
+                    bow.state=-bow.state
         if event.type == pygame.MOUSEBUTTONDOWN:
 
             if event.button==1:
@@ -92,6 +95,8 @@ while game:
     angle2 = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
 
+
+
     if shoted :
         position = player.get_position()
         arrow = Arrow(position)
@@ -110,9 +115,22 @@ while game:
     t+=0.1
     player.rectx.left=player.rect.left-5
 
+
+    screen.blit(power_bar, (0, height-power_bar.get_height()))
+
     if aiming:
         bow.animation(dt, angle2)
-        screen.blit(bow.image, (player.position_x,player.position_y))
+        screen.blit(bow.image, (player.position_x, player.position_y))
+        bow.draw_rectangle(screen, t, 65, height-power_bar.get_height()+27)
 
+    if bow.state==1:
+        screen.blit(pygame.transform.scale(pygame.image.load("assets/arrow_picto.png"), (30, 30)), (21, height-power_bar.get_height()+21))
+    elif bow.state==-1:
+        screen.blit(pygame.transform.scale(pygame.image.load("assets/portal_1.png"), (35, 35)),
+                    (20, height - power_bar.get_height() + 18))
+
+    portal_1.animate()
+    screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
+    #pygame.draw.rect(screen, (0, 0, 0), portal_1.rect)
 
     pygame.display.flip()
