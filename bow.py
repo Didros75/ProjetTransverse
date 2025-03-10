@@ -52,7 +52,10 @@ class Arrow() :
         self.position_x = position[0]
         self.position_y = position[1]
         self.image = pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width() * 3, pygame.image.load("assets/Arrow.png").get_height() * 3))
-        self.rect = pygame.Rect(position[0], position[1], 20, 20)
+        self.rect = pygame.Rect(position[0], position[1], 25, 2)
+
+        self.final_posx = 0
+        self.final_posy = 0
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
@@ -63,13 +66,14 @@ class Arrow() :
         self.rect.top = -coordinate[1]
 
     def collision(self, tiles, height, width) :
-        hit_something = []
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
-                hit_something.append(tile)
-        if hit_something != [] or self.position_y > height or self.position_x > width :
-            return False
-        return True
+                self.final_posx = self.rect.right
+                self.final_posy = self.rect.bottom
+                return False, tile
+        if self.position_y > height or self.position_x > width :
+            return False, 0
+        return True, 0
 
     def show(self, screen) :
         screen.blit(self.image, (self.position_x, self.position_y))

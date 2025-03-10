@@ -17,7 +17,7 @@ height=600
 screen = pygame.display.set_mode((width, height))
 
 game = True
-player = ThePlayer(10, 10)
+player = ThePlayer(0, 0)
 bow=Bow()
 portal_1=portal(10, 230)
 portal_2=portal(550, 230)
@@ -39,9 +39,10 @@ angle2=0
 t=0
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
-
     tiles = map.load_map()
     player.hit_x(tiles), player.hit_y(tiles)
+    if player.death() :
+        player = ThePlayer(0, 0)
 
 
     for event in pygame.event.get():
@@ -104,17 +105,17 @@ while game:
             power=15
         arrow.shot(t, power*25, angle, px, -py)
         arrow.show(screen)
-        shoted = arrow.collision(tiles, height, width)
+        shoted, collision = arrow.collision(tiles, height, width)[0], arrow.collision(tiles, height, width)[1]
+        if collision != 0 :
+            position_portal, state_portal = arrow.position_portal(collision)[0], arrow.position_portal(collision)[1]
+            print(position_portal, state_portal)
 
-    """if portal_blue.state==True:
-        portal_blue.apparition(player.position_x, player.position_y)"""
     player.animate(angle2)
     player.move_y(dt)
     player.move_x(dt)
     player.draw(screen)
     t+=0.1
     player.rectx.left=player.rect.left-5
-
 
     screen.blit(power_bar, (0, height-power_bar.get_height()))
 
