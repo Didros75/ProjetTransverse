@@ -4,10 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="tourner la fleche">
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="portails">
+      <change afterPath="$PROJECT_DIR$/Portal_gestion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carrés/img_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetTransverse.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Maps/Map.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/ciel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/herbes.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/jaune.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/noir.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/sol.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carrés/vert.png" beforeDir="false" />
+    </list>
+    <list id="0951ebec-31d9-4c24-8f32-e7f090ecc38a" name="Changes by julie" comment="">
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +61,42 @@
     &quot;accountId&quot;: &quot;fca163a7-1853-484e-904e-35a4d0a654d0&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Map.py">
+      <ranges>
+        <range start1="3" end1="6" start2="3" end2="12" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="14" end1="15" start2="20" end2="20" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="48" end1="49" start2="53" end2="54" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="50" end1="51" start2="55" end2="56" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="54" end1="54" start2="59" end2="60" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="55" end1="56" start2="61" end2="63" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/bow.py">
+      <ranges>
+        <range start1="20" end1="21" start2="20" end2="21" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="22" end1="25" start2="22" end2="23" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="56" end1="57" start2="54" end2="58" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="67" end1="68" start2="68" end2="68" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="70" end1="74" start2="70" end2="76" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="78" end1="88" start2="80" end2="99" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/Game.py">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="5" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="19" end1="20" start2="19" end2="20" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="21" end1="24" start2="21" end2="24" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="41" end1="42" start2="41" end2="41" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="44" end1="44" start2="43" end2="45" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="106" end1="107" start2="107" end2="111" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="108" end1="110" start2="112" end2="112" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="116" end1="117" start2="118" end2="118" changelist="0951ebec-31d9-4c24-8f32-e7f090ecc38a" />
+        <range start1="135" end1="136" start2="136" end2="137" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+        <range start1="137" end1="138" start2="138" end2="145" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -65,8 +126,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\Maps" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse" />
       <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\carrés" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -126,7 +189,8 @@
       <workItem from="1741119050237" duration="893000" />
       <workItem from="1741332478049" duration="6104000" />
       <workItem from="1741339804544" duration="726000" />
-      <workItem from="1741384597416" duration="3128000" />
+      <workItem from="1741384597416" duration="3168000" />
+      <workItem from="1741610960728" duration="6887000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -248,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741343592373</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="portails">
+      <option name="closed" value="true" />
+      <created>1741387763704</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1741387763704</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,12 +347,13 @@
     <MESSAGE value="Changes by julie" />
     <MESSAGE value="collisions terminées" />
     <MESSAGE value="tourner la fleche" />
-    <option name="LAST_COMMIT_MESSAGE" value="tourner la fleche" />
+    <MESSAGE value="portails" />
+    <option name="LAST_COMMIT_MESSAGE" value="portails" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741387735215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1741617705833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

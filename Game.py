@@ -2,7 +2,7 @@ import math
 import pygame
 import time
 from Map import Create_map
-
+from Portal_gestion import gestion
 from pygame import mouse
 
 import equation_trajectory
@@ -19,9 +19,9 @@ screen = pygame.display.set_mode((width, height))
 game = True
 player = ThePlayer(10, 10)
 bow=Bow()
-portal_1=portal(100, 180)
-portal_2=portal(550, 220)
-map = Create_map("Map.csv", screen)
+portal_1=portal(10, 230)
+portal_2=portal(550, 230)
+map = Create_map("Maps/map1.csv", screen)
 
 
 white=(255,255,255)
@@ -133,7 +133,13 @@ while game:
     portal_2.animate()
     screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
     screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
-    portal_1.state=-1
+    portal_1.state=-2
     portal_2.state=-2
-
+    if player.rect.colliderect(portal_1.rect):
+        player.LEFT=False
+        player.RIGHT=False
+        player.position_x=gestion(player.speed_x, player.speed_y, (portal_1.pos_x, portal_1.pos_y),(portal_2.pos_x, portal_2.pos_y), portal_1.state, portal_2.state, 'portal1')[0][0]+10
+        player.rect[1]-=10
+        player.speed_y=-player.speed_y
+    #pygame.draw.rect(screen, 'black',bow.arrow_rect)
     pygame.display.flip()

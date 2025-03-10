@@ -18,11 +18,9 @@ class Bow():
         #self.arrow_image=pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width()*3,pygame.image.load("assets/Arrow.png").get_height()*3))
         self.current_image_index = 0
         self.image = self.images[self.current_image_index]
-        #self.rect = self.image.get_rect()
 
-        #self.portal_blue = True
-        #self.portal_green = True
-        #self.arrow = True
+
+
         self.aiming = False
         self.gravity = 9.8
         self.animation_timer = 0
@@ -76,13 +74,22 @@ class Arrow() :
     def show(self, screen) :
         screen.blit(self.image, (self.position_x, self.position_y))
 
-class Portals():
-    def __init__(self, portal_rect, color, screen):
-        self.portal_rect = portal_rect
-        self.color = color
-        self.screen = screen
-        self.state = False
-
-    def apparition(self, x, y):
-        self.state = True
-        pygame.draw.rect(self.screen, self.color, (x, y, self.portal_rect[2], self.portal_rect[3]))
+    def position_portal(self, tile) :
+    # 1 vers right
+    # 2 vers bas
+    # -2 vers haut
+    # -1 vers left
+        print(self.final_posx, tile.rectangle.left)
+        if self.final_posx < tile.rectangle.left :
+            position = (tile.rectangle.left, tile.rectangle.bottom)
+            state = -1
+        elif self.final_posx - 25 > tile.rectangle.right  :
+            position = (tile.rectangle.right, tile.rectangle.bottom)
+            state = 1
+        elif self.final_posy > tile.rectangle.top :
+            position = (tile.rectangle.left, tile.rectangle.top)
+            state = -2
+        else :
+            position = (tile.rectangle.left, tile.rectangle.bottom)
+            state = 2
+        return position, state

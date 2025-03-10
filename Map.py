@@ -52,6 +52,7 @@ class Create_map() :
         return tiles
 
     def load_map(self) :
+        self.surface.blit(background, (0, 0))
         for i in range(len(self.tiles)) :
             self.tiles[i].draw(self.surface)
         return self.tiles
