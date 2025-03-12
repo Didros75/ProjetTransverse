@@ -1,6 +1,8 @@
 import math
 import pygame
 import time
+
+import Portal_gestion
 from Map import Create_map
 from Portal_gestion import gestion
 from pygame import mouse
@@ -19,8 +21,8 @@ screen = pygame.display.set_mode((width, height))
 game = True
 player = ThePlayer(0, 0)
 bow=Bow()
-portal_1=portal(10, 230)
-portal_2=portal(550, 230)
+portal_1=portal(10, 375)
+portal_2=portal(630, 335)
 map = Create_map("Maps/map1.csv", screen)
 
 
@@ -37,10 +39,11 @@ shoted=False
 angle=0
 angle2=0
 t=0
+t_cooldown=0
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
     tiles = map.load_map()
-    player.hit_x(tiles), player.hit_y(tiles)
+
     if player.death() :
         player = ThePlayer(0, 0)
 
@@ -115,6 +118,7 @@ while game:
     player.move_x(dt)
     player.draw(screen)
     t+=0.1
+    t_cooldown+=0.1
     player.rectx.left=player.rect.left-5
 
     screen.blit(power_bar, (0, height-power_bar.get_height()))
@@ -135,12 +139,26 @@ while game:
     screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
     screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
     portal_1.state=-2
-    portal_2.state=-2
-    if player.rect.colliderect(portal_1.rect):
-        player.LEFT=False
-        player.RIGHT=False
-        player.position_x=gestion(player.speed_x, player.speed_y, (portal_1.pos_x, portal_1.pos_y),(portal_2.pos_x, portal_2.pos_y), portal_1.state, portal_2.state, 'portal1')[0][0]+10
-        player.rect[1]-=10
-        player.speed_y=-player.speed_y
-    #pygame.draw.rect(screen, 'black',bow.arrow_rect)
+    portal_2.state=1
+    chargement=True
+
+    if t_cooldown>=4:
+        if player.rect.colliderect(portal_1.rect) :
+            player.position_y += 2 * player.speed_y
+            player.rect.y += 10 + 2 * player.speed_y
+            player.speed_x = Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_1.rect.centerx, portal_1.rect.centery),(portal_2.rect.centerx, portal_2.rect.centery), portal_1.state, portal_2.state)[1]
+            player.speed_y =Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_1.rect.centerx, portal_1.rect.centery),(portal_2.rect.centerx, portal_2.rect.centery), portal_1.state, portal_2.state)[2]
+            player.position_x=Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_1.rect.centerx, portal_1.rect.centery), (portal_2.rect.centerx, portal_2.rect.centery), portal_1.state, portal_2.state)[0][0]
+            t_cooldown = 0
+        elif player.rect.colliderect(portal_2.rect):
+            player.position_y += 10 + 2 * player.speed_y
+            player.rect.y += 10 + 2 * player.speed_y
+            player.speed_y= Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_2.rect.centerx, portal_2.rect.centery),(portal_1.rect.centerx, portal_1.rect.centery), portal_2.state, portal_1.state)[2]
+            player.speed_x= Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_2.rect.centerx, portal_2.rect.centery),(portal_1.rect.centerx, portal_1.rect.centery), portal_2.state, portal_1.state)[1]
+            player.position_x = Portal_gestion.gestion(player.speed_x, player.speed_y, (portal_2.rect.centerx, portal_2.rect.centery),(portal_1.rect.centerx, portal_1.rect.centery), portal_2.state, portal_1.state)[0][0]
+
+            t_cooldown = 0
+
+    player.hit_x(tiles), player.hit_y(tiles)
+    #pygame.draw.rect(screen, 'black',player.rect)
     pygame.display.flip()

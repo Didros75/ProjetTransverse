@@ -23,6 +23,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.facingLeft = False
         self.aiming=False
 
+
         self.sprites_right = [pygame.image.load(f"assets\l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
         self.sprites_right_aiming = [pygame.image.load(f"assets\l0_aiming_anime{i}.png") for i in range(1, 5)]
@@ -106,8 +107,8 @@ class ThePlayer(pygame.sprite.Sprite) :
     def move_y(self, dt) :
         if self.isgrounded == False :
             self.speed_y -= self.gravity * dt
-        if self.speed_y <= -30:
-            self.speed_y = -30
+        if self.speed_y <= -20:
+            self.speed_y = -20
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect.y = self.position_y
         self.rectx.y = self.position_y+10
