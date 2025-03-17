@@ -34,3 +34,16 @@ class portal():
             elif self.state == -2:
                 self.image = pygame.transform.rotate(self.image, 90)
             self.rect = pygame.Rect(self.pos_x + 20, self.pos_y + 38, 90, 15)
+
+    def gestion(self, player_speedx, player_speedy, player_y, portal2_pos, portal1_state, portal2_state):
+        if portal2_state == -2:
+            if portal1_state == -2:
+                return (portal2_pos[0], portal2_pos[1]), player_speedx, -(player_speedy - 1), portal2_pos[1] - 20
+            else:
+                return (portal2_pos[0], portal2_pos[1]), player_speedx, player_speedy , portal2_pos[1]+ 10
+        elif portal2_state == 2:
+            return (portal2_pos[0], portal2_pos[1]), player_speedx, player_speedy, player_y + 10
+        elif portal2_state == 1:
+            return (portal2_pos[0]+10, portal2_pos[1]-10), player_speedx+4, player_speedy, player_y
+        elif portal2_state == -1:
+            return (portal2_pos[0]-80, portal2_pos[1]-10), -player_speedx, player_speedy, player_y
