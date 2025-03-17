@@ -22,7 +22,7 @@ game = True
 player = ThePlayer(0, 0)
 bow=Bow()
 portal_1=portal(10, 375)
-portal_2=portal(630, 335)
+portal_2=portal(630, 375)
 map = Create_map("Maps/map1.csv", screen)
 
 
@@ -139,7 +139,7 @@ while game:
     screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
     screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
     portal_1.state=-2
-    portal_2.state=1
+    portal_2.state=-2
     chargement=True
 
     if t_cooldown>=4:
