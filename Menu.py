@@ -7,10 +7,10 @@ def menu(screen):
     pygame.draw.rect(screen, (0, 0, 0), play_rect)
     screen.blit(text_play, (400, 250))
     pygame.display.flip()
-    a = True
-    while a:
+    in_game = True
+    while in_game:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_rect.collidepoint(event.pos):
-                    a = False
+                    in_game = False
     return True

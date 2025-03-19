@@ -1,6 +1,5 @@
 import pygame
-import math
-import equation_trajectory
+import Map
 
 class portal():
     def __init__(self, x=0, y=0):
@@ -46,3 +45,21 @@ class portal():
             return (portal2_pos[0]+10, portal2_pos[1]-10), player_speedx+4, player_speedy, player_y
         elif portal2_state == -1:
             return (portal2_pos[0]-80, portal2_pos[1]-10), -player_speedx, player_speedy, player_y
+
+    def change_position(self, tile_touched, tiles, position, state) :
+        for i in range(len(tiles)) :
+            if state == -1 and tiles[i].rectangle.right == tile_touched.rectangle.left :
+                if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
+                    if tiles[i].image == Map.img17 :
+                        return position[0], tile_touched.rectangle.top
+                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
+                    if tiles[i].image == Map.img1 :
+                        return position[0], tile_touched.rectangle.top
+            if state == 1 and tiles[i].rectangle.left == tile_touched.rectangle.right :
+                if tiles[i].rectangle.bottom == tile_touched.rectangle.top:
+                    if tiles[i].image == Map.img17:
+                        return position[0], tile_touched.rectangle.top
+                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom:
+                    if tiles[i].image == Map.img1:
+                        return position[0], tile_touched.rectangle.top
+        return position

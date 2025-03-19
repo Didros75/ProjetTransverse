@@ -1,7 +1,4 @@
 import pygame
-import time
-
-
 from Map import Create_map
 from pygame import mouse
 import Menu
@@ -19,18 +16,17 @@ screen = pygame.display.set_mode((width, height))
 game = Menu.menu(screen)
 player = ThePlayer(0, 0)
 bow=Bow()
-portal_1=portal(10, 375)
-portal_2=portal(630, 375)
+portal_1=portal(-75, -75)
+portal_2=portal(-75, -75)
 map = Create_map("Maps/map2.csv", screen)
-
 
 white=(255,255,255)
 black=(0,0,0)
-clock=pygame.time.Clock()
+clock = pygame.time.Clock()
 target_fps=60
 power_bar=pygame.image.load("assets/power_bar.png")
 power_bar=pygame.transform.scale(power_bar,(225,75))
-isgrounded=False
+# isgrounded=False
 
 aiming=False
 shoted=False
@@ -46,7 +42,6 @@ while game:
 
     if player.death() :
         player = ThePlayer(0, 0)
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -69,7 +64,7 @@ while game:
 
             if event.button==1:
 
-                if shoted==False:
+                if not shoted:
                     t = 0
                     player.RIGHT=False
                     player.LEFT=False
@@ -100,6 +95,7 @@ while game:
                                         mouse.get_pos()[1])
 
     collision = 0
+
     if shoted :
         position = player.get_position()
         arrow = Arrow(position)
@@ -110,22 +106,24 @@ while game:
         arrow.show(screen)
         shoted, collision = arrow.collision(tiles, height, width)[0], arrow.collision(tiles, height, width)[1]
 
+    # Fonction pour changer les flèches dans la classe arrow possible ???
+
     if collision != 0 :
-        number_arrows += 1
-        if number_arrows > 1 :
-            number_arrows = 0
+
         position_portal = arrow.position_portal(collision)
+
+        number_arrows += 1
+        if number_arrows > 1:
+            number_arrows = 0
 
         if number_arrows == 1 :
             portal_2.state = arrow.portal_state
-            pos = arrow.position_portal(collision)
-            portal_2.pos_x = pos[0]
-            portal_2.pos_y = pos[1]
+            new_position = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
+            portal_2.pos_x, portal_2.pos_y = new_position[0], new_position[1]
         else :
             portal_1.state = arrow.portal_state
-            pos = arrow.position_portal(collision)
-            portal_1.pos_x = pos[0]
-            portal_1.pos_y = pos[1]
+            new_position = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
+            portal_1.pos_x, portal_1.pos_y = new_position[0], new_position[1]
 
     player.animate(angle2)
     player.move_y(dt)
@@ -152,8 +150,6 @@ while game:
     portal_2.animate()
     screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
     screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
-    #portal_1.state=-2
-    #portal_2.state=-2
     chargement=True
 
     if t_cooldown>=4:

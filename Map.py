@@ -1,16 +1,16 @@
 import pygame
 
 sky = 0
-img0 = pygame.image.load('carrés/img.png')
-img1 = pygame.image.load('carrés/img_1.png')
-img2 = pygame.image.load('carrés/img_2.png') #top right
-img8 = pygame.image.load('carrés/img_7.png')
-img9 = pygame.image.load('carrés/img_8.png')
-img10 = pygame.image.load('carrés/img_3.png')
-img16 = pygame.image.load('carrés/img_6.png') #bottom left
-img17 = pygame.image.load('carrés/img_5.png')
-img18 = pygame.image.load('carrés/img_4.png') #bottom right
-background=pygame.image.load("assets/fond_test.jpg")
+img0 = pygame.image.load('assets_tiles/New Piskel (1).png')
+img1 = pygame.image.load('assets_tiles/New Piskel (2).png')
+img2 = pygame.image.load('assets_tiles/img_2.png')
+img8 = pygame.image.load('assets_tiles/img_7.png')
+img9 = pygame.image.load('assets_tiles/img_8.png')
+img10 = pygame.image.load('assets_tiles/img_3.png')
+img16 = pygame.image.load('assets_tiles/img_6.png') #bottom left
+img17 = pygame.image.load('assets_tiles/img_5.png')
+img18 = pygame.image.load('assets_tiles/img_4.png') #bottom right
+background=pygame.image.load("assets/Design sans titre.png")
 background=pygame.transform.scale(background,(900,600))
 
 class Tile() :
