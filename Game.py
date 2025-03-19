@@ -4,7 +4,7 @@ import time
 
 from Map import Create_map
 from pygame import mouse
-
+import Menu
 import equation_trajectory
 from Player import ThePlayer
 from bow import Bow, Arrow
@@ -16,7 +16,7 @@ width=900
 height=600
 screen = pygame.display.set_mode((width, height))
 
-game = True
+game = Menu.menu(screen)
 player = ThePlayer(0, 0)
 bow=Bow()
 portal_1=portal(10, 375)

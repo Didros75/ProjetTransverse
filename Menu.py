@@ -13,4 +13,4 @@ def menu(screen):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_rect.collidepoint(event.pos):
                     a = False
-    return False
+    return True
