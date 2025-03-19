@@ -21,7 +21,7 @@ player = ThePlayer(0, 0)
 bow=Bow()
 portal_1=portal(10, 375)
 portal_2=portal(630, 375)
-map = Create_map("Maps/map1.csv", screen)
+map = Create_map("Maps/map2.csv", screen)
 
 
 white=(255,255,255)
