@@ -1,10 +1,8 @@
-import math
 import pygame
 import time
 
 
 from Map import Create_map
-from Portal_gestion import gestion
 from pygame import mouse
 
 import equation_trajectory
@@ -40,6 +38,8 @@ angle=0
 angle2=0
 t=0
 t_cooldown=0
+number_arrows = 0
+
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
     tiles = map.load_map()
@@ -99,8 +99,7 @@ while game:
     angle2 = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
                                         mouse.get_pos()[1])
 
-
-
+    collision = 0
     if shoted :
         position = player.get_position()
         arrow = Arrow(position)
@@ -110,9 +109,23 @@ while game:
 
         arrow.show(screen)
         shoted, collision = arrow.collision(tiles, height, width)[0], arrow.collision(tiles, height, width)[1]
-        if collision != 0 :
-            position_portal, state_portal = arrow.position_portal(collision)[0], arrow.position_portal(collision)[1]
-            print(position_portal, state_portal)
+
+    if collision != 0 :
+        number_arrows += 1
+        if number_arrows > 1 :
+            number_arrows = 0
+        position_portal = arrow.position_portal(collision)
+
+        if number_arrows == 1 :
+            portal_2.state = arrow.portal_state
+            pos = arrow.position_portal(collision)
+            portal_2.pos_x = pos[0]
+            portal_2.pos_y = pos[1]
+        else :
+            portal_1.state = arrow.portal_state
+            pos = arrow.position_portal(collision)
+            portal_1.pos_x = pos[0]
+            portal_1.pos_y = pos[1]
 
     player.animate(angle2)
     player.move_y(dt)

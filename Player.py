@@ -1,8 +1,8 @@
+    # Module contenant la classe qui gère les intéractions du joueur
+
 import math
 import pygame
-from pygame.examples.cursors import image
 import Map
-
 
 class ThePlayer(pygame.sprite.Sprite) :
     def __init__(self, position_x, position_y, gravity = 0.6, LEFT = False, RIGHT = False, SPACE = False) :
@@ -69,6 +69,9 @@ class ThePlayer(pygame.sprite.Sprite) :
                 self.image = self.sprites_left_aiming[int(self.sprite_index)]
 
     def get_position(self) :
+        """
+        retourne la position du joueur
+        """
         return self.position_x, self.position_y
 
     def jump(self) :
@@ -76,8 +79,11 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.isjumping = True
             self.speed_y = 14
 
-
     def death(self) :
+        """
+        gère la mort du joueur
+        retourne 1 si le joueur est mort, 0 sinon
+        """
         if self.position_y > 700 :
             self.state = 1
         return self.state

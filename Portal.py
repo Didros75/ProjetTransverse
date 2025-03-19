@@ -14,7 +14,6 @@ class portal():
         self.state=1
         self.rect = pygame.Rect(self.pos_x + 38, self.pos_y + 20, 15, 80)
 
-
     def animate(self):
 
         self.image = self.images[int(self.frame)]
