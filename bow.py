@@ -4,7 +4,6 @@ import equation_trajectory
 import Map
 
 class Bow():
-
     def __init__(self):
         self.images = [
             pygame.transform.scale(
@@ -52,7 +51,7 @@ class Arrow() :
         self.image = pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width() * 3, pygame.image.load("assets/Arrow.png").get_height() * 3))
         self.rect = pygame.Rect(position[0], position[1], 25, 25)
         self.portal_state = 0
-        self.final_pos = (0, 0)
+        #self.final_pos = (0, 0)
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
@@ -65,7 +64,7 @@ class Arrow() :
     def collision(self, tiles, height, width) :
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
-                self.final_pos = (self.rect.right, self.rect.bottom)
+                #self.final_pos = (self.rect.right, self.rect.bottom)
                 return False, tile
         if self.position_y > height or self.position_x > width :
             return False, 0

@@ -22,6 +22,7 @@ map = Create_map("Maps/map2.csv", screen)
 
 white=(255,255,255)
 black=(0,0,0)
+
 clock = pygame.time.Clock()
 target_fps=60
 power_bar=pygame.image.load("assets/power_bar.png")
