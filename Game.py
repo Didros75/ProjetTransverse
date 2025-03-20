@@ -131,7 +131,7 @@ while game:
     player.draw(screen)
     t+=0.1
     t_cooldown+=0.1
-    player.rectx.left=player.rect.left-5
+
 
     screen.blit(power_bar, (0, height-power_bar.get_height()))
 
@@ -154,63 +154,82 @@ while game:
 
     if t_cooldown>=4:
         if player.rect.colliderect(portal_1.rect) :
-            player.position_x += 2
-            player.rect.x += 2
+
             if portal_2.state==-2:
-                player.position_y = portal_2.rect.y - 70
-                player.rect.y = portal_2.rect.y - 70
-                player.speed_y = -(player.speed_y-2)
-                player.position_x=portal_2.rect.x+30
-            elif portal_2.state==2:
-                player.position_y = portal_2.rect.y + 50
-                player.rect.y = portal_2.rect.y - 50
                 player.speed_y = -(player.speed_y - 2)
-                player.position_x = portal_2.rect.x + 30
-            elif portal_2.state==-1:
-                player.position_y = portal_2.rect.y + 30
-                player.rect.y = portal_2.rect.y - 30
-                player.speed_x = -(player.speed_x - 2)
-                player.position_x = portal_2.rect.x - 30
-                player.rect.x = portal_2.rect.x - 30
-            elif portal_2.state == 1:
-                player.position_y = portal_2.rect.y + 30
-                player.rect.y = portal_2.rect.y - 30
-                player.speed_x = -(player.speed_x - 2)
-                player.position_x = portal_2.rect.x + 30
+                player.position_y = portal_2.rect.y - 70
+                player.position_x=portal_2.rect.x+30
+                player.rect.y = portal_2.rect.y - 70
                 player.rect.x = portal_2.rect.x + 30
 
+            elif portal_2.state==2:
+                player.speed_y = -(player.speed_y - 2)
+                player.position_y = portal_2.rect.y + 50
+                player.position_x = portal_2.rect.x + 30
+                player.rect.y = portal_2.rect.y - 50
+                player.rect.x = portal_2.rect.x + 30
+
+            elif portal_2.state==-1:
+                player.speed_x = -(player.speed_x - 2)
+                player.position_y = portal_2.rect.y + 30
+                player.position_x = portal_2.rect.x - 30
+                player.rect.y = portal_2.rect.y - 30
+                player.rect.x = portal_2.rect.x - 30
+
+            elif portal_2.state == 1:
+                player.speed_x = -(player.speed_x - 2)
+                player.position_y = portal_2.rect.y + 30
+                player.position_x = portal_2.rect.x + 30
+                player.rect.y = portal_2.rect.y - 30
+                player.rect.x = portal_2.rect.x + 30
+
+            player.rectx.y = player.rect.y - 5
+            player.rectx.x = player.rect.x - 5
             t_cooldown = 0
 
         elif player.rect.colliderect(portal_2.rect):
-            player.position_x += 2
-            player.rect.x += 2
+
             if portal_1.state==-2:
-                player.position_y = portal_1.rect.y-70
-                player.rect.y= portal_1.rect.y-70
                 player.speed_y = -(player.speed_y-2)
+
+                player.position_y = portal_1.rect.y-70
                 player.position_x = portal_1.rect.x+30
+                player.rect.y= portal_1.rect.y-70
+                player.rect.x = portal_1.rect.x +30
+
+
             elif portal_1.state==2:
-                player.position_y = portal_1.rect.y + 50
-                player.rect.y = portal_1.rect.y - 50
+
                 player.speed_y = -(player.speed_y - 2)
+                player.position_y = portal_1.rect.y + 50
                 player.position_x = portal_1.rect.x + 30
-            elif portal_1.state==-1:
-                player.position_y = portal_1.rect.y + 30
-                player.rect.y = portal_1.rect.y - 30
-                player.speed_x = -(player.speed_x - 2)
-                player.position_x = portal_1.rect.x - 30
-                player.rect.x = portal_1.rect.x - 30
-            elif portal_1.state == 1:
-                player.position_y = portal_1.rect.y + 30
-                player.rect.y = portal_1.rect.y - 30
-                player.speed_x = -(player.speed_x - 2)
-                player.position_x = portal_1.rect.x + 30
+                player.rect.y = portal_1.rect.y - 50
                 player.rect.x = portal_1.rect.x + 30
 
+
+
+            elif portal_1.state==-1:
+                player.speed_x = -(player.speed_x - 2)
+                player.position_y = portal_1.rect.y + 30
+                player.position_x = portal_1.rect.x - 30
+                player.rect.y = portal_1.rect.y - 30
+                player.rect.x = portal_1.rect.x - 30
+
+            elif portal_1.state == 1:
+                player.speed_x = -(player.speed_x - 2)
+                player.position_y = portal_1.rect.y + 30
+                player.position_x = portal_1.rect.x + 30
+                player.rect.y = portal_1.rect.y - 30
+                player.rect.x = portal_1.rect.x + 30
+
+            player.rectx.y = player.rect.y - 5
+            player.rectx.x = player.rect.x - 5
             t_cooldown = 0
 
 
     player.hit_x(tiles), player.hit_y(tiles)
-    #pygame.draw.rect(screen, 'black', portal_1.rect)
+    #pygame.draw.rect(screen, 'black', player.rect)
+    #pygame.draw.rect(screen, 'black', player.rectx)
+
 
     pygame.display.flip()

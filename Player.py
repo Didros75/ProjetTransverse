@@ -103,7 +103,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.max_speed(8)
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
         self.rect.x = self.position_x
-        self.rectx.x = self.position_x
+        self.rectx.x = self.position_x-5
 
     def max_speed(self, maxi) :
         min(-maxi, max(self.speed_x, maxi))
@@ -119,10 +119,11 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.rect.y = self.position_y
         self.rectx.y = self.position_y+10
 
+
     def hit_something(self, tiles) :
         tilesx_hits = []
         tilesy_hits = []
-        if 0>self.speed_y>-0.6:
+        if 0>self.speed_y>-0.61:
             self.speed_y = 0
         for tile in tiles:
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky:
@@ -148,12 +149,13 @@ class ThePlayer(pygame.sprite.Sprite) :
         for tile in collisions :
             if self.speed_y < 0 :
                     self.isjumping = False
-                    self.speed_y = 0
+
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - 50
                     self.rect.bottom = self.position_y + 50
-                    self.rectx.bottom = self.position_y + 50
-            if self.speed_y > 0 : #and tile.rectangle.top < self.rect.bottom:
+                    self.rectx.bottom = self.position_y + 40
+                    self.speed_y = 0
+            if self.speed_y > 0 :
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom
