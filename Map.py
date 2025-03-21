@@ -1,15 +1,15 @@
 import pygame
 
 sky = 0
-img0 = pygame.image.load('assets_tiles/New Piskel (1).png')
-img1 = pygame.image.load('assets_tiles/New Piskel (2).png')
-img2 = pygame.image.load('assets_tiles/img_2.png')
-img8 = pygame.image.load('assets_tiles/img_7.png')
-img9 = pygame.image.load('assets_tiles/New Piskel (3).png')
-img10 = pygame.image.load('assets_tiles/img_3.png')
-img16 = pygame.image.load('assets_tiles/img_6.png') #bottom left
-img17 = pygame.image.load('assets_tiles/img_5.png')
-img18 = pygame.image.load('assets_tiles/img_4.png') #bottom right
+img0 = pygame.image.load('assets_tiles/top_left_corner.png')
+img1 = pygame.image.load('assets_tiles/top_side.png')
+img2 = pygame.image.load('assets_tiles/top_right_corner.png')
+img8 = pygame.image.load('assets_tiles/left_side.png')
+img9 = pygame.image.load('assets_tiles/wall.png')
+img10 = pygame.image.load('assets_tiles/right_side.png')
+img16 = pygame.image.load('assets_tiles/bottom_left_corner.png') #bottom left
+img17 = pygame.image.load('assets_tiles/bottom_side.png')
+img18 = pygame.image.load('assets_tiles/bottom_right_corner.png') #bottom right
 background=pygame.image.load("assets/Design sans titre.png")
 background=pygame.transform.scale(background,(900,600))
 
