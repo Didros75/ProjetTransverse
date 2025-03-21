@@ -1,9 +1,8 @@
 import pygame
 import Map
 
-class portal():
+class Portal() :
     def __init__(self, x=0, y=0):
-        a=0
         self.images = [pygame.transform.scale(pygame.image.load(f"assets/portal_{i}.png"), (90, 120)) for i in range(1, 6)]
         self.image = self.images[0]
         self.frame=0
@@ -47,19 +46,30 @@ class portal():
             return (portal2_pos[0]-80, portal2_pos[1]-10), -player_speedx, player_speedy, player_y
 
     def change_position(self, tile_touched, tiles, position, state) :
-        for i in range(len(tiles)) :
+        for i in range(1, len(tiles) - 1) :
+
             if state == -1 and tiles[i].rectangle.right == tile_touched.rectangle.left :
                 if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
-                    if tiles[i].image == Map.img17 :
-                        return position[0], tile_touched.rectangle.top
+                    if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i+1].image == Map.sky) :
+                        return position[0], tile_touched.rectangle.top - 10
                 elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
-                    if tiles[i].image == Map.img1 :
-                        return position[0], tile_touched.rectangle.top
+                    if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i + 1].image == Map.sky) :
+                        return position[0], tile_touched.rectangle.bottom
+
             if state == 1 and tiles[i].rectangle.left == tile_touched.rectangle.right :
-                if tiles[i].rectangle.bottom == tile_touched.rectangle.top:
-                    if tiles[i].image == Map.img17:
-                        return position[0], tile_touched.rectangle.top
-                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom:
-                    if tiles[i].image == Map.img1:
-                        return position[0], tile_touched.rectangle.top
+                if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
+                    if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
+                        return position[0], tile_touched.rectangle.top - 15
+                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
+                    if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
+                        return position[0], tile_touched.rectangle.bottom
+
+            if state == -2 and tiles[i].rectangle.top == tile_touched.rectangle.bottom :
+                if tiles[i].rectangle.right == tile_touched.rectangle.left :
+                    if tiles[i].image == Map.img10 or tiles[i].image == Map.img9 or tiles[i].image == Map.sky :
+                        return tile_touched.rectangle.left - 30, position[1]
+                elif tiles[i].rectangle.left == tile_touched.rectangle.right :
+                    if tiles[i].image == Map.img8 or tiles[i].image == Map.img9 or tiles[i].image == Map.sky :
+                        return tile_touched.rectangle.left - 80, position[1]
+
         return position

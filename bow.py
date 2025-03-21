@@ -42,7 +42,6 @@ class Bow():
         color = (0, 0, 0)
         pygame.draw.rect(screen, color, (rect_x, rect_y, self.rect_size, 20))
 
-
 class Arrow() :
     def __init__(self, position) :
         self.gravity = 9.8
@@ -51,7 +50,6 @@ class Arrow() :
         self.image = pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width() * 3, pygame.image.load("assets/Arrow.png").get_height() * 3))
         self.rect = pygame.Rect(position[0], position[1], 25, 25)
         self.portal_state = 0
-        #self.final_pos = (0, 0)
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
@@ -64,7 +62,6 @@ class Arrow() :
     def collision(self, tiles, height, width) :
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
-                #self.final_pos = (self.rect.right, self.rect.bottom)
                 return False, tile
         if self.position_y > height or self.position_x > width :
             return False, 0
@@ -87,28 +84,17 @@ class Arrow() :
             self.portal_state = -1
             return tile.rectangle.left - 48, tile.rectangle.top - 30
 
-        elif tile.image == Map.img0 or tile.image == Map.img2 :
+        elif tile.image == Map.img0 :
             if self.rect.bottom - 15 <= tile.rectangle.top :
                 self.portal_state = -2
                 return tile.rectangle.left - 30, tile.rectangle.top - 50
-            elif tile.image == Map.img0 :
+            else :
                 self.portal_state = -1
                 return tile.rectangle.left - 48, tile.rectangle.top - 30
+        elif tile.image == Map.img2 :
+            if self.rect.bottom - 13 <= tile.rectangle.top :
+                self.portal_state = -2
+                return tile.rectangle.left - 30, tile.rectangle.top - 50
             else :
                 self.portal_state = 1
                 return tile.rectangle.left - 15, tile.rectangle.top - 30
-
-        """elif tile.rectangle.top >= self.final_pos[1] - 15 :
-            if tile.image == Map.img0 or tile.image == Map.img2 :
-                self.portal_state = -2
-                return tile.rectangle.left - 30, tile.rectangle.top - 50
-        elif tile.rectangle.bottom <= self.final_pos[1] :
-                self.portal_state = 2
-                return tile.rectangle.left - 30, tile.rectangle.bottom + 15
-        else :
-            if tile.image == Map.img0 or tile.image == Map.img16 :
-                self.portal_state = -1
-                return tile.rectangle.left - 40, tile.rectangle.top - 30
-            else :
-                self.portal_state = 1
-                return tile.rectangle.left - 25, tile.rectangle.top - 30"""

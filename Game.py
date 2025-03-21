@@ -5,7 +5,7 @@ import Menu
 import equation_trajectory
 from Player import ThePlayer
 from bow import Bow, Arrow
-from Portal import portal
+from Portal import Portal
 
 power = 0
 pygame.init()
@@ -16,8 +16,8 @@ screen = pygame.display.set_mode((width, height))
 game = Menu.menu(screen)
 player = ThePlayer(0, 0)
 bow=Bow()
-portal_1=portal(-75, -75)
-portal_2=portal(-75, -75)
+portal_1=Portal(-75, -75)
+portal_2=Portal(-75, -75)
 map = Create_map("Maps/map2.csv", screen)
 
 white=(255,255,255)
@@ -133,7 +133,6 @@ while game:
     t+=0.1
     t_cooldown+=0.1
 
-
     screen.blit(power_bar, (0, height-power_bar.get_height()))
 
     if aiming:
@@ -229,7 +228,6 @@ while game:
 
 
     player.hit_x(tiles), player.hit_y(tiles)
-    print(player.isgrounded)
     #pygame.draw.rect(screen, 'black', player.rect)
     #pygame.draw.rect(screen, 'black', player.rectx)
 

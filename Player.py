@@ -23,7 +23,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.facingLeft = False
         self.aiming=False
 
-
         self.sprites_right = [pygame.image.load(f"assets\l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
         self.sprites_right_aiming = [pygame.image.load(f"assets\l0_aiming_anime{i}.png") for i in range(1, 5)]
@@ -36,7 +35,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.image = self.sprites_right[0]
         self.rect = pygame.Rect(position_x - 10, position_y, 30, 50)
         self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
-
 
     def animate(self, angle=0):
         if self.LEFT or self.RIGHT:
@@ -149,7 +147,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         for tile in collisions :
             if self.speed_y < 0 :
                     self.isjumping = False
-
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - 50
                     self.rect.bottom = self.position_y + 50

@@ -7,9 +7,9 @@ img2 = pygame.image.load('assets_tiles/top_right_corner.png')
 img8 = pygame.image.load('assets_tiles/left_side.png')
 img9 = pygame.image.load('assets_tiles/wall.png')
 img10 = pygame.image.load('assets_tiles/right_side.png')
-img16 = pygame.image.load('assets_tiles/bottom_left_corner.png') #bottom left
+img16 = pygame.image.load('assets_tiles/bottom_left_corner.png')
 img17 = pygame.image.load('assets_tiles/bottom_side.png')
-img18 = pygame.image.load('assets_tiles/bottom_right_corner.png') #bottom right
+img18 = pygame.image.load('assets_tiles/bottom_right_corner.png')
 background=pygame.image.load("assets/Design sans titre.png")
 background=pygame.transform.scale(background,(900,600))
 
@@ -18,7 +18,6 @@ class Tile() :
         self.image = image
         self.pos_x = y
         self.pos_y = x
-
         self.rectangle = pygame.Rect(y, x, 30, 30)
 
     def draw(self, surface) :
