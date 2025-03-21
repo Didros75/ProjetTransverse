@@ -229,6 +229,7 @@ while game:
 
 
     player.hit_x(tiles), player.hit_y(tiles)
+    print(player.isgrounded)
     #pygame.draw.rect(screen, 'black', player.rect)
     #pygame.draw.rect(screen, 'black', player.rectx)
 
