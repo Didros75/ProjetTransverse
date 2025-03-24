@@ -121,8 +121,9 @@ class ThePlayer(pygame.sprite.Sprite) :
     def hit_something(self, tiles) :
         tilesx_hits = []
         tilesy_hits = []
-        if 0>self.speed_y>-0.61:
+        if 0>self.speed_y>-0.6:
             self.speed_y = 0
+
         for tile in tiles:
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky:
                 if self.rect.bottom > tile.rectangle.top > self.rect.top:  # Collision sol

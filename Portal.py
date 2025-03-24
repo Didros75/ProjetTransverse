@@ -10,7 +10,9 @@ class Portal() :
         self.pos_x=x
         self.pos_y=y
         self.state=1
-        self.rect = pygame.Rect(self.pos_x + 38, self.pos_y + 20, 15, 80)
+        self.width=5
+        self.length=70
+        self.rect = pygame.Rect(self.pos_x + 48, self.pos_y + 20, self.width, self.length)
 
     def animate(self):
 
@@ -22,15 +24,19 @@ class Portal() :
         if self.state == 1 or self.state == -1:
             if self.state == 1:
                 self.image = pygame.transform.rotate(self.image, 0)
+                self.rect = pygame.Rect(self.pos_x +47, self.pos_y+28, self.width, self.length)
+
             else:
                 self.image = pygame.transform.rotate(self.image, 180)
-            self.rect = pygame.Rect(self.pos_x + 38, self.pos_y + 20, 15, 90)
+                self.rect = pygame.Rect(self.pos_x +37, self.pos_y+15, self.width, self.length)
         else:
             if self.state == 2:
                 self.image = pygame.transform.rotate(self.image, -90)
+                self.rect = pygame.Rect(self.pos_x+20, self.pos_y +42, self.length, self.width)
+
             elif self.state == -2:
                 self.image = pygame.transform.rotate(self.image, 90)
-            self.rect = pygame.Rect(self.pos_x + 20, self.pos_y + 38, 90, 15)
+                self.rect = pygame.Rect(self.pos_x+35, self.pos_y +37, self.length, self.width)
 
     def gestion(self, player_speedx, player_speedy, player_y, portal2_pos, portal1_state, portal2_state):
         if portal2_state == -2:
@@ -39,7 +45,7 @@ class Portal() :
             else:
                 return (portal2_pos[0], portal2_pos[1]), player_speedx, player_speedy , portal2_pos[1]+ 10
         elif portal2_state == 2:
-            return (portal2_pos[0], portal2_pos[1]), player_speedx, player_speedy, player_y + 10
+            return (portal2_pos[0], portal2_pos[1]), player_speedx, player_speedy, portal2_pos[0]+ 10
         elif portal2_state == 1:
             return (portal2_pos[0]+10, portal2_pos[1]-10), player_speedx+4, player_speedy, player_y
         elif portal2_state == -1:

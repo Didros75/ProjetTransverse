@@ -14,11 +14,11 @@ height=600
 screen = pygame.display.set_mode((width, height))
 
 game = Menu.menu(screen)
-player = ThePlayer(0, 0)
+player = ThePlayer(50, 50)
 bow=Bow()
 portal_1=Portal(-75, -75)
 portal_2=Portal(-75, -75)
-map = Create_map("Maps/map2.csv", screen)
+map = Create_map("Maps/map4.csv", screen)
 
 white=(255,255,255)
 black=(0,0,0)
@@ -27,8 +27,10 @@ clock = pygame.time.Clock()
 target_fps=60
 power_bar=pygame.image.load("assets/power_bar.png")
 power_bar=pygame.transform.scale(power_bar,(225,75))
-# isgrounded=False
+isgrounded=False
 
+possible1 = True
+possible2 = True
 aiming=False
 shoted=False
 angle=0
@@ -42,7 +44,7 @@ while game:
     tiles = map.load_map()
 
     if player.death() :
-        player = ThePlayer(0, 0)
+        player = ThePlayer(50, 50)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -228,8 +230,10 @@ while game:
 
 
     player.hit_x(tiles), player.hit_y(tiles)
-    #pygame.draw.rect(screen, 'black', player.rect)
-    #pygame.draw.rect(screen, 'black', player.rectx)
+    pygame.draw.rect(screen, 'black', portal_1.rect)
+    pygame.draw.rect(screen, 'black', portal_2.rect)
 
+    #pygame.draw.rect(screen, 'black', player.rectx)
+    #print(player.isgrounded)
 
     pygame.display.flip()

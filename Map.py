@@ -10,7 +10,12 @@ img10 = pygame.image.load('assets_tiles/right_side.png')
 img16 = pygame.image.load('assets_tiles/bottom_left_corner.png')
 img17 = pygame.image.load('assets_tiles/bottom_side.png')
 img18 = pygame.image.load('assets_tiles/bottom_right_corner.png')
-background=pygame.image.load("assets/Design sans titre.png")
+img24 = pygame.image.load('assets_tiles/top_right_in_corner.png')
+img26 = pygame.image.load('assets_tiles/top_left_in_corner.png')
+#background=pygame.image.load("assets/Design sans titre.png")
+background=pygame.image.load("assets/bgs3.png")
+
+
 background=pygame.transform.scale(background,(900,600))
 
 class Tile() :
