@@ -79,7 +79,7 @@ class Arrow() :
             return tile.rectangle.left - 15, tile.rectangle.top - 30
         elif tile.image == Map.img17 :
             self.portal_state = 2
-            return tile.rectangle.left - 30, tile.rectangle.bottom + 15
+            return tile.rectangle.left - 30, tile.rectangle.top - 5
         elif tile.image == Map.img8 :
             self.portal_state = -1
             return tile.rectangle.left - 48, tile.rectangle.top - 30
@@ -98,3 +98,17 @@ class Arrow() :
             else :
                 self.portal_state = 1
                 return tile.rectangle.left - 15, tile.rectangle.top - 30
+        elif tile.image == Map.img16 :
+            if self.rect.top <= tile.rectangle.bottom :
+                self.portal_state = 2
+                return tile.rectangle.left - 30, tile.rectangle.top - 5
+            else :
+                self.portal_state = -1
+                return tile.rectangle.left - 48, tile.rectangle.top - 30
+        else :
+            if self.rect.top - 5 <= tile.rectangle.bottom :
+                self.portal_state = 2
+                return tile.rectangle.left - 30, tile.rectangle.top - 5
+            else :
+                self.portal_state = 1
+                return tile.rectangle.left - 48, tile.rectangle.top - 30

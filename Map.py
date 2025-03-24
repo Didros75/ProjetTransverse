@@ -74,6 +74,10 @@ class Create_map() :
                     tiles.append(Tile(img17, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "18" :
                     tiles.append(Tile(img18, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "24" :
+                    tiles.append(Tile(img24, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "26" :
+                    tiles.append(Tile(img26, x * self.size_tile, y * self.size_tile))
         return tiles
 
     def load_map(self) :

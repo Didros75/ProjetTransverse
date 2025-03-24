@@ -57,25 +57,33 @@ class Portal() :
             if state == -1 and tiles[i].rectangle.right == tile_touched.rectangle.left :
                 if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
                     if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i+1].image == Map.sky) :
-                        return position[0], tile_touched.rectangle.top - 10
+                        return (position[0], tile_touched.rectangle.top - 10), 0
                 elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
                     if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i + 1].image == Map.sky) :
-                        return position[0], tile_touched.rectangle.bottom
+                        return (position[0], tile_touched.rectangle.bottom), 0
 
-            if state == 1 and tiles[i].rectangle.left == tile_touched.rectangle.right :
+            elif state == 1 and tiles[i].rectangle.left == tile_touched.rectangle.right :
                 if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
                     if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
-                        return position[0], tile_touched.rectangle.top - 15
+                        return (position[0], tile_touched.rectangle.top - 15), 0
                 elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
                     if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
-                        return position[0], tile_touched.rectangle.bottom
+                        return (position[0], tile_touched.rectangle.bottom), 0
 
-            if state == -2 and tiles[i].rectangle.top == tile_touched.rectangle.bottom :
-                if tiles[i].rectangle.right == tile_touched.rectangle.left :
-                    if tiles[i].image == Map.img10 or tiles[i].image == Map.img9 or tiles[i].image == Map.sky :
-                        return tile_touched.rectangle.left - 30, position[1]
-                elif tiles[i].rectangle.left == tile_touched.rectangle.right :
-                    if tiles[i].image == Map.img8 or tiles[i].image == Map.img9 or tiles[i].image == Map.sky :
-                        return tile_touched.rectangle.left - 80, position[1]
+            elif state == -2 or state == 2:
+                if self.rect.colliderect(tiles[i].rectangle)  and (tiles[i].image == Map.img8 or tiles[i].image == Map.img9) :
+                    return (position[0] - 5, position[1]), 1
+                else :
+                    return position, 0
 
-        return position
+        return position, 0
+
+    def not_teleportable(self, tiles, tile_touched, screen) :
+        for i in range(60, len(tiles)-60) :
+            if tiles[i] == tile_touched :
+                pygame.draw.rect(screen, "black", tiles[i+60].rectangle)
+                if tiles[i-60].image != Map.sky and self.state == -2:
+                    return False
+                if tiles[i+60].image != Map.sky and self.state == 2:
+                    return False
+        return True

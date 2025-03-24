@@ -121,12 +121,26 @@ while game:
 
         if number_arrows == 1 :
             portal_2.state = arrow.portal_state
-            new_position = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
-            portal_2.pos_x, portal_2.pos_y = new_position[0], new_position[1]
+            function = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
+            position_portal = function[0]
+            while function[1] == 1 :
+                function = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
+                position_portal = function[0]
+            portal_2.pos_x, portal_2.pos_y = position_portal[0], position_portal[1]
+
+            possible2 = portal_2.not_teleportable(tiles, collision, screen)
+
         else :
             portal_1.state = arrow.portal_state
-            new_position = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
-            portal_1.pos_x, portal_1.pos_y = new_position[0], new_position[1]
+            function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
+            position_portal = function[0]
+            while function[1] == 1 :
+                function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
+                print(position_portal)
+                position_portal = function[0]
+            portal_1.pos_x, portal_1.pos_y = position_portal[0], position_portal[1]
+
+            possible1 = portal_1.not_teleportable(tiles, collision, screen)
 
     player.animate(angle2)
     player.move_y(dt)
@@ -154,79 +168,78 @@ while game:
     screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
     chargement=True
 
-    if t_cooldown>=4:
-        if player.rect.colliderect(portal_1.rect) :
+    if possible1 and possible2 :
 
-            if portal_2.state==-2:
-                player.speed_y = -(player.speed_y - 2)
-                player.position_y = portal_2.rect.y - 70
-                player.position_x=portal_2.rect.x+30
-                player.rect.y = portal_2.rect.y - 70
-                player.rect.x = portal_2.rect.x + 30
+        if t_cooldown>=4:
+            if player.rect.colliderect(portal_1.rect) :
 
-            elif portal_2.state==2:
-                player.speed_y = -(player.speed_y - 2)
-                player.position_y = portal_2.rect.y + 50
-                player.position_x = portal_2.rect.x + 30
-                player.rect.y = portal_2.rect.y - 50
-                player.rect.x = portal_2.rect.x + 30
+                if portal_2.state==-2:
+                    player.speed_y = -(player.speed_y - 2)
+                    player.position_y = portal_2.rect.y - 70
+                    player.position_x=portal_2.rect.x+30
+                    player.rect.y = portal_2.rect.y - 70
+                    player.rect.x = portal_2.rect.x + 30
 
-            elif portal_2.state==-1:
-                player.speed_x = -(player.speed_x - 2)
-                player.position_y = portal_2.rect.y + 30
-                player.position_x = portal_2.rect.x - 30
-                player.rect.y = portal_2.rect.y - 30
-                player.rect.x = portal_2.rect.x - 30
+                elif portal_2.state==2:
+                    player.speed_y = -(player.speed_y - 2)
+                    player.position_y = portal_2.rect.y + 50
+                    player.position_x = portal_2.rect.x + 30
+                    player.rect.y = portal_2.rect.y - 50
+                    player.rect.x = portal_2.rect.x + 30
 
-            elif portal_2.state == 1:
-                player.speed_x = -(player.speed_x - 2)
-                player.position_y = portal_2.rect.y + 30
-                player.position_x = portal_2.rect.x + 30
-                player.rect.y = portal_2.rect.y - 30
-                player.rect.x = portal_2.rect.x + 30
+                elif portal_2.state==-1:
+                    player.speed_x = -(player.speed_x - 2)
+                    player.position_y = portal_2.rect.y + 30
+                    player.position_x = portal_2.rect.x - 30
+                    player.rect.y = portal_2.rect.y - 30
+                    player.rect.x = portal_2.rect.x - 30
 
-            player.rectx.y = player.rect.y - 5
-            player.rectx.x = player.rect.x - 5
-            t_cooldown = 0
+                elif portal_2.state == 1:
+                    player.speed_x = -(player.speed_x - 2)
+                    player.position_y = portal_2.rect.y + 30
+                    player.position_x = portal_2.rect.x + 30
+                    player.rect.y = portal_2.rect.y - 30
+                    player.rect.x = portal_2.rect.x + 30
 
-        elif player.rect.colliderect(portal_2.rect):
+                player.rectx.y = player.rect.y - 5
+                player.rectx.x = player.rect.x - 5
+                t_cooldown = 0
 
-            if portal_1.state==-2:
-                player.speed_y = -(player.speed_y-2)
+            elif player.rect.colliderect(portal_2.rect):
 
-                player.position_y = portal_1.rect.y-70
-                player.position_x = portal_1.rect.x+30
-                player.rect.y= portal_1.rect.y-70
-                player.rect.x = portal_1.rect.x +30
+                if portal_1.state==-2:
+                    player.speed_y = -(player.speed_y-2)
+                    player.position_y = portal_1.rect.y-70
+                    player.position_x = portal_1.rect.x+30
+                    player.rect.y= portal_1.rect.y-70
+                    player.rect.x = portal_1.rect.x +30
 
+                elif portal_1.state==2:
+                    player.speed_y = -(player.speed_y - 2)
+                    player.position_y = portal_1.rect.y + 50
+                    player.position_x = portal_1.rect.x + 30
+                    player.rect.y = portal_1.rect.y - 50
+                    player.rect.x = portal_1.rect.x + 30
 
-            elif portal_1.state==2:
+                elif portal_1.state==-1:
+                    player.speed_x = -(player.speed_x - 2)
+                    player.position_y = portal_1.rect.y + 30
+                    player.position_x = portal_1.rect.x - 30
+                    player.rect.y = portal_1.rect.y - 30
+                    player.rect.x = portal_1.rect.x - 30
 
-                player.speed_y = -(player.speed_y - 2)
-                player.position_y = portal_1.rect.y + 50
-                player.position_x = portal_1.rect.x + 30
-                player.rect.y = portal_1.rect.y - 50
-                player.rect.x = portal_1.rect.x + 30
+                elif portal_1.state == 1:
+                    player.speed_x = -(player.speed_x - 2)
+                    player.position_y = portal_1.rect.y + 30
+                    player.position_x = portal_1.rect.x + 30
+                    player.rect.y = portal_1.rect.y - 30
+                    player.rect.x = portal_1.rect.x + 30
 
-
-
-            elif portal_1.state==-1:
-                player.speed_x = -(player.speed_x - 2)
-                player.position_y = portal_1.rect.y + 30
-                player.position_x = portal_1.rect.x - 30
-                player.rect.y = portal_1.rect.y - 30
-                player.rect.x = portal_1.rect.x - 30
-
-            elif portal_1.state == 1:
-                player.speed_x = -(player.speed_x - 2)
-                player.position_y = portal_1.rect.y + 30
-                player.position_x = portal_1.rect.x + 30
-                player.rect.y = portal_1.rect.y - 30
-                player.rect.x = portal_1.rect.x + 30
-
-            player.rectx.y = player.rect.y - 5
-            player.rectx.x = player.rect.x - 5
-            t_cooldown = 0
+                player.rectx.y = player.rect.y - 5
+                player.rectx.x = player.rect.x - 5
+                t_cooldown = 0
+    else :
+        print("pas possible")
 
 
     player.hit_x(tiles), player.hit_y(tiles)
