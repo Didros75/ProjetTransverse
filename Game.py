@@ -16,8 +16,8 @@ screen = pygame.display.set_mode((width, height))
 game = Menu.menu(screen)
 player = ThePlayer(50, 50)
 bow=Bow()
-portal_1=Portal(-75, -75)
-portal_2=Portal(-75, -75)
+portal_1=Portal(-75, -75, 1)
+portal_2=Portal(-75, -75, 2)
 map = Create_map("Maps/map4.csv", screen)
 
 white=(255,255,255)
@@ -25,8 +25,8 @@ black=(0,0,0)
 
 clock = pygame.time.Clock()
 target_fps=60
-power_bar=pygame.image.load("assets/power_bar.png")
-power_bar=pygame.transform.scale(power_bar,(225,75))
+power_bar=pygame.image.load("assets/chargin_bar.png")
+#power_bar=pygame.transform.scale(power_bar,(225,75))
 isgrounded=False
 
 possible1 = True
@@ -149,12 +149,12 @@ while game:
     t+=0.1
     t_cooldown+=0.1
 
-    screen.blit(power_bar, (0, height-power_bar.get_height()))
+    screen.blit(power_bar, (20, height-power_bar.get_height()-20))
 
     if aiming:
         bow.animation(dt, angle2)
         screen.blit(bow.image, (player.position_x, player.position_y))
-        bow.draw_rectangle(screen, t, 65, height-power_bar.get_height()+27)
+        bow.draw_rectangle(screen, t, 24, height-power_bar.get_height()-16)
 
     if bow.state==1:
         screen.blit(pygame.transform.scale(pygame.image.load("assets/arrow_picto.png"), (30, 30)), (21, height-power_bar.get_height()+21))
@@ -181,10 +181,10 @@ while game:
                     player.rect.x = portal_2.rect.x + 30
 
                 elif portal_2.state==2:
-                    player.speed_y = -(player.speed_y - 2)
-                    player.position_y = portal_2.rect.y + 50
+
+                    player.position_y = portal_2.rect.y + 30
                     player.position_x = portal_2.rect.x + 30
-                    player.rect.y = portal_2.rect.y - 50
+                    player.rect.y = portal_2.rect.y + 30
                     player.rect.x = portal_2.rect.x + 30
 
                 elif portal_2.state==-1:
@@ -215,10 +215,10 @@ while game:
                     player.rect.x = portal_1.rect.x +30
 
                 elif portal_1.state==2:
-                    player.speed_y = -(player.speed_y - 2)
-                    player.position_y = portal_1.rect.y + 50
+
+                    player.position_y = portal_1.rect.y + 30
                     player.position_x = portal_1.rect.x + 30
-                    player.rect.y = portal_1.rect.y - 50
+                    player.rect.y = portal_1.rect.y +30
                     player.rect.x = portal_1.rect.x + 30
 
                 elif portal_1.state==-1:
@@ -243,10 +243,11 @@ while game:
 
 
     player.hit_x(tiles), player.hit_y(tiles)
-    pygame.draw.rect(screen, 'black', portal_1.rect)
-    pygame.draw.rect(screen, 'black', portal_2.rect)
+    #pygame.draw.rect(screen, 'black', portal_1.rect)
+    #pygame.draw.rect(screen, 'black', portal_2.rect)
 
-    #pygame.draw.rect(screen, 'black', player.rectx)
-    #print(player.isgrounded)
+    #pygame.draw.rect(screen, 'black', player.rect)
+    print(player.isgrounded)
+    print(player.speed_y)
 
     pygame.display.flip()

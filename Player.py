@@ -68,7 +68,7 @@ class ThePlayer(pygame.sprite.Sprite) :
 
     def get_position(self) :
         """
-        retourne la position du joueur
+        retourne la position du joueurr
         """
         return self.position_x, self.position_y
 
