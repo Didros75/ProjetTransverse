@@ -70,10 +70,9 @@ class Portal() :
 
         return position, 0
 
-    def not_teleportable(self, tiles, tile_touched, screen) :
+    def not_teleportable(self, tiles, tile_touched) :
         for i in range(60, len(tiles)-60) :
             if tiles[i] == tile_touched :
-                pygame.draw.rect(screen, "black", tiles[i+60].rectangle)
                 if tiles[i-60].image != Map.sky and self.state == -2:
                     return False
                 if tiles[i+60].image != Map.sky and self.state == 2:

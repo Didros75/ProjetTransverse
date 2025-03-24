@@ -33,7 +33,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.animation_speed = 0.15
         self.frame_count = 0
         self.image = self.sprites_right[0]
-        self.rect = pygame.Rect(position_x - 10, position_y, 30, 50)
+        self.rect = pygame.Rect(position_x - 10, position_y, 40, 50)
         self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
 
     def animate(self, angle=0):
@@ -143,7 +143,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         return tilesx_hits, tilesy_hits
 
     def hit_y(self, tiles) :
-
         collisions = self.hit_something(tiles)[1]
         for tile in collisions :
             if self.speed_y < 0 :
