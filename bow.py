@@ -37,9 +37,12 @@ class Bow():
     def shot(self, dt, v0, theta, x, y):
         return equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
 
-    def draw_rectangle(self, screen, t, rect_x, rect_y):
+    def draw_rectangle(self, screen, t, rect_x, rect_y, nb):
         self.rect_size = min(t*7, 112)
-        color = (34, 21, 53)
+        if nb==-1:
+            color = (126, 34, 80)
+        else:
+            color = (68, 107, 166)
         pygame.draw.rect(screen, color, (rect_x, rect_y, self.rect_size, 22))
 
 class Arrow() :

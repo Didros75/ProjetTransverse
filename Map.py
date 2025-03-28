@@ -13,7 +13,7 @@ img18 = pygame.image.load('assets_tiles/bottom_right_corner.png')
 img24 = pygame.image.load('assets_tiles/top_right_in_corner.png')
 img26 = pygame.image.load('assets_tiles/top_left_in_corner.png')
 #background=pygame.image.load("assets/Design sans titre.png")
-background=pygame.image.load("assets/bgs3.png")
+background=pygame.image.load("assets/fond2.jpg")
 
 
 background=pygame.transform.scale(background,(900,600))
@@ -86,3 +86,4 @@ class Create_map() :
             if self.tiles[i].image != sky :
                 self.tiles[i].draw(self.surface)
         return self.tiles
+

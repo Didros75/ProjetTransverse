@@ -4,26 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="pleins de trucs qui ont marchés :)">
-      <change afterPath="$PROJECT_DIR$/assets/Menu_image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/bgs3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/chargin_bar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal1b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal2b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal3b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal4b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/portal5b.png" afterDir="false" />
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="pleins de trucs qui ont pas marchés :(">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/power_bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
-    </list>
-    <list id="b86d39da-a90b-4cd8-b51b-3d680afd8ead" name="Changes by julie" comment="">
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/equation_trajectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/equation_trajectory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,46 +38,6 @@
     &quot;accountId&quot;: &quot;fca163a7-1853-484e-904e-35a4d0a654d0&quot;
   }
 }</component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/Portal.py">
-      <ranges>
-        <range start1="4" end1="6" start2="4" end2="10" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="40" end1="52" start2="44" end2="44" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="80" end1="81" start2="72" end2="73" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="83" end1="84" start2="75" end2="75" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/Player.py">
-      <ranges>
-        <range start1="35" end1="36" start2="35" end2="36" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="70" end1="71" start2="70" end2="71" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="145" end1="146" start2="145" end2="145" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/Game.py">
-      <ranges>
-        <range start1="18" end1="20" start2="18" end2="20" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="27" end1="29" start2="27" end2="29" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="31" end1="33" start2="31" end2="33" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="64" end1="64" start2="64" end2="65" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="110" end1="112" start2="111" end2="111" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="117" end1="118" start2="116" end2="116" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="125" end1="126" start2="123" end2="124" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="130" end1="131" start2="128" end2="129" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="142" end1="143" start2="140" end2="141" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="151" end1="152" start2="149" end2="150" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="156" end1="157" start2="154" end2="155" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="168" end1="169" start2="166" end2="167" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="183" end1="185" start2="181" end2="183" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="186" end1="187" start2="184" end2="185" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="217" end1="219" start2="215" end2="217" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="220" end1="221" start2="218" end2="219" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="241" end1="242" start2="239" end2="245" changelist="b86d39da-a90b-4cd8-b51b-3d680afd8ead" />
-        <range start1="245" end1="247" start2="248" end2="250" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-        <range start1="248" end1="250" start2="251" end2="254" changelist="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -195,7 +141,9 @@
       <workItem from="1741384597416" duration="3168000" />
       <workItem from="1741610960728" duration="6887000" />
       <workItem from="1742804688667" duration="10094000" />
-      <workItem from="1742820390432" duration="6646000" />
+      <workItem from="1742820390432" duration="6714000" />
+      <workItem from="1743002767371" duration="2786000" />
+      <workItem from="1743150702574" duration="6658000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -373,7 +321,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742815800030</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="pleins de trucs qui ont pas marchés :(">
+      <option name="closed" value="true" />
+      <created>1742828147538</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1742828147538</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changes by julie">
+      <option name="closed" value="true" />
+      <created>1742828178293</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1742828178293</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,6 +368,7 @@
     <MESSAGE value="changement du style des tuiles" />
     <MESSAGE value="fin changement du style des tuiles" />
     <MESSAGE value="pleins de trucs qui ont marchés :)" />
+    <MESSAGE value="pleins de trucs qui ont pas marchés :(" />
     <MESSAGE value="Changes by julie" />
     <option name="LAST_COMMIT_MESSAGE" value="Changes by julie" />
   </component>
@@ -411,6 +376,6 @@
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1742827923520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1743157651678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

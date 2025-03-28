@@ -37,7 +37,10 @@ angle=0
 angle2=0
 t=0
 t_cooldown=0
-number_arrows = 0
+number_arrow = 1
+
+line=True
+line_len=50
 
 while game:
     dt=clock.tick(60) * 0.001 * target_fps
@@ -62,7 +65,7 @@ while game:
                     if player.isgrounded:
                         player.jump()
                 if event.key == pygame.K_e:
-                    number_arrows += 1
+                    number_arrow = -number_arrow
                     bow.state=-bow.state
         if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -114,10 +117,7 @@ while game:
 
         position_portal = arrow.position_portal(collision)
 
-        if number_arrows > 1:
-            number_arrows = 0
-
-        if number_arrows == 1 :
+        if number_arrow == -1 :
             portal_2.state = arrow.portal_state
             function = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
             position_portal = function[0]
@@ -128,11 +128,12 @@ while game:
 
             possible2 = portal_2.not_teleportable(tiles, collision)
 
+
         else :
             portal_1.state = arrow.portal_state
             function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
             position_portal = function[0]
-            while function[1] == 1 :
+            while function[1] == 1 : ###
                 function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
                 print(position_portal)
                 position_portal = function[0]
@@ -148,11 +149,24 @@ while game:
     t_cooldown+=0.1
 
     screen.blit(power_bar, (20, height-power_bar.get_height()-20))
-
+    list_point=[]
     if aiming:
+        if line==True:
+            for i in range(line_len):
+                power=t
+                if power>15:
+                    power=15
+                list_point.append(equation_trajectory.trajectory_line(power*25, -angle2,i/10,9.8 , player.position_x+20, player.position_y+10))
+
+
+            for point in list_point:
+                if number_arrow == 1:
+                    pygame.draw.circle(screen, (68, 107, 166), point, 2)
+                else:
+                    pygame.draw.circle(screen, (126, 34, 80), point, 2)
         bow.animation(dt, angle2)
         screen.blit(bow.image, (player.position_x, player.position_y))
-        bow.draw_rectangle(screen, t, 24, height-power_bar.get_height()-16)
+        bow.draw_rectangle(screen, t, 24, height-power_bar.get_height()-16, number_arrow)
 
     if bow.state==1:
         screen.blit(pygame.transform.scale(pygame.image.load("assets/arrow_picto.png"), (30, 30)), (21, height-power_bar.get_height()+21))
@@ -250,7 +264,7 @@ while game:
     #pygame.draw.rect(screen, 'black', portal_2.rect)
 
     #pygame.draw.rect(screen, 'black', player.rect)
-    print(player.isgrounded)
-    print(player.speed_y)
+    #print(player.isgrounded)
+    #print(player.speed_y)
 
     pygame.display.flip()

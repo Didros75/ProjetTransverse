@@ -25,3 +25,9 @@ def angle_arrow(v0,theta,t,g):
     Vy = -g*t + v0 * sin(theta)
     theta_radiant=atan2(Vy , Vx)
     return theta_radiant
+
+def trajectory_line(v0,theta,t,g, x, y) :
+    Xposition = v0 * cos(theta) * t + x
+    Yposition = (1/2) * ((g*t)**2) + (v0+20) * sin(theta) * t + y
+    coordinate = [Xposition, Yposition]
+    return coordinate
