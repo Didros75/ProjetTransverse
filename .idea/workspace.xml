@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="pleins de trucs qui ont pas marchés :(">
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="aperçu du tir">
+      <change afterPath="$PROJECT_DIR$/Settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
+    </list>
+    <list id="0ce2f35f-8365-418d-991b-223b1259a84b" name="Changes by julie" comment="">
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/equation_trajectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/equation_trajectory.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +144,7 @@
       <workItem from="1742804688667" duration="10094000" />
       <workItem from="1742820390432" duration="6714000" />
       <workItem from="1743002767371" duration="2786000" />
-      <workItem from="1743150702574" duration="6658000" />
+      <workItem from="1743150702574" duration="8458000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -337,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742828178293</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="aperçu du tir">
+      <option name="closed" value="true" />
+      <created>1743157928484</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1743157928484</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,12 +379,13 @@
     <MESSAGE value="pleins de trucs qui ont marchés :)" />
     <MESSAGE value="pleins de trucs qui ont pas marchés :(" />
     <MESSAGE value="Changes by julie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by julie" />
+    <MESSAGE value="aperçu du tir" />
+    <option name="LAST_COMMIT_MESSAGE" value="aperçu du tir" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1743157651678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="Game Coverage Results" MODIFIED="1743157809778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
