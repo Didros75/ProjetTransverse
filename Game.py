@@ -14,8 +14,21 @@ height=600
 screen = pygame.display.set_mode((width, height))
 
 game = Menu.menu(screen)
-player = ThePlayer(50, 50)
 bow=Bow()
+
+    # Définition des différentes positions de départ et d'arrivé
+
+start_position_level3 = (50, 50)
+end_position_level3 = ()
+
+    # Choix de la position de départ et d'arrivée final
+
+start_position = start_position_level3
+rect_start = pygame.Rect(start_position[0], start_position[1], 40, 30)
+end_position = end_position_level3
+
+player = ThePlayer(start_position[0], start_position[1])
+
 portal_1=Portal(-75, -75, 1)
 portal_2=Portal(-75, -75, 2)
 map = Create_map("Maps/map4.csv", screen)
