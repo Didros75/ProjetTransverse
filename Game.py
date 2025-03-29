@@ -10,7 +10,7 @@ from bow import Bow, Arrow
 from Portal import Portal
 import time
 
-def game(level, game, screen, height, width, world) :
+def game(level, game, screen, height, width, world, help) :
     power = 0
     #pygame.init()
     #width=900
@@ -24,7 +24,8 @@ def game(level, game, screen, height, width, world) :
 
     start_position = [(40, 340), (0, 0), (0, 0), (0, 0)]
     end_position = [(860, 400), (860, 400), (860, 400), (860, 400)]
-
+    menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (50, 50))
+    menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
     rect_end = pygame.Rect(end_position[level][0], end_position[level][1], 10, 50)
     player = ThePlayer(start_position[level][0], start_position[level][1])
 
@@ -76,7 +77,7 @@ def game(level, game, screen, height, width, world) :
             if event.type == pygame.QUIT:
                 game = False
                 pygame.quit()
-                return 0
+
             if event.type == pygame.KEYDOWN:
                 if not player.aiming:
                     if event.key == pygame.K_d:
@@ -93,6 +94,9 @@ def game(level, game, screen, height, width, world) :
                         bow.state=-bow.state
 
             if event.type == pygame.MOUSEBUTTONDOWN:
+                if menu_rect.collidepoint(event.pos):
+                    return "menu", level
+
                 if event.button==1:
                     if not shoted:
                         t = 0
@@ -168,19 +172,20 @@ def game(level, game, screen, height, width, world) :
         screen.blit(power_bar, (20, height-power_bar.get_height()-20))
         list_point=[]
         if aiming:
-            if line==True:
-                for i in range(line_len):
-                    power=t
-                    if power>15:
-                        power=15
-                    list_point.append(equation_trajectory.trajectory_line(power*25, -angle2,i/10,9.8 , player.position_x+30, player.position_y+20))
+            if help:
+                if line==True:
+                    for i in range(line_len):
+                        power=t
+                        if power>15:
+                            power=15
+                        list_point.append(equation_trajectory.trajectory_line(power*25, -angle2,i/10,9.8 , player.position_x+30, player.position_y+20))
 
 
-                for point in list_point:
-                    if number_arrow == 1:
-                        pygame.draw.circle(screen, (68, 107, 166), point, 2)
-                    else:
-                        pygame.draw.circle(screen, (126, 34, 80), point, 2)
+                    for point in list_point:
+                        if number_arrow == 1:
+                            pygame.draw.circle(screen, (68, 107, 166), point, 2)
+                        else:
+                            pygame.draw.circle(screen, (126, 34, 80), point, 2)
             bow.animation(dt, angle2)
             screen.blit(bow.image, (player.position_x, player.position_y))
             bow.draw_rectangle(screen, t, 24, height-power_bar.get_height()-16, number_arrow)
@@ -278,7 +283,7 @@ def game(level, game, screen, height, width, world) :
         player.hit_x(tiles), player.hit_y(tiles)
         if rect_end.colliderect(player.rect) :
             time.sleep(0.2)
-            return 1
+            return "game", level+1
 
         #pygame.draw.rect(screen, 'black', portal_1.rect)
         #pygame.draw.rect(screen, 'black', portal_2.rect)
@@ -287,6 +292,6 @@ def game(level, game, screen, height, width, world) :
         pygame.draw.rect(screen, 'black', rect_end)
         #print(player.isgrounded)
         #print(player.speed_y)
-
+        screen.blit(menu_button, menu_rect)
         pygame.display.flip()
-    return 0
+
