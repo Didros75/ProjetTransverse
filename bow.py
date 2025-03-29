@@ -1,3 +1,5 @@
+    # Gère les actions liées à l'arc et aux flèches tirées
+
 import pygame
 import math
 import equation_trajectory

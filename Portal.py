@@ -1,3 +1,5 @@
+    # Gère le placement des portails et la téléportation
+
 import pygame
 import Map
 

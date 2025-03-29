@@ -1,3 +1,5 @@
+    # Centralise toutes les éuqations liées au trajectoires qu'on utlise
+
 from math import *
 
 #équation de trajectoire de la flèche et du portail, v0 est la vitesse initiale, theta est l'angle initial, t est le temps, g est la gravité

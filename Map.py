@@ -1,3 +1,5 @@
+    # Gère la création et l'affichage de la map
+
 import pygame
 
 sky = 0
@@ -13,10 +15,7 @@ img18 = pygame.image.load('assets_tiles/bottom_right_corner.png')
 img24 = pygame.image.load('assets_tiles/top_right_in_corner.png')
 img26 = pygame.image.load('assets_tiles/top_left_in_corner.png')
 #background=pygame.image.load("assets/Design sans titre.png")
-background=pygame.image.load("assets/fond2.jpg")
-
-
-background=pygame.transform.scale(background,(900,600))
+#background=pygame.image.load("assets/fond2.jpg")
 
 class Tile() :
     def __init__(self, image, x, y) :
@@ -33,7 +32,7 @@ class Create_map() :
         self.size_tile = 30
         self.tiles = self.load_tiles(filename)
         self.surface = screen
-        self.load_map()
+        #self.load_map()
 
     def list_map(self, filename) :
         map = []
@@ -80,10 +79,9 @@ class Create_map() :
                     tiles.append(Tile(img26, x * self.size_tile, y * self.size_tile))
         return tiles
 
-    def load_map(self) :
+    def load_map(self, background) :
         self.surface.blit(background, (0, 0))
         for i in range(len(self.tiles)) :
             if self.tiles[i].image != sky :
                 self.tiles[i].draw(self.surface)
         return self.tiles
-

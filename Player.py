@@ -34,7 +34,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.frame_count = 0
         self.image = self.sprites_right[0]
         self.rect = pygame.Rect(position_x - 10, position_y, 40, 50)
-        self.rectx=pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
+        self.rectx = pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
 
     def animate(self, angle=0):
         if self.LEFT or self.RIGHT:
@@ -125,18 +125,18 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.speed_y = 0
 
         for tile in tiles:
-            if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky:
+            if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
                 if self.rect.bottom > tile.rectangle.top > self.rect.top:  # Collision sol
                     tilesy_hits.append(tile)
 
                 elif self.rect.top < tile.rectangle.bottom < self.rect.bottom:  # Collision plafond
                     tilesy_hits.append(tile)
 
-            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.sky:
+            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.sky :
                 if self.rectx.right > tile.rectangle.left >= self.rectx.left:
                     tilesx_hits.append(tile)
 
-                elif self.rectx.left < tile.rectangle.right <= self.rectx.right:
+                elif self.rectx.left < tile.rectangle.right <= self.rectx.right :
                     tilesx_hits.append(tile)
 
         self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in tilesy_hits)
