@@ -1,13 +1,19 @@
 import pygame
 
-
 class SoundManager:
     def __init__(self, sound=True):
         pygame.mixer.init()
         self.music_file = "assets/musique.mp3"
-        self.button_sound_file = "assets/click.mp3"
         self.sound = sound
-        self.button_sound = pygame.mixer.Sound(self.button_sound_file)
+        self.button_sound = pygame.mixer.Sound("assets/click.mp3")
+        self.tp_sound = pygame.mixer.Sound("assets/portal_sound.mp3")
+        self.charging_sound = pygame.mixer.Sound("assets/charging.mp3")
+        self.tp_sound.set_volume(0.2)
+
+        self.tp_channel = pygame.mixer.Channel(1)
+        self.charging_channel = pygame.mixer.Channel(2)
+        self.charging_playing = False
+
         if self.sound:
             self.play_music()
 
@@ -22,24 +28,17 @@ class SoundManager:
     def resume_music(self):
         pygame.mixer.music.unpause()
 
-    def set_sound(self, sound):
-        self.sound = sound
-        if self.sound:
-            self.play_music()
-        else:
-            self.stop_music()
-
     def play_button_sound(self):
         self.button_sound.play()
 
-if __name__ == "__main__":
-    pygame.init()
-    sound_manager = SoundManager("background_music.mp3", sound=True)
+    def play_tp_sound(self):
+        self.tp_channel.play(self.tp_sound)
 
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    def play_charging_sound(self):
+        if not self.charging_playing:
+            self.charging_channel.play(self.charging_sound)
+            self.charging_playing = True
 
-    pygame.quit()
+    def stop_charging_sound(self):
+        self.charging_channel.stop()
+        self.charging_playing = False

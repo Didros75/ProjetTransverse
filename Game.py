@@ -118,6 +118,7 @@ def game(level, game, screen, height, width, world, help) :
                     shoted=True
                     player.aiming=False
                     aiming=False
+                    sono.stop_charging_sound()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_d:
@@ -174,12 +175,14 @@ def game(level, game, screen, height, width, world, help) :
         screen.blit(power_bar, (20, height-power_bar.get_height()-20))
         list_point=[]
         if aiming:
+            sono.play_charging_sound()
             if help:
                 if line==True:
                     for i in range(line_len):
                         power=t
                         if power>15:
                             power=15
+
                         list_point.append(equation_trajectory.trajectory_line(power*25, -angle2,i/10,9.8 , player.position_x+30, player.position_y+20))
 
 
