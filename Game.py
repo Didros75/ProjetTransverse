@@ -11,30 +11,26 @@ from Portal import Portal
 from sound_manager import SoundManager
 import time
 
-def game(level, game, screen, height, width, world, help) :
+def game(level, game, screen, height, width, world, help, skin) :
     sono=SoundManager(False)
     power = 0
-    #pygame.init()
-    #width=900
-    #height=600
-    #screen = pygame.display.set_mode((width, height))
 
-    #game = Menu.menu(screen, level)
     bow = Bow()
 
         # Définition des différentes positions de départ et d'arrivé
 
     start_position = [(40, 340), (0, 0), (0, 0), (0, 0), (40, 340)]
-    end_position = [(860, 400), (860, 400), (860, 400), (860, 400), (860, 400)]
-    menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (50, 50))
+    end_position = [(-100, -100), (860, 400), (860, 400), (860, 400), (860, 400)]
+    menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (75, 75))
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
     rect_end = pygame.Rect(end_position[level][0], end_position[level][1], 10, 50)
     player = ThePlayer(start_position[level][0], start_position[level][1])
 
+    power_bar = pygame.transform.scale(pygame.image.load("assets/blue_chargin_bar.png"), (130, 50))
     portal_1=Portal(-75, -75, 1)
     portal_2=Portal(-75, -75, 2)
 
-    if level == 4 :
+    if level == 0 :
             map = Create_map("Maps/map_tutorial.csv", screen)
     elif level == 1 :
             map = Create_map("Maps/map1.csv", screen)
@@ -45,7 +41,7 @@ def game(level, game, screen, height, width, world, help) :
 
     clock = pygame.time.Clock()
     target_fps=60
-    power_bar=pygame.image.load("assets/chargin_bar.png")
+
 
     possible1 = False
     possible2 = False
@@ -171,8 +167,11 @@ def game(level, game, screen, height, width, world, help) :
         player.draw(screen)
         t+=0.1
         t_cooldown+=0.1
-
-        screen.blit(power_bar, (20, height-power_bar.get_height()-20))
+        if number_arrow == 1:
+            power_bar = pygame.transform.scale(pygame.image.load("assets/blue_chargin_bar.png"), (130, 50))
+        else:
+            power_bar = pygame.transform.scale(pygame.image.load("assets/pink_chargin_bar.png"), (130, 50))
+        screen.blit(power_bar, (20, height - power_bar.get_height() - 20))
         list_point=[]
         if aiming:
             sono.play_charging_sound()
@@ -193,13 +192,8 @@ def game(level, game, screen, height, width, world, help) :
                             pygame.draw.circle(screen, (126, 34, 80), point, 2)
             bow.animation(dt, angle2)
             screen.blit(bow.image, (player.position_x, player.position_y))
-            bow.draw_rectangle(screen, t, 24, height-power_bar.get_height()-16, number_arrow)
 
-        if bow.state==1:
-            screen.blit(pygame.transform.scale(pygame.image.load("assets/arrow_picto.png"), (30, 30)), (21, height-power_bar.get_height()+21))
-        elif bow.state==-1:
-            screen.blit(pygame.transform.scale(pygame.image.load("assets/portal_1.png"), (35, 35)),
-                        (20, height - power_bar.get_height() + 18))
+            bow.draw_rectangle(screen, t, 50, height-power_bar.get_height()-9, number_arrow)
 
         portal_1.animate()
         portal_2.animate()
@@ -209,74 +203,65 @@ def game(level, game, screen, height, width, world, help) :
 
         if possible1 and possible2 :
             if t_cooldown>=4:
-                if player.rect.colliderect(portal_1.rect) :
+                if player.rect_final.colliderect(portal_1.rect) :
                     sono.play_tp_sound()
                     if portal_2.state==-2:
-                        player.speed_y = -(player.speed_y - 2)
-                        player.position_y = portal_2.rect.y - 70
+                        player.speed_y = -player.speed_y
+                        player.position_y = portal_2.rect.y-70
                         player.position_x=portal_2.rect.x+30
-                        player.rect.y = portal_2.rect.y - 70
-                        player.rect.x = portal_2.rect.x + 30
+
 
                     elif portal_2.state==2:
+                        player.position_y = portal_2.rect.y+10
+                        player.position_x = portal_2.rect.x +30
 
-                        player.position_y = portal_2.rect.y + 30
-                        player.position_x = portal_2.rect.x + 30
-                        player.rect.y = portal_2.rect.y + 30
-                        player.rect.x = portal_2.rect.x + 30
 
                     elif portal_2.state==-1:
-                        player.speed_x = -(player.speed_x - 2)
-                        player.position_y = portal_2.rect.y + 30
-                        player.position_x = portal_2.rect.x - 30
-                        player.rect.y = portal_2.rect.y - 30
-                        player.rect.x = portal_2.rect.x - 30
+                        player.speed_x = -player.speed_x
+                        player.position_y = portal_2.rect.y
+                        player.position_x = portal_2.rect.x +10
+
 
                     elif portal_2.state == 1:
-                        player.speed_x = -(player.speed_x - 2)
-                        player.position_y = portal_2.rect.y + 30
-                        player.position_x = portal_2.rect.x + 30
-                        player.rect.y = portal_2.rect.y - 30
-                        player.rect.x = portal_2.rect.x + 30
+                        player.speed_x = -player.speed_x
+                        player.position_y = portal_2.rect.y
+                        player.position_x = portal_2.rect.x - player.rect_final.width-10
 
-                    player.rectx.y = player.rect.y - 5
-                    player.rectx.x = player.rect.x - 5
+
                     t_cooldown = 0
+                    player.move_y(dt)
+                    player.move_x(dt)
 
-                elif player.rect.colliderect(portal_2.rect):
+
+                elif player.rect_final.colliderect(portal_2.rect):
                     sono.play_tp_sound()
 
                     if portal_1.state==-2:
-                        player.speed_y = -(player.speed_y-2)
+                        player.speed_y = -player.speed_y
                         player.position_y = portal_1.rect.y-70
                         player.position_x = portal_1.rect.x+30
-                        player.rect.y= portal_1.rect.y-70
-                        player.rect.x = portal_1.rect.x +30
 
                     elif portal_1.state==2:
 
-                        player.position_y = portal_1.rect.y + 30
+                        player.position_y = portal_1.rect.y + 10
                         player.position_x = portal_1.rect.x + 30
-                        player.rect.y = portal_1.rect.y +30
-                        player.rect.x = portal_1.rect.x + 30
+
 
                     elif portal_1.state==-1:
-                        player.speed_x = -(player.speed_x - 2)
-                        player.position_y = portal_1.rect.y + 30
-                        player.position_x = portal_1.rect.x - 30
-                        player.rect.y = portal_1.rect.y - 30
-                        player.rect.x = portal_1.rect.x - 30
+                        player.speed_x = -player.speed_x
+                        player.position_y = portal_1.rect.y
+                        player.position_x = portal_1.rect.x + 10
+
 
                     elif portal_1.state == 1:
-                        player.speed_x = -(player.speed_x - 2)
-                        player.position_y = portal_1.rect.y + 30
-                        player.position_x = portal_1.rect.x + 30
-                        player.rect.y = portal_1.rect.y - 30
-                        player.rect.x = portal_1.rect.x + 30
+                        player.speed_x = -player.speed_x
+                        player.position_y = portal_1.rect.y
+                        player.position_x = portal_1.rect.x - player.rect_final.width-10
 
-                    player.rectx.y = player.rect.y - 5
-                    player.rectx.x = player.rect.x - 5
                     t_cooldown = 0
+                    player.move_y(dt)
+                    player.move_x(dt)
+
         else :
             if player.rect.colliderect(portal_1.rect) or player.rect.colliderect(portal_2.rect) :
                 font = pygame.font.Font(None, 20)
@@ -288,14 +273,15 @@ def game(level, game, screen, height, width, world, help) :
         player.hit_something(tiles, screen)
         #collisions_player = player.hit_something(tiles, screen)
         #player.hit_x(collisions_player[0]), player.hit_y(collisions_player[1])
-        if rect_end.colliderect(player.rect) :
+        if rect_end.colliderect(player.rect_final) :
             time.sleep(0.2)
             return "game", level+1
 
         #pygame.draw.rect(screen, 'black', portal_1.rect)
         #pygame.draw.rect(screen, 'black', portal_2.rect)
 
-        #pygame.draw.rect(screen, 'black', player.rect)
+        #pygame.draw.rect(screen, 'black', player.rect_final)
+
         pygame.draw.rect(screen, 'black', rect_end)
         #print(player.isgrounded)
         #print(player.speed_y)

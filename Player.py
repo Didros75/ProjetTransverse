@@ -23,11 +23,11 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.facingLeft = False
         self.aiming=False
 
-        self.sprites_right = [pygame.image.load(f"assets\l0_Running{i}.png") for i in range(1, 5)]
+        self.sprites_right = [pygame.image.load(f"assets/Dark_archer/l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
-        self.sprites_right_aiming = [pygame.image.load(f"assets\l0_aiming_anime{i}.png") for i in range(1, 5)]
+        self.sprites_right_aiming = [pygame.image.load(f"assets/Dark_archer/l0_aiming_anime{i}.png") for i in range(1, 5)]
         self.sprites_left_aiming = [pygame.transform.flip(img, True, False) for img in self.sprites_right_aiming]
-        self.sprites_idle = [pygame.image.load(f"assets\l0_sprite_{i}.png") for i in range(1, 5)]
+        self.sprites_idle = [pygame.image.load(f"assets/Dark_archer/l0_sprite_{i}.png") for i in range(1, 5)]
         self.sprite_index = 0
         self.image = self.sprites_right[0]
         self.animation_speed = 0.15
@@ -35,7 +35,7 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.image = self.sprites_right[0]
         self.rect = pygame.Rect(position_x, position_y, 30, 50)
         self.rectx = pygame.Rect(self.position_x-5, self.position_y + 5, 40, 30)
-        self.rect_final = pygame.Rect(position_x, position_y, 40, 55)
+        self.rect_final = pygame.Rect(position_x, position_y, 40, 50)
 
     def animate(self, angle=0):
         if self.LEFT or self.RIGHT:
@@ -101,8 +101,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.speed_x+=self.acceleration_x * dt
         self.max_speed(8)
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
-        self.rect.x = self.position_x
-        self.rectx.x = self.position_x-5
         self.rect_final.x = self.position_x
 
     def max_speed(self, maxi) :
@@ -116,8 +114,6 @@ class ThePlayer(pygame.sprite.Sprite) :
         if self.speed_y <= -20:
             self.speed_y = -20
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
-        self.rect.y = self.position_y
-        self.rectx.y = self.position_y+10
         self.rect_final.y = self.position_y
 
     """def hit_something(self, tiles, screen) :
@@ -200,19 +196,25 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.isgrounded = True
                     self.speed_y = 0
                     self.acceleration_y = 0
-                    self.position_y = tile.rectangle.top - 50
+                    self.position_y = tile.rectangle.top - self.rect_final.height+1
                     self.rect_final.top = self.position_y
                 elif tile.image == Map.img17 :
                     self.speed_y = 0
                     self.acceleration_y = 0
-                    self.position_y = tile.rectangle.bottom
+                    self.position_y = tile.rectangle.bottom + 1
                     self.rect_final.top = self.position_y
                 if tile.image == Map.img8 :
                     self.speed_x = 0
-                    self.position_x = tile.rectangle.left - 40
-                    self.rect_final.right = self.position_x
+                    self.position_x = tile.rectangle.left - self.rect_final.width
+                    self.rect_final.left = self.position_x
                 elif tile.image == Map.img10 :
                     self.speed_x = 0
-                    self.position_x = tile.rectangle.right
+                    self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
-        self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in collisions)
+        air=True
+        for i in collisions :
+            if i.image == Map.img1 :
+                air=False
+        if air:
+            self.isgrounded = False
+

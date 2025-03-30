@@ -5,11 +5,13 @@ import Menu
 import Settings
 import pygame
 import level_selection
+import skin_manager
 from sound_manager import SoundManager
 
 def begin_game() :
     pygame.init()
     sono=SoundManager()
+    skin=0
     world = 0
     level = 0
     width = 900
@@ -20,7 +22,14 @@ def begin_game() :
     window="menu" #ca represente la page sur laquelle on se trouve : si on est sur Menu et qu'on clique sur jouer, window va etre egal a level, puis a game quand on va choisir le lvl
 
     while window != "exit" :
-        # !!!! si tu veux mettre le tuto, fais un if windows = 'tuto', et la t'appelle ton module, si tu le fais pas ca va planter quand tu cliques
+        if window == "skin":
+            list=skin_manager.skin(screen, height, width, skin)
+            window=list[0]
+            skin=list[1]
+        if window == "tuto":
+            list=Game.game(0, True, screen, height, width, world, help, skin)
+            window = list[0]
+            level = list[1]
         if window == "menu" :
             window = Menu.menu(screen, height, width)
         if window == "level" :
@@ -28,7 +37,7 @@ def begin_game() :
             window=list[0]
             level=list[1]
         if window == "game" :
-            list=Game.game(level, True, screen, height, width, world, help)
+            list=Game.game(level, True, screen, height, width, world, help, skin)
             window = list[0]
             level = list[1] #pareil ici, ca modifie le lvl où on est si on reussi a terminer le niveau (on return game et level = level + 1 pour que ca enchaine sur le level suivant)
         if window == "settings" :

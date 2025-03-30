@@ -40,12 +40,12 @@ class Bow():
         return equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
 
     def draw_rectangle(self, screen, t, rect_x, rect_y, nb):
-        self.rect_size = min(t*7, 112)
+        self.rect_size = min(t*6, 95)
         if nb==-1:
             color = (126, 34, 80)
         else:
             color = (68, 107, 166)
-        pygame.draw.rect(screen, color, (rect_x, rect_y, self.rect_size, 22))
+        pygame.draw.rect(screen, color, (rect_x, rect_y, self.rect_size, 28))
 
 class Arrow() :
     def __init__(self, position) :
