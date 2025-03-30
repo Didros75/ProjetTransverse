@@ -8,9 +8,11 @@ import equation_trajectory
 from Player import ThePlayer
 from bow import Bow, Arrow
 from Portal import Portal
+from sound_manager import SoundManager
 import time
 
 def game(level, game, screen, height, width, world, help) :
+    sono=SoundManager(False)
     power = 0
     #pygame.init()
     #width=900
@@ -206,7 +208,7 @@ def game(level, game, screen, height, width, world, help) :
 
             if t_cooldown>=4:
                 if player.rect.colliderect(portal_1.rect) :
-
+                    sono.play_tp_sound()
                     if portal_2.state==-2:
                         player.speed_y = -(player.speed_y - 2)
                         player.position_y = portal_2.rect.y - 70
@@ -240,6 +242,7 @@ def game(level, game, screen, height, width, world, help) :
                     t_cooldown = 0
 
                 elif player.rect.colliderect(portal_2.rect):
+                    sono.play_tp_sound()
 
                     if portal_1.state==-2:
                         player.speed_y = -(player.speed_y-2)
