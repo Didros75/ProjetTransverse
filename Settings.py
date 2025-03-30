@@ -16,7 +16,7 @@ def settings(screen, height, width, sound, help):
     y_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Y.png'), (litle_button, litle_button))
 
     text_parametres = title_font.render("Settings :", True, (255, 255, 255))
-    text_son=font.render("Sound : ", True, (255, 255, 255))
+    text_son=font.render("Music : ", True, (255, 255, 255))
     text_aide=font.render("Help : ", True, (255, 255, 255))
 
     menu_rect=pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())

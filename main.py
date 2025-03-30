@@ -20,6 +20,7 @@ def begin_game() :
     window="menu" #ca represente la page sur laquelle on se trouve : si on est sur Menu et qu'on clique sur jouer, window va etre egal a level, puis a game quand on va choisir le lvl
 
     while window != "exit" :
+        # !!!! si tu veux mettre le tuto, fais un if windows = 'tuto', et la t'appelle ton module, si tu le fais pas ca va planter quand tu cliques
         if window == "menu" :
             window = Menu.menu(screen, height, width)
         if window == "level" :
