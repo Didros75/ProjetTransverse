@@ -24,8 +24,8 @@ def game(level, game, screen, height, width, world, help) :
 
         # Définition des différentes positions de départ et d'arrivé
 
-    start_position = [(40, 340), (0, 0), (0, 0), (0, 0)]
-    end_position = [(860, 400), (860, 400), (860, 400), (860, 400)]
+    start_position = [(40, 340), (0, 0), (0, 0), (0, 0), (40, 340)]
+    end_position = [(860, 400), (860, 400), (860, 400), (860, 400), (860, 400)]
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (50, 50))
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
     rect_end = pygame.Rect(end_position[level][0], end_position[level][1], 10, 50)
@@ -34,7 +34,7 @@ def game(level, game, screen, height, width, world, help) :
     portal_1=Portal(-75, -75, 1)
     portal_2=Portal(-75, -75, 2)
 
-    if level == 0 :
+    if level == 4 :
             map = Create_map("Maps/map_tutorial.csv", screen)
     elif level == 1 :
             map = Create_map("Maps/map1.csv", screen)
@@ -208,7 +208,6 @@ def game(level, game, screen, height, width, world, help) :
         #player.hit_x(tiles), player.hit_y(tiles)
 
         if possible1 and possible2 :
-
             if t_cooldown>=4:
                 if player.rect.colliderect(portal_1.rect) :
                     sono.play_tp_sound()
@@ -286,7 +285,9 @@ def game(level, game, screen, height, width, world, help) :
                 pygame.draw.rect(screen, (0, 0, 0), cant_play_rect)
                 screen.blit(text_cant_play, (335, 500))
 
-        player.hit_x(tiles), player.hit_y(tiles)
+        player.hit_something(tiles, screen)
+        #collisions_player = player.hit_something(tiles, screen)
+        #player.hit_x(collisions_player[0]), player.hit_y(collisions_player[1])
         if rect_end.colliderect(player.rect) :
             time.sleep(0.2)
             return "game", level+1
