@@ -14,6 +14,15 @@ img17 = pygame.image.load('assets_tiles/bottom_side.png')
 img18 = pygame.image.load('assets_tiles/bottom_right_corner.png')
 img24 = pygame.image.load('assets_tiles/top_right_in_corner.png')
 img26 = pygame.image.load('assets_tiles/top_left_in_corner.png')
+img48 = pygame.image.load('assets_tiles/laser.png')
+img40 = pygame.image.load('assets_tiles/bottom_left_in_corner.png')
+img42 = pygame.image.load('assets_tiles/bottom_right_in_corner.png')
+img49 = pygame.image.load('assets_tiles/button.png')
+img50 = pygame.image.load('assets_tiles/button_left.png')
+img51 = pygame.image.load('assets_tiles/button_bottom.png')
+img52 = pygame.image.load('assets_tiles/button_right.png')
+
+
 #background=pygame.image.load("assets/Design sans titre.png")
 #background=pygame.image.load("assets/fond2.jpg")
 
@@ -77,11 +86,30 @@ class Create_map() :
                     tiles.append(Tile(img24, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "26" :
                     tiles.append(Tile(img26, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "48" :
+                    tiles.append(Tile(img48, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "40" :
+                    tiles.append(Tile(img40, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "42" :
+                    tiles.append(Tile(img42, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "49" :
+                    tiles.append(Tile(img49, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "50" :
+                    tiles.append(Tile(img50, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "51" :
+                    tiles.append(Tile(img51, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "52" :
+                    tiles.append(Tile(img52, x * self.size_tile, y * self.size_tile))
         return tiles
 
-    def load_map(self, background) :
+    def load_map(self, background, laser) :
         self.surface.blit(background, (0, 0))
+        if not laser:
+            for i in range(len(self.tiles)):
+                if self.tiles[i].image == img48:
+                    self.tiles[i].image = sky
         for i in range(len(self.tiles)) :
             if self.tiles[i].image != sky :
                 self.tiles[i].draw(self.surface)
         return self.tiles
+

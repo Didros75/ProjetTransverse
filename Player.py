@@ -76,7 +76,7 @@ class ThePlayer(pygame.sprite.Sprite) :
     def jump(self) :
         if self.isgrounded :
             self.isgrounded = False
-            self.speed_y = 14
+            self.speed_y = 10
 
     def death(self) :
         """
@@ -186,9 +186,9 @@ class ThePlayer(pygame.sprite.Sprite) :
             self.speed_y = 0
 
         collisions = []
-
         for tile in tiles :
             if self.rect_final.colliderect(tile.rectangle) and tile.image != Map.sky :
+
 
                 collisions.append((tile))
 
@@ -211,6 +211,8 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
+                if tile.image == Map.img48 :
+                    self.state=1
         air=True
         for i in collisions :
             if i.image == Map.img1 :

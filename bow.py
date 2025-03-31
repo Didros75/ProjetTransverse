@@ -4,6 +4,7 @@ import pygame
 import math
 import equation_trajectory
 import Map
+from sound_manager import SoundManager
 
 class Bow():
     def __init__(self):
@@ -55,6 +56,7 @@ class Arrow() :
         self.image = pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width() * 3, pygame.image.load("assets/Arrow.png").get_height() * 3))
         self.rect = pygame.Rect(position[0], position[1], 25, 25)
         self.portal_state = 0
+        self.sono = SoundManager(False)
 
     def shot(self, dt, v0, theta, x, y):
         coordinate = equation_trajectory.trajectory(v0, theta, dt, self.gravity, x, y)
@@ -67,8 +69,13 @@ class Arrow() :
     def collision(self, tiles, height, width) :
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
+                if tile.image==Map.img48 :
+                    return False, 0
+                elif tile.image==Map.img49 or tile.image==Map.img50 or tile.image==Map.img51 or tile.image==Map.img52 :
+                    self.sono.play_button_sound()
+                    return False, 1
                 return False, tile
-        if self.position_y > height or self.position_x > width :
+        if self.position_y > height or self.position_x > width or self.position_x < 0 or self.position_y < 0 :
             return False, 0
         return True, 0
 

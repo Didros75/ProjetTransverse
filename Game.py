@@ -3,7 +3,6 @@
 import pygame
 from Map import Create_map
 from pygame import mouse
-import Menu
 import equation_trajectory
 from Player import ThePlayer
 from bow import Bow, Arrow
@@ -19,11 +18,10 @@ def game(level, game, screen, height, width, world, help, skin) :
 
         # Définition des différentes positions de départ et d'arrivé
 
-    start_position = [(40, 340), (0, 0), (0, 0), (0, 0), (40, 340)]
-    end_position = [(-100, -100), (860, 400), (860, 400), (860, 400), (860, 400)]
+    start_position = [(40, 340), (10, 430), (10, 430), (10, 240), (10, 430), (10, 430)]
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (75, 75))
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
-    rect_end = pygame.Rect(end_position[level][0], end_position[level][1], 10, 50)
+
     player = ThePlayer(start_position[level][0], start_position[level][1])
 
     power_bar = pygame.transform.scale(pygame.image.load("assets/blue_chargin_bar.png"), (130, 50))
@@ -32,12 +30,8 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     if level == 0 :
             map = Create_map("Maps/map_tutorial.csv", screen)
-    elif level == 1 :
-            map = Create_map("Maps/map1.csv", screen)
-    elif level == 2 :
-            map = Create_map("Maps/map2.csv", screen)
-    elif level == 3 :
-            map = Create_map("Maps/map3.csv", screen)
+    else:
+            map = Create_map(f"Maps/map{level}.csv", screen)
 
     clock = pygame.time.Clock()
     target_fps=60
@@ -54,6 +48,8 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     line=True
     line_len=50
+    collision=0
+    laser=True
 
     if world == 0 :
         background=pygame.image.load("assets/fond2.jpg")
@@ -66,10 +62,15 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     while game:
         dt=clock.tick(60) * 0.001 * target_fps
-        tiles = map.load_map(background)
+        if collision == 1 :
+            laser=False
+        tiles = map.load_map(background, laser)
+
 
         if player.death() :
             player = ThePlayer(start_position[level][0], start_position[level][1])
+
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -87,7 +88,8 @@ def game(level, game, screen, height, width, world, help, skin) :
                     if event.key == pygame.K_SPACE:
                         if player.isgrounded:
                             player.jump()
-                    if event.key == pygame.K_e:
+                if event.key == pygame.K_e:
+                    if not shoted :
                         number_arrow = -number_arrow
                         bow.state=-bow.state
 
@@ -106,11 +108,11 @@ def game(level, game, screen, height, width, world, help, skin) :
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button==1 and shoted==False and aiming==True:
 
-                    angle = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0], mouse.get_pos()[1])
+                    angle = equation_trajectory.angle(player.position_x+player.rect_final.width/2, player.position_y+player.rect_final.height/2, mouse.get_pos()[0], mouse.get_pos()[1])
                     power=t
                     t = 0
-                    px = player.position_x
-                    py = player.position_y
+                    px = player.position_x+player.rect_final.width/2
+                    py = player.position_y+10
                     shoted=True
                     player.aiming=False
                     aiming=False
@@ -124,8 +126,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                 if event.key == pygame.K_SPACE:
                     player.isjumping=False
 
-        angle2 = equation_trajectory.angle(player.position_x+20, player.position_y+30, mouse.get_pos()[0],
-                                            mouse.get_pos()[1])
+        angle2 = equation_trajectory.angle(player.position_x+player.rect_final.width/2, player.position_y+player.rect_final.height/2, mouse.get_pos()[0], mouse.get_pos()[1])
 
         collision = 0
 
@@ -139,7 +140,7 @@ def game(level, game, screen, height, width, world, help, skin) :
             arrow.show(screen)
             shoted, collision = arrow.collision(tiles, height, width)[0], arrow.collision(tiles, height, width)[1]
 
-        if collision != 0 :
+        if collision != 0 and collision != 1:
 
             position_portal = arrow.position_portal(collision)
 
@@ -202,61 +203,35 @@ def game(level, game, screen, height, width, world, help, skin) :
         #player.hit_x(tiles), player.hit_y(tiles)
 
         if possible1 and possible2 :
-            if t_cooldown>=4:
-                if player.rect_final.colliderect(portal_1.rect) :
-                    sono.play_tp_sound()
-                    if portal_2.state==-2:
-                        player.speed_y = -player.speed_y
-                        player.position_y = portal_2.rect.y-70
-                        player.position_x=portal_2.rect.x+30
-
-
-                    elif portal_2.state==2:
-                        player.position_y = portal_2.rect.y+10
-                        player.position_x = portal_2.rect.x +30
-
-
-                    elif portal_2.state==-1:
-                        player.speed_x = -player.speed_x
-                        player.position_y = portal_2.rect.y
-                        player.position_x = portal_2.rect.x +10
-
-
-                    elif portal_2.state == 1:
-                        player.speed_x = -player.speed_x
-                        player.position_y = portal_2.rect.y
-                        player.position_x = portal_2.rect.x - player.rect_final.width-10
-
-
-                    t_cooldown = 0
-                    player.move_y(dt)
-                    player.move_x(dt)
-
-
+            if t_cooldown>=3:
+                if player.rect_final.colliderect(portal_1.rect):
+                    port=portal_2
                 elif player.rect_final.colliderect(portal_2.rect):
+                    port=portal_1
+                if player.rect_final.colliderect(portal_1.rect) or player.rect_final.colliderect(portal_2.rect):
                     sono.play_tp_sound()
-
-                    if portal_1.state==-2:
+                    if port.state==-2:
                         player.speed_y = -player.speed_y
-                        player.position_y = portal_1.rect.y-70
-                        player.position_x = portal_1.rect.x+30
-
-                    elif portal_1.state==2:
-
-                        player.position_y = portal_1.rect.y + 10
-                        player.position_x = portal_1.rect.x + 30
+                        player.position_y = port.rect.y-70
+                        player.position_x=port.rect.x+30
 
 
-                    elif portal_1.state==-1:
+                    elif port.state==2:
+                        player.position_y = port.rect.y+10
+                        player.position_x = port.rect.x +30
+
+
+                    elif port.state==-1:
                         player.speed_x = -player.speed_x
-                        player.position_y = portal_1.rect.y
-                        player.position_x = portal_1.rect.x + 10
+                        player.position_y = port.rect.y
+                        player.position_x = port.rect.x +10
 
 
-                    elif portal_1.state == 1:
+                    elif port.state == 1:
                         player.speed_x = -player.speed_x
-                        player.position_y = portal_1.rect.y
-                        player.position_x = portal_1.rect.x - player.rect_final.width-10
+                        player.position_y = port.rect.y
+                        player.position_x = port.rect.x - player.rect_final.width-10
+
 
                     t_cooldown = 0
                     player.move_y(dt)
@@ -271,18 +246,19 @@ def game(level, game, screen, height, width, world, help, skin) :
                 screen.blit(text_cant_play, (335, 500))
 
         player.hit_something(tiles, screen)
-        #collisions_player = player.hit_something(tiles, screen)
-        #player.hit_x(collisions_player[0]), player.hit_y(collisions_player[1])
-        if rect_end.colliderect(player.rect_final) :
-            time.sleep(0.2)
-            return "game", level+1
+
+        if player.rect_final.x >= 880: #au lieu d'un rect_end j'ai juste fais quand on arrive a droite de l'ecran ca sera plus fluide
+            if level<5:
+                return "game", level+1
+            else:
+                return "menu", level
+
+
 
         #pygame.draw.rect(screen, 'black', portal_1.rect)
         #pygame.draw.rect(screen, 'black', portal_2.rect)
 
         #pygame.draw.rect(screen, 'black', player.rect_final)
-
-        pygame.draw.rect(screen, 'black', rect_end)
         #print(player.isgrounded)
         #print(player.speed_y)
         screen.blit(menu_button, menu_rect)
