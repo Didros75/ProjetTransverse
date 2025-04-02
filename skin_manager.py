@@ -1,5 +1,3 @@
-from tkinter.tix import StdButtonBox
-
 import pygame
 from sound_manager import SoundManager
 

@@ -90,6 +90,7 @@ class ThePlayer(pygame.sprite.Sprite) :
     def draw(self, ref) :
         self.image = pygame.transform.scale(self.image, (40, 50))
         ref.blit(self.image, (self.position_x, self.position_y))
+        pygame.draw.rect(ref, "white", self.rect_final)
 
     def move_x(self, dt) :
         self.acceleration_x = 0
@@ -188,26 +189,40 @@ class ThePlayer(pygame.sprite.Sprite) :
         collisions = []
         for tile in tiles :
             if self.rect_final.colliderect(tile.rectangle) and tile.image != Map.sky :
-
+                top = False
+                right = False
+                bottom = False
+                left = False
 
                 collisions.append((tile))
 
-                if tile.image == Map.img1 :
+                if tile.image == Map.img0 :
+                    if self.rect_final.bottom + 5 >= tile.rectangle.top :
+                        top = True
+                    else :
+                        right = True
+                if tile.image == Map.img16 :
+                    if self.rect_final.bottom - 1 == tile.rectangle.top :
+                        top = True
+                    else :
+                        left = True
+
+                if tile.image == Map.img1 or top :
                     self.isgrounded = True
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - self.rect_final.height+1
                     self.rect_final.top = self.position_y
-                elif tile.image == Map.img17 :
+                elif tile.image == Map.img17 or bottom :
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom + 1
                     self.rect_final.top = self.position_y
-                if tile.image == Map.img8 :
+                if tile.image == Map.img8 or right :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.left - self.rect_final.width
                     self.rect_final.left = self.position_x
-                elif tile.image == Map.img10 :
+                elif tile.image == Map.img10 or left :
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
@@ -219,4 +234,3 @@ class ThePlayer(pygame.sprite.Sprite) :
                 air=False
         if air:
             self.isgrounded = False
-

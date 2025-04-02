@@ -238,7 +238,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                     player.move_x(dt)
 
         else :
-            if player.rect.colliderect(portal_1.rect) or player.rect.colliderect(portal_2.rect) :
+            if player.rect_final.colliderect(portal_1.rect) or player.rect_final.colliderect(portal_2.rect) :
                 font = pygame.font.Font(None, 20)
                 text_cant_play = font.render("Vous ne pouvez pas vous téléporter", True, (255, 255, 255))
                 cant_play_rect = pygame.Rect(320, 490, 260, 35)
