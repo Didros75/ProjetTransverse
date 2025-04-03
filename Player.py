@@ -90,7 +90,7 @@ class ThePlayer(pygame.sprite.Sprite) :
     def draw(self, ref) :
         self.image = pygame.transform.scale(self.image, (40, 50))
         ref.blit(self.image, (self.position_x, self.position_y))
-        pygame.draw.rect(ref, "white", self.rect_final)
+        #pygame.draw.rect(ref, "white", self.rect_final)
 
     def move_x(self, dt) :
         self.acceleration_x = 0
@@ -197,15 +197,27 @@ class ThePlayer(pygame.sprite.Sprite) :
                 collisions.append((tile))
 
                 if tile.image == Map.img0 :
-                    if self.rect_final.bottom + 5 >= tile.rectangle.top :
-                        top = True
+                    if self.isgrounded :
+                        if self.rect_final.bottom - 5 <= tile.rectangle.top :
+                            top = True
+                        else :
+                            right = True
                     else :
-                        right = True
-                if tile.image == Map.img16 :
-                    if self.rect_final.bottom - 1 == tile.rectangle.top :
-                        top = True
-                    else :
-                        left = True
+                        if self.rect_final.bottom - 10 <= tile.rectangle.top :
+                            top = True
+                        else :
+                            right = True
+                if tile.image == Map.img2 :
+                    if self.isgrounded:
+                        if self.rect_final.bottom - 5 <= tile.rectangle.top:
+                            top = True
+                        else:
+                            left = True
+                    else:
+                        if self.rect_final.bottom - 10 <= tile.rectangle.top:
+                            top = True
+                        else:
+                            left = True
 
                 if tile.image == Map.img1 or top :
                     self.isgrounded = True
@@ -229,8 +241,8 @@ class ThePlayer(pygame.sprite.Sprite) :
                 if tile.image == Map.img48 :
                     self.state=1
         air=True
-        for i in collisions :
-            if i.image == Map.img1 :
+        for collide in collisions :
+            if collide.image == Map.img1 or collide.image == Map.img0 or collide.image == Map.img2 :
                 air=False
         if air:
             self.isgrounded = False

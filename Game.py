@@ -263,4 +263,3 @@ def game(level, game, screen, height, width, world, help, skin) :
         #print(player.speed_y)
         screen.blit(menu_button, menu_rect)
         pygame.display.flip()
-
