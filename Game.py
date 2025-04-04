@@ -9,11 +9,12 @@ from bow import Bow, Arrow
 from Portal import Portal
 from sound_manager import SoundManager
 import time
+from Story_functions import *
 
 def game(level, game, screen, height, width, world, help, skin) :
     sono=SoundManager(False)
     power = 0
-
+    liste_dialog=[0, 2, 2, 2, 2, 2]
     bow = Bow()
 
         # Définition des différentes positions de départ et d'arrivé
@@ -22,7 +23,7 @@ def game(level, game, screen, height, width, world, help, skin) :
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (75, 75))
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
 
-    player = ThePlayer(start_position[level][0], start_position[level][1])
+    player = ThePlayer(start_position[level][0], start_position[level][1], skin)
 
     power_bar = pygame.transform.scale(pygame.image.load("assets/blue_chargin_bar.png"), (130, 50))
     portal_1=Portal(-75, -75, 1)
@@ -41,6 +42,10 @@ def game(level, game, screen, height, width, world, help, skin) :
     possible2 = False
     aiming=False
     shoted=False
+    shotable =  False
+    movable = False
+    cd=False
+    line_txt = liste_dialog[level]
     angle=0
     t=0
     t_cooldown=0
@@ -50,6 +55,7 @@ def game(level, game, screen, height, width, world, help, skin) :
     line_len=50
     collision=0
     laser=True
+    cd_cpt=0
 
     if world == 0 :
         background=pygame.image.load("assets/fond2.jpg")
@@ -61,6 +67,10 @@ def game(level, game, screen, height, width, world, help, skin) :
     background = pygame.transform.scale(background, (width, height))
 
     while game:
+
+
+
+
         dt=clock.tick(60) * 0.001 * target_fps
         if collision == 1 :
             laser=False
@@ -68,7 +78,7 @@ def game(level, game, screen, height, width, world, help, skin) :
 
 
         if player.death() :
-            player = ThePlayer(start_position[level][0], start_position[level][1])
+            player = ThePlayer(start_position[level][0], start_position[level][1], skin)
 
 
 
@@ -78,7 +88,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                 pygame.quit()
 
             if event.type == pygame.KEYDOWN:
-                if not player.aiming:
+                if not player.aiming and movable:
                     if event.key == pygame.K_d:
                         player.facingLeft=False
                         player.RIGHT=True
@@ -98,7 +108,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                     return "menu", level
 
                 if event.button==1:
-                    if not shoted:
+                    if not shoted and shotable:
                         t = 0
                         player.RIGHT=False
                         player.LEFT=False
@@ -106,7 +116,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                         aiming=True
 
             if event.type == pygame.MOUSEBUTTONUP:
-                if event.button==1 and shoted==False and aiming==True:
+                if event.button==1 and shoted==False and aiming==True and shotable:
 
                     angle = equation_trajectory.angle(player.position_x+player.rect_final.width/2, player.position_y+player.rect_final.height/2, mouse.get_pos()[0], mouse.get_pos()[1])
                     power=t
@@ -254,7 +264,6 @@ def game(level, game, screen, height, width, world, help, skin) :
                 return "menu", level
 
 
-
         #pygame.draw.rect(screen, 'black', portal_1.rect)
         #pygame.draw.rect(screen, 'black', portal_2.rect)
 
@@ -262,4 +271,30 @@ def game(level, game, screen, height, width, world, help, skin) :
         #print(player.isgrounded)
         #print(player.speed_y)
         screen.blit(menu_button, menu_rect)
+
+        if dialog_box(line_txt, screen)==1:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    line_txt += 1
+                    if level == 0:
+                        if line_txt == 1 or line_txt == 5:
+                            cd=True
+
+
+
+        else :
+            movable=True
+            shotable=True
+        if cd:
+            cd_cpt+=1
+        if cd_cpt >= 400:
+            line_txt += 1
+            cd_cpt=0
+            cd=False
+            movable=False
+            shotable=False
+            player.RIGHT=False
+            player.LEFT=False
+
         pygame.display.flip()
+

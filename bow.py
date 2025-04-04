@@ -69,7 +69,7 @@ class Arrow() :
     def collision(self, tiles, height, width) :
         for tile in tiles :
             if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
-                if tile.image==Map.img48 :
+                if tile.image==Map.img48 or tile.image == Map.img9 :
                     return False, 0
                 elif tile.image==Map.img49 or tile.image==Map.img50 or tile.image==Map.img51 or tile.image==Map.img52 :
                     self.sono.play_button_sound()

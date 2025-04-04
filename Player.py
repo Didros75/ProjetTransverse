@@ -5,7 +5,7 @@ import pygame
 import Map
 
 class ThePlayer(pygame.sprite.Sprite) :
-    def __init__(self, position_x, position_y, gravity = 0.6, LEFT = False, RIGHT = False, SPACE = False) :
+    def __init__(self, position_x, position_y,skin, gravity = 0.6, LEFT = False, RIGHT = False, SPACE = False) :
         pygame.sprite.Sprite.__init__(self)
         self.speed_x = 0
         self.speed_y = 0
