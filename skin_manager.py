@@ -9,7 +9,7 @@ def skin(screen, height, width, skin_num=0):
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
     board=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (370, 350))
     skin_1= [pygame.image.load(f"assets/Dark_archer/l0_sprite_{i}.png") for i in range(1, 5)]
-    skin_2= [pygame.image.load(f"assets/Red_archer/red_archer{i}.png") for i in range(1, 5)] #90 sur https://pinetools.com/adjust-hue-image
+    skin_2= [pygame.image.load(f"assets/Red_archer/red_archer{i}.png") for i in range(1, 5)] #90  sur https://pinetools.com/adjust-hue-image
     skin_3=[pygame.image.load(f"assets/Green_archer/Green_archer{i}.png") for i in range(1, 5)] #200
 
     skins=[skin_1, skin_2, skin_3]

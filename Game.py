@@ -14,14 +14,18 @@ from Story_functions import *
 def game(level, game, screen, height, width, world, help, skin) :
     sono=SoundManager(False)
     power = 0
-    liste_dialog=[0, 2, 2, 2, 2, 2]
+    liste_dialog=[0, 9, 8, 8, 8, 8]
     bow = Bow()
 
         # Définition des différentes positions de départ et d'arrivé
 
     start_position = [(40, 340), (10, 430), (10, 430), (10, 240), (10, 430), (10, 430)]
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (75, 75))
+    reset_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Reset.png"), (75, 75))
+
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
+    reset_rect = pygame.Rect(130, 35, reset_button.get_width(), menu_button.get_height())
+
 
     player = ThePlayer(start_position[level][0], start_position[level][1], skin)
 
@@ -66,21 +70,18 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     background = pygame.transform.scale(background, (width, height))
 
+    line_txt = liste_dialog[level]
+
     while game:
 
-
-
-
+        clicked = False
         dt=clock.tick(60) * 0.001 * target_fps
         if collision == 1 :
             laser=False
         tiles = map.load_map(background, laser)
 
-
         if player.death() :
             player = ThePlayer(start_position[level][0], start_position[level][1], skin)
-
-
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -88,6 +89,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                 pygame.quit()
 
             if event.type == pygame.KEYDOWN:
+                clicked=True
                 if not player.aiming and movable:
                     if event.key == pygame.K_d:
                         player.facingLeft=False
@@ -106,6 +108,10 @@ def game(level, game, screen, height, width, world, help, skin) :
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if menu_rect.collidepoint(event.pos):
                     return "menu", level
+                if reset_rect.collidepoint(event.pos):
+                    portal_1.delete_portal(portal_2)
+                    possible1, possible2 = False, False
+                    player = ThePlayer(start_position[level][0], start_position[level][1], skin)
 
                 if event.button==1:
                     if not shoted and shotable:
@@ -151,24 +157,19 @@ def game(level, game, screen, height, width, world, help, skin) :
             shoted, collision = arrow.collision(tiles, height, width)[0], arrow.collision(tiles, height, width)[1]
 
         if collision != 0 and collision != 1:
-
             position_portal = arrow.position_portal(collision)
 
             if number_arrow == -1 :
                 portal_2.state = arrow.portal_state
                 function = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
-                position_portal = function[0]
+                position_portal = function
                 portal_2.pos_x, portal_2.pos_y = position_portal[0], position_portal[1]
                 possible2 = portal_2.not_teleportable(tiles, collision)
 
             else :
                 portal_1.state = arrow.portal_state
                 function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
-                position_portal = function[0]
-                """while function[1] == 1 : ###
-                    function = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
-                    print(position_portal)
-                    position_portal = function[0]"""
+                position_portal = function
                 portal_1.pos_x, portal_1.pos_y = position_portal[0], position_portal[1]
                 possible1 = portal_1.not_teleportable(tiles, collision)
 
@@ -234,13 +235,13 @@ def game(level, game, screen, height, width, world, help, skin) :
                     elif port.state==-1:
                         player.speed_x = -player.speed_x
                         player.position_y = port.rect.y
-                        player.position_x = port.rect.x +10
+                        player.position_x = port.rect.x -30
 
 
                     elif port.state == 1:
                         player.speed_x = -player.speed_x
                         player.position_y = port.rect.y
-                        player.position_x = port.rect.x - player.rect_final.width-10
+                        player.position_x = port.rect.x - player.rect_final.width+30
 
 
                     t_cooldown = 0
@@ -264,37 +265,20 @@ def game(level, game, screen, height, width, world, help, skin) :
                 return "menu", level
 
 
-        #pygame.draw.rect(screen, 'black', portal_1.rect)
-        #pygame.draw.rect(screen, 'black', portal_2.rect)
 
-        #pygame.draw.rect(screen, 'black', player.rect_final)
-        #print(player.isgrounded)
-        #print(player.speed_y)
         screen.blit(menu_button, menu_rect)
+        screen.blit(reset_button, reset_rect)
 
-        if dialog_box(line_txt, screen)==1:
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    line_txt += 1
-                    if level == 0:
-                        if line_txt == 1 or line_txt == 5:
-                            cd=True
-
-
-
-        else :
+        if dialog_box(line_txt, screen) == 1:
+            movable = False
+            shotable = False
+            if clicked:
+                line_txt+=1
+        else:
             movable=True
             shotable=True
-        if cd:
-            cd_cpt+=1
-        if cd_cpt >= 400:
-            line_txt += 1
-            cd_cpt=0
-            cd=False
-            movable=False
-            shotable=False
-            player.RIGHT=False
-            player.LEFT=False
+
+
 
         pygame.display.flip()
 
