@@ -4,15 +4,16 @@ from sound_manager import SoundManager
 def skin(screen, height, width, skin_num=0):
     sono = SoundManager(False)
     button_size=75
-    skin=skin_num
-    list_name=["Dark archer", "Crimson sniper", "Robin Hood"]
+    skin=int(skin_num)
+    list_name=["Dark archer", "Crimson sniper", "Robin Hood", "Solar shooter"]
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
     board=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (370, 350))
-    skin_1= [pygame.image.load(f"assets/Dark_archer/l0_sprite_{i}.png") for i in range(1, 5)]
-    skin_2= [pygame.image.load(f"assets/Red_archer/red_archer{i}.png") for i in range(1, 5)] #90  sur https://pinetools.com/adjust-hue-image
-    skin_3=[pygame.image.load(f"assets/Green_archer/Green_archer{i}.png") for i in range(1, 5)] #200
+    skin_1= [pygame.image.load(f"assets/0/l0_sprite_{i}.png") for i in range(1, 5)]
+    skin_2= [pygame.image.load(f"assets/1/l0_sprite_{i}.png") for i in range(1, 5)] #90  sur https://pinetools.com/adjust-hue-image
+    skin_3=[pygame.image.load(f"assets/2/l0_sprite_{i}.png") for i in range(1, 5)] #200
+    skin_4 = [pygame.image.load(f"assets/3/l0_sprite_{i}.png") for i in range(1, 5)]
 
-    skins=[skin_1, skin_2, skin_3]
+    skins=[skin_1, skin_2, skin_3, skin_4]
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (button_size, button_size))
     exit_button = pygame.transform.scale(pygame.image.load('assets/meni_menu/X.png'), (button_size, button_size))
     right_button=pygame.transform.scale(pygame.image.load("assets/meni_menu/right.png"), (button_size, button_size))
@@ -61,7 +62,7 @@ def skin(screen, height, width, skin_num=0):
                 if menu_rect.collidepoint(pygame.mouse.get_pos()):
                     sono.play_button_sound()
 
-                    return "menu", skin
+                    return "menu", str(skin)
 
                 if right_rect.collidepoint(pygame.mouse.get_pos()):
                     sono.play_button_sound()

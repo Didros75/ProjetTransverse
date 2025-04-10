@@ -14,7 +14,8 @@ from Story_functions import *
 def game(level, game, screen, height, width, world, help, skin) :
     sono=SoundManager(False)
     power = 0
-    liste_dialog=[0, 9, 8, 8, 8, 8]
+    liste_dialog=[0, 8, 12, 8, 8, 8]
+
     bow = Bow()
 
         # Définition des différentes positions de départ et d'arrivé
@@ -269,7 +270,7 @@ def game(level, game, screen, height, width, world, help, skin) :
         screen.blit(menu_button, menu_rect)
         screen.blit(reset_button, reset_rect)
 
-        if dialog_box(line_txt, screen) == 1:
+        if dialog_box(line_txt, screen, skin, t) == 1:
             movable = False
             shotable = False
             if clicked:

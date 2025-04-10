@@ -23,11 +23,11 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.facingLeft = False
         self.aiming=False
 
-        self.sprites_right = [pygame.image.load(f"assets/Dark_archer/l0_Running{i}.png") for i in range(1, 5)]
+        self.sprites_right = [pygame.image.load(f"assets/{skin}/l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
-        self.sprites_right_aiming = [pygame.image.load(f"assets/Dark_archer/l0_aiming_anime{i}.png") for i in range(1, 5)]
+        self.sprites_right_aiming = [pygame.image.load(f"assets/{skin}/l0_aiming_anime{i}.png") for i in range(1, 5)]
         self.sprites_left_aiming = [pygame.transform.flip(img, True, False) for img in self.sprites_right_aiming]
-        self.sprites_idle = [pygame.image.load(f"assets/Dark_archer/l0_sprite_{i}.png") for i in range(1, 5)]
+        self.sprites_idle = [pygame.image.load(f"assets/{skin}/l0_sprite_{i}.png") for i in range(1, 5)]
         self.sprite_index = 0
         self.image = self.sprites_right[0]
         self.animation_speed = 0.15

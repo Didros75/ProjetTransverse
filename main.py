@@ -12,7 +12,7 @@ def begin_game() :
     pygame.init()
     sono=SoundManager()
     skin=0
-    world = 2
+    world = 0
     level = 0
     width = 900
     height = 600
