@@ -2,6 +2,7 @@
 
 import pygame
 import Map
+import time
 
 class Portal() :
     def __init__(self, x=0, y=0, num=1):
@@ -46,31 +47,22 @@ class Portal() :
 
 
     def change_position(self, tile_touched, tiles, position, state) :
-        for i in range(1, len(tiles) - 1) :
+        for i in range(30, len(tiles) - 60) :
+            if tiles[i] == tile_touched :
+                if (state == 1 and tiles[i+31].image != Map.sky) or (state == -1 and tiles[i+29].image != Map.sky) :
+                    return position[0], position[1] - 35
+                elif (state == 1 and tiles[i-29].image != Map.sky) or (state == -1 and tiles[i-31].image != Map.sky) :
+                    return position[0], position[1] + 15
+                elif (state == 1 and tiles[i+61].image != Map.sky) or (state == -1 and tiles[i+59].image != Map.sky) :
+                    return position[0], position[1] - 10
 
-            if state == -1 and tiles[i].rectangle.right == tile_touched.rectangle.left :
-                if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
-                    if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i+1].image == Map.sky) :
-                        return (position[0], tile_touched.rectangle.top - 10), 0
-                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
-                    if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or (tiles[i].image == Map.sky and tiles[i + 1].image == Map.sky) :
-                        return (position[0], tile_touched.rectangle.bottom), 0
-
-            elif state == 1 and tiles[i].rectangle.left == tile_touched.rectangle.right :
-                if tiles[i].rectangle.bottom == tile_touched.rectangle.top :
-                    if tiles[i].image == Map.img17 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
-                        return (position[0], tile_touched.rectangle.top - 15), 0
-                elif tiles[i].rectangle.top == tile_touched.rectangle.bottom :
-                    if tiles[i].image == Map.img1 or tiles[i].image == Map.img9 or tiles[i-1].image == Map.sky :
-                        return (position[0], tile_touched.rectangle.bottom), 0
-
-            elif state == -2 or state == 2:
-                if self.rect.colliderect(tiles[i].rectangle)  and (tiles[i].image == Map.img8 or tiles[i].image == Map.img9) :
-                    return (position[0] - 5, position[1]), 1
-                else :
-                    return position, 0
-
-        return position, 0
+                if (state == -2 and tiles[i-29].image != Map.sky) or (state == 2 and tiles[i+31].image != Map.sky) :
+                    return position[0] - 45, position[1]
+                elif (state == -2 and tiles[i-28].image != Map.sky) or (state == 2 and tiles[i+32].image != Map.sky) :
+                    return position[0] - 10, position[1]
+                elif (state == -2 and tiles[i-31].image != Map.sky) or (state == 2 and tiles[i+29].image != Map.sky) :
+                    return position[0] + 10, position[1]
+        return position
 
     def not_teleportable(self, tiles, tile_touched) :
         for i in range(60, len(tiles)-60) :
@@ -80,3 +72,9 @@ class Portal() :
                 if tiles[i+60].image != Map.sky and self.state == 2:
                     return False
         return True
+
+    def delete_portal(self, second_portal) :
+        self.pos_x = -75
+        self.pos_y = -75
+        second_portal.pos_x = -75
+        second_portal.pos_y = -75

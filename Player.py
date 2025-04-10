@@ -207,7 +207,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                             top = True
                         else :
                             right = True
-                if tile.image == Map.img2 :
+                elif tile.image == Map.img2 :
                     if self.isgrounded:
                         if self.rect_final.bottom - 5 <= tile.rectangle.top:
                             top = True
@@ -218,6 +218,11 @@ class ThePlayer(pygame.sprite.Sprite) :
                             top = True
                         else:
                             left = True
+
+                if tile.image == Map.img16 :
+                    bottom = True
+                elif tile.image == Map.img18 :
+                    bottom = True
 
                 if tile.image == Map.img1 or top :
                     self.isgrounded = True
@@ -239,7 +244,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                     self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
                 if tile.image == Map.img48 :
-                    self.state=1
+                    self.state = 1
         air=True
         for collide in collisions :
             if collide.image == Map.img1 or collide.image == Map.img0 or collide.image == Map.img2 :

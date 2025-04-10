@@ -54,7 +54,7 @@ class Arrow() :
         self.position_x = position[0]
         self.position_y = position[1]
         self.image = pygame.transform.scale(pygame.image.load("assets/Arrow.png"), (pygame.image.load("assets/Arrow.png").get_width() * 3, pygame.image.load("assets/Arrow.png").get_height() * 3))
-        self.rect = pygame.Rect(position[0], position[1], 25, 25)
+        self.rect = pygame.Rect(position[0], position[1], 10, 10)
         self.portal_state = 0
         self.sono = SoundManager(False)
 

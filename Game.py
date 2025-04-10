@@ -1,6 +1,7 @@
     # Gère les intéractions d'une partie (un niveau)
 
 import pygame
+import Map
 from Map import Create_map
 from pygame import mouse
 import equation_trajectory
@@ -42,7 +43,6 @@ def game(level, game, screen, height, width, world, help, skin) :
     clock = pygame.time.Clock()
     target_fps=60
 
-
     possible1 = False
     possible2 = False
     aiming=False
@@ -62,13 +62,7 @@ def game(level, game, screen, height, width, world, help, skin) :
     laser=True
     cd_cpt=0
 
-    if world == 0 :
-        background=pygame.image.load("assets/fond2.jpg")
-    elif world == 1 :
-        background = pygame.image.load("assets/fond.jpg")
-    elif world == 2 :
-        background = pygame.image.load("assets/fond1.png")
-
+    background = pygame.image.load(f"assets/fond{str(world)}.png")
     background = pygame.transform.scale(background, (width, height))
 
     line_txt = liste_dialog[level]
@@ -101,6 +95,10 @@ def game(level, game, screen, height, width, world, help, skin) :
                     if event.key == pygame.K_SPACE:
                         if player.isgrounded:
                             player.jump()
+                    if event.key == pygame.K_m:
+                        portal_1.delete_portal(portal_2)
+                        possible1, possible2 = False, False
+                        player = ThePlayer(start_position[level][0], start_position[level][1], skin)
                 if event.key == pygame.K_e:
                     if not shoted :
                         number_arrow = -number_arrow
