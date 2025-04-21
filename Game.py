@@ -195,7 +195,6 @@ def game(level, game, screen, height, width, world, help, skin) :
 
                         list_point.append(equation_trajectory.trajectory_line(power*25, -angle2,i/10,9.8 , player.position_x+30, player.position_y+20))
 
-
                     for point in list_point:
                         if number_arrow == 1:
                             pygame.draw.circle(screen, (68, 107, 166), point, 2)
@@ -210,7 +209,6 @@ def game(level, game, screen, height, width, world, help, skin) :
         portal_2.animate()
         screen.blit(portal_1.image, (portal_1.pos_x, portal_1.pos_y))
         screen.blit(portal_2.image, (portal_2.pos_x, portal_2.pos_y))
-        #player.hit_x(tiles), player.hit_y(tiles)
 
         if possible1 and possible2 :
             if t_cooldown>=3:
@@ -255,7 +253,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                 pygame.draw.rect(screen, (0, 0, 0), cant_play_rect)
                 screen.blit(text_cant_play, (335, 500))
 
-        player.hit_something(tiles, screen)
+        player.hit_something(tiles)
 
         if player.rect_final.x >= 880: #au lieu d'un rect_end j'ai juste fais quand on arrive a droite de l'ecran ca sera plus fluide
             if level<5:

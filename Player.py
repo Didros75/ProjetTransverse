@@ -5,8 +5,19 @@ import pygame
 import Map
 
 class ThePlayer(pygame.sprite.Sprite) :
-    def __init__(self, position_x, position_y,skin, gravity = 0.6, LEFT = False, RIGHT = False, SPACE = False) :
+    def __init__(self, position_x, position_y,skin, gravity = 0.6) :
+        """
+        Initialise les variables qui caractérisent le joueur
+
+        :param position_x: position de départ du joueur su l'axe x
+        :param position_y: position de départ du joueur su l'axe y
+        :param skin: défini le skin actuel du joueur
+        :param gravity: défini la gravité (plus ell est haute plus alle agit sur le joueur)
+        """
         pygame.sprite.Sprite.__init__(self)
+
+        # Définie la vitesse, la position et l'accélération initiale
+
         self.speed_x = 0
         self.speed_y = 0
         self.gravity = gravity
@@ -17,11 +28,16 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.friction=-0.2
         self.isgrounded = False
         self.state = 0
-        self.LEFT = LEFT
-        self.RIGHT = RIGHT
-        self.SPACE = SPACE
+
+        # Définie les touches sur lesquelles le joueur appuie (False si le joueur ne fait rien)
+
+        self.LEFT = False
+        self.RIGHT = False
+        self.SPACE = False
         self.facingLeft = False
         self.aiming=False
+
+        # Définie les images et paramètres utiles à l'affichage du joueur
 
         self.sprites_right = [pygame.image.load(f"assets/{skin}/l0_Running{i}.png") for i in range(1, 5)]
         self.sprites_left = [pygame.transform.flip(img, True, False) for img in self.sprites_right]
@@ -38,6 +54,11 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.rect_final = pygame.Rect(position_x, position_y, 40, 50)
 
     def animate(self, angle=0):
+        """
+        Gère l'animation du joueur
+
+        :param angle: Angle en radians représentant la direction de visée
+        """
         if self.LEFT or self.RIGHT:
             self.frame_count += self.animation_speed
             if self.frame_count >= len(self.sprites_right):
@@ -69,11 +90,14 @@ class ThePlayer(pygame.sprite.Sprite) :
 
     def get_position(self) :
         """
-        retourne la position du joueurr
+        retourne la position du joueur
         """
         return self.position_x, self.position_y
 
     def jump(self) :
+        """
+        Permet de faire sauter le joueur
+        """
         if self.isgrounded :
             self.isgrounded = False
             self.speed_y = 10
@@ -88,28 +112,56 @@ class ThePlayer(pygame.sprite.Sprite) :
         return self.state
 
     def draw(self, ref) :
+        """
+        Affiche le joueur
+
+        :param ref: l'endroit sur lequel le joueur doit être affiché
+        """
         self.image = pygame.transform.scale(self.image, (40, 50))
         ref.blit(self.image, (self.position_x, self.position_y))
-        #pygame.draw.rect(ref, "white", self.rect_final)
 
     def move_x(self, dt) :
+        """
+        Permet au joueur d'avancer sur l'axe x (vers la gauche ou la droite)
+
+        :param dt: temps écoulé depuis la dernière frame
+        """
+
+        # Modifie l'accélération du joueur en fonction de son déplacement
+
         self.acceleration_x = 0
         if self.LEFT :
             self.acceleration_x -=5
         if self.RIGHT :
             self.acceleration_x +=5
         self.acceleration_x += self.speed_x * self.friction
+
+        # Modifie la vitesse et définie la nouvelle position du joueur
+
         self.speed_x+=self.acceleration_x * dt
         self.max_speed(8)
         self.position_x += (0.5 * self.acceleration_x) * (dt*dt) + self.speed_x * dt
         self.rect_final.x = self.position_x
 
     def max_speed(self, maxi) :
+        """
+        Empêche le joueur de dépasse une vitesse maximale
+
+        :param maxi: définie la vitesse maximale que le joueur peut atteindre
+        """
         min(-maxi, max(self.speed_x, maxi))
         if abs(self.speed_x) > maxi :
             self.speed_x = 0
 
     def move_y(self, dt) :
+        """
+        Permet au joueur d'avancer sur l'axe y (vers le haut ou le bas)
+
+        :param dt: temps écoulé depuis la dernière frame
+        """
+
+        # Change la vitesse et la définie la nouvelle position du joueur
+
         if self.isgrounded == False :
             self.speed_y -= self.gravity * dt
         if self.speed_y <= -20:
@@ -117,78 +169,23 @@ class ThePlayer(pygame.sprite.Sprite) :
         self.position_y -= (0.5*self.acceleration_y) * (dt*dt) + self.speed_y * dt
         self.rect_final.y = self.position_y
 
-    """def hit_something(self, tiles, screen) :
-        tilesx_hits = []
-        tilesy_hits = []
-        if 0>self.speed_y>-0.6:
-            self.speed_y = 0
+    def hit_something(self, tiles) :
+        """
+        Gère les collisions entre les tuiles et le joueur
 
-        for tile in tiles:
-            if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
-                if self.rect.bottom > tile.rectangle.top > self.rect.top:  # Collision sol
-                    tilesy_hits.append(tile)
-
-                elif self.rect.top < tile.rectangle.bottom < self.rect.bottom:  # Collision plafond
-                    tilesy_hits.append(tile)
-
-            if self.rectx.colliderect(tile.rectangle) and tile.image != Map.sky :
-                if self.rectx.right > tile.rectangle.left >= self.rectx.left:
-                    tilesx_hits.append(tile)
-
-                elif self.rectx.left < tile.rectangle.right <= self.rectx.right :
-                    tilesx_hits.append(tile)
-
-        self.isgrounded = any(tile.rectangle.top <= self.rect.bottom <= tile.rectangle.bottom for tile in tilesy_hits)
-        print("X : ", tilesx_hits)
-        print("Y : ", tilesy_hits)
-        print()
-        pygame.draw.rect(screen, 'black', self.rect)
-        pygame.draw.rect(screen, 'white', self.rectx)
-        return tilesx_hits, tilesy_hits
-
-    def hit_y(self, collisions) :
-        #collisions = self.hit_something(tiles)[1]
-        #for tile in collisions :
-        if collisions != [] :
-            tile = collisions[-1]
-            if self.speed_y <= 0 :
-                    self.isjumping = False
-                    self.acceleration_y = 0
-                    self.position_y = tile.rectangle.top - 45
-                    self.rect.bottom = self.position_y + 50
-                    self.rectx.bottom = self.position_y + 40
-                    self.speed_y = 0
-            else :
-                    self.speed_y = 0
-                    self.acceleration_y = 0
-                    self.position_y = tile.rectangle.bottom
-                    self.rect.top = self.position_y
-                    self.rectx.top = self.position_y + 5
-
-    def hit_x(self, collisions) :
-        #collisions = self.hit_something(tiles)[0]
-        #for tile in collisions :
-        if collisions != [] :
-                tile = collisions[-1]
-                if self.speed_x > 0 :
-                    self.speed_x = 0
-                    self.position_x = tile.rectangle.left - 35
-                    self.rect.right = tile.rectangle.left - 5
-                    self.rectx.right = tile.rectangle.left
-                else :
-                    self.speed_x = 0
-                    print("aaa")
-                    self.position_x = tile.rectangle.right + 5
-                    self.rect.left = self.position_x + 5
-                    self.rectx.left = self.position_x"""
-
-    def hit_something(self, tiles, screen) :
+        :param tiles: une liste de toutes les tuiles sur la map
+        """
         if 0 > self.speed_y > -0.6:
             self.speed_y = 0
+
+        # Parcours toutes les tuiles et vérifie si le joueur les touche ou pas
 
         collisions = []
         for tile in tiles :
             if self.rect_final.colliderect(tile.rectangle) and tile.image != Map.sky :
+
+                # Gère les collisions avec les coins
+
                 top = False
                 right = False
                 bottom = False
@@ -196,7 +193,7 @@ class ThePlayer(pygame.sprite.Sprite) :
 
                 collisions.append((tile))
 
-                if tile.image == Map.img0 :
+                if tile.image == Map.img0 : # Coin en haut à gauche
                     if self.isgrounded :
                         if self.rect_final.bottom - 5 <= tile.rectangle.top :
                             top = True
@@ -207,7 +204,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                             top = True
                         else :
                             right = True
-                elif tile.image == Map.img2 :
+                elif tile.image == Map.img2 : # Coin en haut à droite
                     if self.isgrounded:
                         if self.rect_final.bottom - 5 <= tile.rectangle.top:
                             top = True
@@ -219,32 +216,38 @@ class ThePlayer(pygame.sprite.Sprite) :
                         else:
                             left = True
 
-                if tile.image == Map.img16 :
+                if tile.image == Map.img16 : # Coins en bas
                     bottom = True
                 elif tile.image == Map.img18 :
                     bottom = True
 
-                if tile.image == Map.img1 or top :
+                if tile.image == Map.img1 or top : # Collision par le haut
                     self.isgrounded = True
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - self.rect_final.height+1
                     self.rect_final.top = self.position_y
-                elif tile.image == Map.img17 or bottom :
+                elif tile.image == Map.img17 or bottom : # Collision par le bas
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom + 1
                     self.rect_final.top = self.position_y
-                if tile.image == Map.img8 or right :
+                if tile.image == Map.img8 or right : # Collision par la droite
                     self.speed_x = 0
                     self.position_x = tile.rectangle.left - self.rect_final.width
                     self.rect_final.left = self.position_x
-                elif tile.image == Map.img10 or left :
+                elif tile.image == Map.img10 or left : # Collision par la gauche
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
+
+                # Collision avec un laser (on active la mort du joueur)
+
                 if tile.image == Map.img48 :
                     self.state = 1
+
+        # Change le statut di joueur (si il touche le sol ou non)
+
         air=True
         for collide in collisions :
             if collide.image == Map.img1 or collide.image == Map.img0 or collide.image == Map.img2 :

@@ -11,7 +11,7 @@ def dialog_box(line, screen, skin, index, talker=2):
     elif line in dialogs_reaper:
         talker=1
     font=pygame.font.SysFont(None, 30)
-    box=pygame.transform.scale(pygame.image.load("assets/meni_menu/dialog.png"), (500, 150))
+    box=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (500, 150))
 
     hero_idle = [pygame.image.load(f"assets/{skin}/l0_sprite_{i}.png") for i in range(1, 5)]
     reaper_idle = [pygame.transform.scale(pygame.image.load(f"assets/Reaper/l0_reaper_idle{i}.png"), (200, 200)) for i in range(1, 5)]
