@@ -2,6 +2,8 @@
 
 import pygame
 
+# Définitions de toutes les tuiles / objets necéssaire à la création d'un map
+
 sky = 0
 img0 = pygame.image.load('assets_tiles/top_left_corner.png')
 img1 = pygame.image.load('assets_tiles/top_side.png')
@@ -22,33 +24,58 @@ img50 = pygame.image.load('assets_tiles/button_left.png')
 img51 = pygame.image.load('assets_tiles/button_bottom.png')
 img52 = pygame.image.load('assets_tiles/button_right.png')
 
-
-#background=pygame.image.load("assets/Design sans titre.png")
-#background=pygame.image.load("assets/fond2.jpg")
-
 class Tile() :
     def __init__(self, image, x, y) :
+        """
+        Initialise les paramètres qui définissent une tuile
+
+        :param image: l'image de la tuile (coin, côté etc...)
+        :param x: son emplacement sur l'axe x
+        :param y: son emplacement sur l'axe y
+        """
         self.image = image
         self.pos_x = y
         self.pos_y = x
         self.rectangle = pygame.Rect(y, x, 30, 30)
 
     def draw(self, surface) :
+        """
+        Affiche la tuile
+
+        :param surface: La surface sur laquelle la tuile va être affichée
+        """
         surface.blit(self.image, (self.pos_x, self.pos_y))
 
 class Create_map() :
     def __init__(self, filename, screen) :
+        """
+        Initialise les paramètres de la Map
+
+        :param filename: le nom de la map à charger en csv (le niveau ou le tutoriel)
+        :param screen: l'endroit où va être affiché la map
+        """
         self.size_tile = 30
         self.tiles = self.load_tiles(filename)
         self.surface = screen
-        #self.load_map()
 
     def list_map(self, filename) :
+        """
+        Transforme un fichier csv en une liste de numéros représentant les tuiles
+
+        :param filename: le nom du fuchier csv à transformer
+        :return: une liste d'entiers
+        """
+
+        # Ouvre le fichier
+
         map = []
         file = open(filename, 'r')
         line = file.readline()
         map.append(line.split(","))
         while line != "" :
+
+            # Enlève le retour à la ligne du fichier
+
             if "\n" in map[-1][-1] :
                 map[-1][-1] = map[-1][-1][: -1]
             line = file.readline()
@@ -58,10 +85,22 @@ class Create_map() :
         return map
 
     def load_tiles(self, filename) :
+        """
+        Parcours une liste d'entiers et transforme chaque entier en tuile
+
+        :param filename: Le nom du fichier csv qui représente la map
+        :return: une liste de tuiles
+        """
+
+        # Charge le fichier csv et le transforme en liste d'entiers
+
         tiles = []
         map = self.list_map(filename)
         for x in range(len(map)) :
             for y in range(len(map[x])) :
+
+                # Associe chaque numéro à un type de tuile différent
+
                 if map[x][y] == "-1" :
                     tiles.append(Tile(sky, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "0":
@@ -103,11 +142,24 @@ class Create_map() :
         return tiles
 
     def load_map(self, background, laser) :
+        """
+        Affiche la map finale
+
+        :param background: l'arrière plan du niveau
+        :param laser: Un boléen à False si le joueur a désactivé les lasers, True sinon
+        :return: la liste des tuiles chargées et affichées
+        """
         self.surface.blit(background, (0, 0))
+
+        # Si les lasers sont désactivés on remplace la tuile laser par une tuile ciel
+
         if not laser:
             for i in range(len(self.tiles)):
                 if self.tiles[i].image == img48:
                     self.tiles[i].image = sky
+
+        # On affiche chaque tuile si elle ne fait pas partie du ciel
+
         for i in range(len(self.tiles)) :
             if self.tiles[i].image != sky :
                 self.tiles[i].draw(self.surface)

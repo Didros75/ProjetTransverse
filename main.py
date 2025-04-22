@@ -9,6 +9,12 @@ import skin_manager
 from sound_manager import SoundManager
 
 def begin_game() :
+    """
+    Fonction principale permettant de lancer le jeu
+    """
+
+    # Actualise les paramètres principaux (level de départ, skin etc...)
+
     pygame.init()
     sono=SoundManager()
     skin=0
@@ -21,33 +27,55 @@ def begin_game() :
     help=True
     window="menu" #ca represente la page sur laquelle on se trouve : si on est sur Menu et qu'on clique sur jouer, window va etre egal a level, puis a game quand on va choisir le lvl
 
+    # Boucle de jeu qui s'exécute tant que le joueur n'appuie pas sur la croix
+
     while window != "exit" :
+
+        # Appelle la classe skin quand le joueur clique sur l'icone associée
+
         if window == "skin":
             list=skin_manager.skin(screen, height, width, skin)
             window=list[0]
             skin=list[1]
+
+        # Appelle la classe tutoriel quand le joueur clique sur l'icone associée
+
         if window == "tuto":
             list=Game.game(0, True, screen, height, width, world, help, skin)
             window = list[0]
             level = list[1]
+
+        # Appelle la classe menu quand le joueur clique sur l'icone associée
+
         if window == "menu" :
             window = Menu.menu(screen, height, width)
+
+        # Appelle la classe level quand le joueur clique sur l'icone associée
+
         if window == "level" :
             list=level_selection.Level_selection(screen, height, width) #ici j'ai mis une liste parce que ca renvoie a la fois la fenetre choisie (si on a cliqué sur le bouton maison ou choisi un lvl), et egalement le niveau choisi, pour le mettre en parametre de game, parce qu'on repasse par le main pour lancer le jeu avec l'appelle de la fonction Game qui a besoin du lvl en argument
             window=list[0]
             level=list[1]
+
+        # Appelle la classe Jeu quand le joueur clique sur l'icone associée
+
         if window == "game" :
             list=Game.game(level, True, screen, height, width, world, help, skin)
             window = list[0]
             level = list[1] #pareil ici, ca modifie le lvl où on est si on reussi a terminer le niveau (on return game et level = level + 1 pour que ca enchaine sur le level suivant)
+
+        # Appelle la classe paramètres quand le joueur clique sur l'icone associée
+
         if window == "settings" :
             list=Settings.settings(screen, height, width, sound, help)
             window = list[0] #tous les parametres devront etre passés par ici pour faire le lien entre game et settings
             sound=list[1]
             help=list[2]
 
+            # Joue ou met sur pause la musique
+
             if sound==False :
-                sono.pause_music() #ca c'est avec la class sound manager flemme d'expliquer y touchez pas
+                sono.pause_music()
             else:
                 sono.resume_music()
 

@@ -50,7 +50,6 @@ def game(level, game, screen, height, width, world, help, skin) :
     shotable =  False
     movable = False
     cd=False
-    line_txt = liste_dialog[level]
     angle=0
     t=0
     t_cooldown=0

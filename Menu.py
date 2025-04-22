@@ -3,7 +3,18 @@ from sound_manager import SoundManager
 import pygame
 
 def menu(screen, height, width):
+    """
+    Fonction qui centralise toutes les actions liées aux skins
+
+    :param screen: l'écran sur lequel afficher le menu
+    :param height: la largeur de l'écran, un int
+    :param width: la longueur de l'écran, un int
+    :return: une chaine de caractère représentant une classe que le module main va afficher
+    """
     sono = SoundManager(False)
+
+    # Définie toues les éléments nécessaires pour afficher le menu principal
+
     button_height, button_width = 75, 187
     button=pygame.transform.scale(pygame.image.load('assets/meni_menu/bouton.png'), (button_width, button_height))
     settings_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/settings.png'), (button_height-15, button_height-15))
@@ -21,6 +32,8 @@ def menu(screen, height, width):
     skin_rect= pygame.Rect(width/2-(button_height-15)/2, 430, settings_button.get_width(), settings_button.get_height())
     exit_rect = pygame.Rect(width/2+(button_height-15)/2+5, 430, exit_button.get_width(), exit_button.get_height())
 
+    # Affiche tous ces éléments
+
     screen.blit(button, play_rect)
     screen.blit(settings_button, settings_rect)
     screen.blit(exit_button, exit_rect)
@@ -29,24 +42,43 @@ def menu(screen, height, width):
     screen.blit(text_tuto, (tutorial_rect[0]+15,tutorial_rect[1]+18 ,0, 0))
     screen.blit(text_play, (play_rect[0]+50,play_rect[1]+18 ,0, 0))
 
+    # Boucle qui s'éxecute tant que le joueur est sur le menu
 
     pygame.display.flip()
     in_game = True
     while in_game:
+
+        # Parcours les évènements possibles que le joueur peut lancer
+
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
+
+                # Si le joueur appuie sur le bouton tutoriel la fontion va retourner tuto
+
                 if tutorial_rect.collidepoint(pygame.mouse.get_pos()):
                     sono.play_button_sound()
                     return "tuto"
+
+                # Si le joueur appuie sur le bouton skin la fontion va retourner la page skin
+
                 if skin_rect.collidepoint(pygame.mouse.get_pos()):
                     sono.play_button_sound()
                     return "skin"
+
+                # Si le joueur appuie sur le bouton joueur la fontion va retourner la page level
+
                 if play_rect.collidepoint(event.pos):
                     sono.play_button_sound()
                     return "level"
+
+                # Si le joueur appuie sur le bouton paramètres la fontion va retourner la page settings
+
                 if settings_rect.collidepoint(event.pos):
                     sono.play_button_sound()
                     return "settings"
+
+                # Si le joueur appuie sur le bouton quitter la fontion va arrêter le jeu
+
                 if exit_rect.collidepoint(event.pos):
                     sono.play_button_sound()
                     pygame.quit()
@@ -56,4 +88,3 @@ def menu(screen, height, width):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return False
-
