@@ -9,10 +9,10 @@ class ThePlayer(pygame.sprite.Sprite) :
         """
         Initialise les variables qui caractérisent le joueur
 
-        :param position_x: position de départ du joueur su l'axe x
-        :param position_y: position de départ du joueur su l'axe y
-        :param skin: défini le skin actuel du joueur
-        :param gravity: défini la gravité (plus ell est haute plus alle agit sur le joueur)
+        :param position_x: position de départ du joueur su l'axe x (int)
+        :param position_y: position de départ du joueur su l'axe y (int)
+        :param skin: définit le skin actuel du joueur (chaine de caractère)
+        :param gravity: définit la gravité (plus elle est haute plus elle agit sur le joueur), int
         """
         pygame.sprite.Sprite.__init__(self)
 
