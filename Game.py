@@ -16,6 +16,7 @@ def game(level, game, screen, height, width, world, help, skin) :
     sono=SoundManager(False)
     power = 0
     liste_dialog=[0, 8, 12, 8, 8, 8]
+    line_txt = liste_dialog[level]
 
     bow = Bow()
 
@@ -49,7 +50,6 @@ def game(level, game, screen, height, width, world, help, skin) :
     shoted=False
     shotable =  False
     movable = False
-    cd=False
     angle=0
     t=0
     t_cooldown=0
@@ -59,12 +59,9 @@ def game(level, game, screen, height, width, world, help, skin) :
     line_len=50
     collision=0
     laser=True
-    cd_cpt=0
 
     background = pygame.image.load(f"assets/fond{str(world)}.png")
     background = pygame.transform.scale(background, (width, height))
-
-    line_txt = liste_dialog[level]
 
     while game:
 
@@ -121,7 +118,6 @@ def game(level, game, screen, height, width, world, help, skin) :
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if event.button==1 and shoted==False and aiming==True and shotable:
-
                     angle = equation_trajectory.angle(player.position_x+player.rect_final.width/2, player.position_y+player.rect_final.height/2, mouse.get_pos()[0], mouse.get_pos()[1])
                     power=t
                     t = 0
@@ -141,7 +137,6 @@ def game(level, game, screen, height, width, world, help, skin) :
                     player.isjumping=False
 
         angle2 = equation_trajectory.angle(player.position_x+player.rect_final.width/2, player.position_y+player.rect_final.height/2, mouse.get_pos()[0], mouse.get_pos()[1])
-
         collision = 0
 
         if shoted :
@@ -222,23 +217,19 @@ def game(level, game, screen, height, width, world, help, skin) :
                         player.position_y = port.rect.y-70
                         player.position_x=port.rect.x+30
 
-
                     elif port.state==2:
                         player.position_y = port.rect.y+10
                         player.position_x = port.rect.x +30
-
 
                     elif port.state==-1:
                         player.speed_x = -player.speed_x
                         player.position_y = port.rect.y
                         player.position_x = port.rect.x -30
 
-
                     elif port.state == 1:
                         player.speed_x = -player.speed_x
                         player.position_y = port.rect.y
                         player.position_x = port.rect.x - player.rect_final.width+30
-
 
                     t_cooldown = 0
                     player.move_y(dt)
@@ -260,8 +251,6 @@ def game(level, game, screen, height, width, world, help, skin) :
             else:
                 return "menu", level
 
-
-
         screen.blit(menu_button, menu_rect)
         screen.blit(reset_button, reset_rect)
 
@@ -274,7 +263,4 @@ def game(level, game, screen, height, width, world, help, skin) :
             movable=True
             shotable=True
 
-
-
         pygame.display.flip()
-

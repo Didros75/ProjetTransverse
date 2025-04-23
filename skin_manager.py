@@ -47,7 +47,7 @@ def skin(screen, height, width, skin_num=0):
     screen.blit(menu_button, menu_rect)
     screen.blit(exit_button, exit_rect)
 
-    # Boucle qui s'exécute tant que le joueur n'a pas quitté le menu des skins
+    # Boucle qui s'exécute tant que le joueur n'a pas quitté la fenêtre des skins
 
     index=0
     in_game = True
