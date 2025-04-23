@@ -31,7 +31,7 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     # Définit où commence les dialogues à chaque niveau et choisit le dialogue du level actuel
 
-    liste_dialog=[0, 8, 12, 8, 8, 8]
+    liste_dialog=[0, 8, 12, 16, 20, 24, 28, 32, 35, 40, 44, 48, 52]
     line_txt = liste_dialog[level]
 
     # Définition les différentes positions de départ et crée le joueur à cet endroit
