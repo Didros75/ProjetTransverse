@@ -128,7 +128,7 @@ class Arrow() :
 
                 # Collision avec les lasers
 
-                if tile.image==Map.img48 or tile.image == Map.img9 :
+                if tile.image==Map.img48 or tile.image == Map.img54 :
                     return False, 0
 
                 # Collision avec un boutton
@@ -138,8 +138,8 @@ class Arrow() :
                     return False, 1
 
                 # Collision avec un tuile
-
-                return False, tile
+                if tile.image!=Map.img_empty and tile.image!=Map.img_empty_horizontal:
+                    return False, tile
 
         # Flèche qui déborde du cadre, sinon, elle retourne True car pas de collision
 

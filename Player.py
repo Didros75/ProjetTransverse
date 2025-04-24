@@ -243,7 +243,7 @@ class ThePlayer(pygame.sprite.Sprite) :
 
                 # Collision avec un laser (on active la mort du joueur)
 
-                if tile.image == Map.img48 :
+                if tile.image == Map.img48 or tile.image==Map.img54:
                     self.state = 1
 
         # Change le statut di joueur (si il touche le sol ou non)

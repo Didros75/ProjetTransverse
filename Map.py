@@ -23,7 +23,9 @@ img49 = pygame.image.load('assets_tiles/button.png')
 img50 = pygame.image.load('assets_tiles/button_left.png')
 img51 = pygame.image.load('assets_tiles/button_bottom.png')
 img52 = pygame.image.load('assets_tiles/button_right.png')
-
+img_empty = pygame.image.load('assets_tiles/empty.png')
+img_empty_horizontal=pygame.image.load('assets_tiles/empty_horizontal.png')
+img54 = pygame.image.load('assets_tiles/laser_horizontal.png')
 class Tile() :
     def __init__(self, image, x, y) :
         """
@@ -127,6 +129,8 @@ class Create_map() :
                     tiles.append(Tile(img26, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "48" :
                     tiles.append(Tile(img48, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "54" :
+                    tiles.append(Tile(img54, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "40" :
                     tiles.append(Tile(img40, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "42" :
@@ -139,6 +143,10 @@ class Create_map() :
                     tiles.append(Tile(img51, x * self.size_tile, y * self.size_tile))
                 elif map[x][y] == "52" :
                     tiles.append(Tile(img52, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "53" :
+                    tiles.append(Tile(img_empty, x * self.size_tile, y * self.size_tile))
+                elif map[x][y] == "55" :
+                    tiles.append(Tile(img_empty_horizontal, x * self.size_tile, y * self.size_tile))
         return tiles
 
     def load_map(self, background, laser) :
@@ -156,7 +164,15 @@ class Create_map() :
         if not laser:
             for i in range(len(self.tiles)):
                 if self.tiles[i].image == img48:
-                    self.tiles[i].image = sky
+                    self.tiles[i].image = img_empty
+                if self.tiles[i].image == img_empty_horizontal:
+                    self.tiles[i].image = img54
+        elif laser:
+            for i in range(len(self.tiles)):
+                if self.tiles[i].image == img_empty:
+                    self.tiles[i].image = img48
+                if self.tiles[i].image == img54:
+                    self.tiles[i].image = img_empty_horizontal
 
         # On affiche chaque tuile si elle ne fait pas partie du ciel
 

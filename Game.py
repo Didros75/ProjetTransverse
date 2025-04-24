@@ -36,7 +36,7 @@ def game(level, game, screen, height, width, world, help, skin) :
 
     # Définition les différentes positions de départ et crée le joueur à cet endroit
 
-    start_position = [(40, 340), (10, 430), (10, 430), (10, 240), (10, 430), (10, 430)]
+    start_position = [(40, 340), (10, 430), (10, 430), (10, 240),(10, 240), (10, 430), (10, 430), (10, 50), (10, 430), (10, 430), (10, 430), (10, 430), (10, 80)]
     player = ThePlayer(start_position[level][0], start_position[level][1], skin)
 
     # Crée les boutons pour recommencer le jeu ou retourner au menu
@@ -59,6 +59,15 @@ def game(level, game, screen, height, width, world, help, skin) :
             map = Create_map("Maps/map_tutorial.csv", screen)
     else:
             map = Create_map(f"Maps/map{level}.csv", screen)
+
+    if 1<=level<=4:
+        world=0
+    elif 5<=level<=8:
+        world=1
+    elif 9<=level<=12:
+        world=2
+    level_number=12
+
     background = pygame.image.load(f"assets/fond{str(world)}.png")
     background = pygame.transform.scale(background, (width, height))
 
@@ -88,7 +97,10 @@ def game(level, game, screen, height, width, world, help, skin) :
         # Si le joueur a touché les lasers ils sont désactivés puis la map est affichée
 
         if collision == 1 :
-            laser=False
+            if laser :
+                laser=False
+            else:
+                laser=True
         tiles = map.load_map(background, laser)
 
         # Si le joueur est mort on le recrée à la position de départ
@@ -142,6 +154,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                     portal_1.delete_portal(portal_2)
                     possible1, possible2 = False, False
                     player = ThePlayer(start_position[level][0], start_position[level][1], skin)
+                    laser=True
 
                 # Si le joueur effectue un clique gauche il se met à viser
 
@@ -288,7 +301,7 @@ def game(level, game, screen, height, width, world, help, skin) :
 
                     elif port.state==2: # Cas où le portail est orienté vers le bas
                         player.position_y = port.rect.y+10
-                        player.position_x = port.rect.x +30
+                        player.position_x = port.rect.x +10
 
                     elif port.state==-1:    # Cas où le portail est orienté vers la gauche
                         player.speed_x = -player.speed_x
@@ -300,7 +313,8 @@ def game(level, game, screen, height, width, world, help, skin) :
                         player.position_y = port.rect.y
                         player.position_x = port.rect.x - player.rect_final.width+30
                     t_cooldown = 0
-
+                player.rect_final.x=player.position_x
+                player.rect_final.y=player.position_y
         # Sinon s'il ne peut pas se téléporter on affiche un message sur l'écran
 
         else :
@@ -318,7 +332,7 @@ def game(level, game, screen, height, width, world, help, skin) :
         # Si le joueur arrive à droite de l'écran on passe au niveau suivant
 
         if player.rect_final.x >= 880:
-            if level<5:
+            if level<level_number:
                 return "game", level+1
             else:
                 return "menu", level

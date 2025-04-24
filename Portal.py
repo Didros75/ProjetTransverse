@@ -109,7 +109,7 @@ class Portal() :
 
                 # Vérifie si un bloc existe en dessous du portail et qu'il est dirigé vers le bas
 
-                if tiles[i+60].image != Map.sky and self.state == 2:
+                if tiles[i-60].image != Map.sky and self.state == 2:
                     return False
         return True
 
