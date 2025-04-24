@@ -21,8 +21,8 @@ def dialog_box(line, screen, skin, index, talker=2):
     # Définie les lignes dans le fichier où le joueur et son ennemi parle
     # puis définit celui qui dit le dialogue à afficher
 
-    dialogs_hero=[13, 17, 21, 25, 29, 32, 36, 41, 45, 49, 52]
-    dialogs_reaper=[8, 9, 12, 16, 20, 24, 28, 35, 37, 40, 44, 48, 43]
+    dialogs_hero=[13, 17, 21, 25, 29, 32, 37, 41, 45, 49, 52]
+    dialogs_reaper=[8, 9, 12, 16, 20, 24, 28, 35, 36, 40, 44, 48, 43, 53]
     if line in dialogs_hero:
         talker=0
     elif line in dialogs_reaper:

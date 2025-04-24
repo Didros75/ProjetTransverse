@@ -2,7 +2,6 @@
 
 import pygame
 import Map
-import time
 
 class Portal() :
     def __init__(self, x=0, y=0, num=1):
@@ -91,7 +90,7 @@ class Portal() :
                     return position[0] + 10, position[1]
         return position
 
-    def not_teleportable(self, tiles, tile_touched) :
+    def not_teleportable(self, tiles, tile_touched, screen) :
         """
         Vérifie qu'il est possible que le joueur puisse se téléporter
 
@@ -104,12 +103,14 @@ class Portal() :
 
                 # Vérifie si un bloc existe au dessus du portail et qu'il est dirigé vers le haut
 
-                if tiles[i-60].image != Map.sky and self.state == -2:
+                if (tiles[i-60].image != Map.sky) and self.state == -2:
+                    pygame.draw.rect(screen, "white", tiles[i-60].rectangle)
+                    print(tiles[i-60].image)
                     return False
 
                 # Vérifie si un bloc existe en dessous du portail et qu'il est dirigé vers le bas
 
-                if tiles[i-60].image != Map.sky and self.state == 2:
+                if (tiles[i+60].image != Map.sky) and self.state == 2:
                     return False
         return True
 

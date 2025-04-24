@@ -62,7 +62,7 @@ def Level_selection(screen, height, width):
                     sono.play_button_sound()
                     return "menu", 0
 
-                # Si le joueur appuie sur un bouton level, il est redirigé vers ce level
+                # Si le joueur appuie sur un bouton chapitre, il est redirigé vers ce chapitre
 
                 for rect, number in buttons:
                     if rect.collidepoint(event.pos):
@@ -72,7 +72,7 @@ def Level_selection(screen, height, width):
                         elif int(number) == 2:
                             return "game", 5
                         elif int(number) == 3:
-                            return "game", 9
+                            return "game", 12
 
 
             # Permet à l'utilisateur de quitter la page principale
