@@ -11,8 +11,9 @@ from Portal import Portal
 from sound_manager import SoundManager
 import time
 from Story_functions import *
-
-def game(level, game, screen, height, width, world, help, skin) :
+from chrono import Chrono
+from chrono import ClassementCSV
+def game(level, game, screen, height, width, world, help, skin, ranked=False, name='', time=0) :
     """
     Lance un niveau ou le tutoriel et l'éxecute tant que le joueur est en partie
 
@@ -28,6 +29,7 @@ def game(level, game, screen, height, width, world, help, skin) :
     :return: un entier un correspond au prochain niveau
     """
     sono=SoundManager(False)    # Le son
+    classement = ClassementCSV("best_time.csv") #le classement de la ranked
 
     # Définit où commence les dialogues à chaque niveau et choisit le dialogue du level actuel
 
@@ -60,6 +62,12 @@ def game(level, game, screen, height, width, world, help, skin) :
     else:
             map = Create_map(f"Maps/map{level}.csv", screen)
 
+    if level == 1:
+        chrono = Chrono()  # le chronomètre
+        chrono.start()
+        time=chrono.start_time
+    else:
+        chrono = Chrono(time)
     if 1<=level<=4:
         world=0
     elif 5<=level<=8:
@@ -146,7 +154,7 @@ def game(level, game, screen, height, width, world, help, skin) :
                 # Si le joueur appuie sur le bouton du menu il est redirigé vers la fenêtre principale
 
                 if menu_rect.collidepoint(event.pos):
-                    return "menu", level
+                    return "menu", level, time
 
                 # Si le joueur appuie sur le bouton recommencer le niveau est remis à 0
 
@@ -280,8 +288,8 @@ def game(level, game, screen, height, width, world, help, skin) :
         screen.blit(menu_button, menu_rect)
         screen.blit(reset_button, reset_rect)
 
-        print(possible1)
-        print(possible2)
+
+
         if possible1 and possible2 :
             if t_cooldown>=3:
 
@@ -335,18 +343,25 @@ def game(level, game, screen, height, width, world, help, skin) :
 
         if player.rect_final.x >= 880:
             if level<level_number:
-                return "game", level+1
+                return "game", level+1, time
             else:
-                return "menu", level
+                if ranked:
+                    classement.ajouter_score(name, classement._time_to_str(chrono.stop()))
+                return "menu", level, time
+
 
         # On affiche les boites de dialogue si besoin
-
-        if dialog_box(line_txt, screen, skin, t) == 1:
-            movable = False
-            shotable = False
-            if clicked:
-                line_txt+=1
+        if not ranked:
+            if dialog_box(line_txt, screen, skin, t) == 1:
+                movable = False
+                shotable = False
+                if clicked:
+                    line_txt+=1
+            else:
+                movable=True
+                shotable=True
         else:
-            movable=True
-            shotable=True
+            movable = True
+            shotable = True
+
         pygame.display.flip()

@@ -18,19 +18,22 @@ def menu(screen, height, width):
     button_height, button_width = 75, 187
     button=pygame.transform.scale(pygame.image.load('assets/meni_menu/bouton.png'), (button_width, button_height))
     settings_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/settings.png'), (button_height-15, button_height-15))
-    exit_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/X.png'), (button_height-15, button_height-15))
+    exit_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/X.png'), (button_height, button_height))
     skin_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Skin.png'), (button_height-15, button_height-15))
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
+    leader_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Leader_board.png'), (button_height-15, button_height-15))
     screen.blit(background, (0, 0))
     font=pygame.font.Font(None, 60)
-    text_play = font.render("Play", True, (255, 255, 255))
-    text_tuto = font.render("Tutorial", True, (255, 255, 255))
+    text_play = font.render("Jouer", True, (255, 255, 255))
+    text_tuto = font.render("Tutoriel", True, (255, 255, 255))
 
     play_rect = pygame.Rect(width/2-button_width/2, 270, button.get_width(), button.get_height())
     tutorial_rect=pygame.Rect(width/2-button_width/2, 350, button.get_width(), button.get_height())
     settings_rect = pygame.Rect(width/2-3*(button_height-15)/2-5, 430, settings_button.get_width(), settings_button.get_height())
     skin_rect= pygame.Rect(width/2-(button_height-15)/2, 430, settings_button.get_width(), settings_button.get_height())
-    exit_rect = pygame.Rect(width/2+(button_height-15)/2+5, 430, exit_button.get_width(), exit_button.get_height())
+    leader_rect = pygame.Rect(width/2+(button_height-15)/2+5, 430, leader_button.get_width(), leader_button.get_height())
+    exit_rect = pygame.Rect(width-button_height-35, 35, exit_button.get_width(), exit_button.get_height())
+
 
     # Affiche tous ces éléments
 
@@ -38,9 +41,10 @@ def menu(screen, height, width):
     screen.blit(settings_button, settings_rect)
     screen.blit(exit_button, exit_rect)
     screen.blit(skin_button, skin_rect)
+    screen.blit(leader_button, leader_rect)
     screen.blit(button, tutorial_rect)
     screen.blit(text_tuto, (tutorial_rect[0]+15,tutorial_rect[1]+18 ,0, 0))
-    screen.blit(text_play, (play_rect[0]+50,play_rect[1]+18 ,0, 0))
+    screen.blit(text_play, (play_rect[0]+35,play_rect[1]+18 ,0, 0))
 
     # Boucle qui s'éxecute tant que le joueur est sur le menu
 
@@ -76,6 +80,12 @@ def menu(screen, height, width):
                 if settings_rect.collidepoint(event.pos):
                     sono.play_button_sound()
                     return "settings"
+
+                # Si le joueur appuie sur le bouton du leaderboard, il retourne la page leaderboard
+
+                if leader_rect.collidepoint(event.pos):
+                    sono.play_button_sound()
+                    return "leaderboard"
 
                 # Si le joueur appuie sur le bouton quitter la fontion va arrêter le jeu
 

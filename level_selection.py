@@ -3,7 +3,7 @@
 import pygame
 from sound_manager import SoundManager
 
-def Level_selection(screen, height, width):
+def Level_selection(screen, height, width, ranked):
     """
     Affiche le menu du choix des niveaux et gère les évènements qui y sont liés
 
@@ -15,7 +15,8 @@ def Level_selection(screen, height, width):
     """
 
     # Initialise tous les éléments nécessaires à la création du menu des niveaux
-
+    if ranked:
+        return "game", 1
     button_dim=100
     sono = SoundManager(False)
     font = pygame.font.Font(None, 50)
