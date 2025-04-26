@@ -1,7 +1,6 @@
 import pygame
 from sound_manager import SoundManager
 from chrono import ClassementCSV
-import csv
 
 def leader_menu(screen, height, width):
     button_size=75
