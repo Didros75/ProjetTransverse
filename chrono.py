@@ -10,8 +10,6 @@ class Chrono:
         self.start_time = datetime.now()
         self.end_time = None
 
-
-
     def stop(self):
         self.end_time = datetime.now()
         elapsed = self.end_time - self.start_time
@@ -89,4 +87,3 @@ class ClassementCSV:
             temps.append("")
 
         return noms, temps
-

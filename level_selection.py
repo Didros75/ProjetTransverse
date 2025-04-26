@@ -75,7 +75,6 @@ def Level_selection(screen, height, width, ranked):
                         elif int(number) == 3:
                             return "game", 12
 
-
             # Permet à l'utilisateur de quitter la page principale
 
             if event.type == pygame.QUIT:

@@ -13,6 +13,8 @@ import time
 from Story_functions import *
 from chrono import Chrono
 from chrono import ClassementCSV
+import movie_manager
+
 def game(level, game, screen, height, width, world, help, skin, ranked=False, name='', time=0) :
     """
     Lance un niveau ou le tutoriel et l'éxecute tant que le joueur est en partie
@@ -288,8 +290,6 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
         screen.blit(menu_button, menu_rect)
         screen.blit(reset_button, reset_rect)
 
-
-
         if possible1 and possible2 :
             if t_cooldown>=3:
 
@@ -325,6 +325,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                     t_cooldown = 0
                 player.rect_final.x=player.position_x
                 player.rect_final.y=player.position_y
+
         # Sinon s'il ne peut pas se téléporter on affiche un message sur l'écran
 
         else :
@@ -342,15 +343,17 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
         # Si le joueur arrive à droite de l'écran on passe au niveau suivant
 
         if player.rect_final.x >= 880:
-            if level<level_number:
+            if level < level_number:
                 return "game", level+1, time
             else:
+                video_player = movie_manager.PngPlayer("end_story", screen, position=(0, 0), fps=24)
+                video_player.play()
                 if ranked:
                     classement.ajouter_score(name, classement._time_to_str(chrono.stop()))
                 return "menu", level, time
 
-
         # On affiche les boites de dialogue si besoin
+
         if not ranked:
             if dialog_box(line_txt, screen, skin, t) == 1:
                 movable = False
