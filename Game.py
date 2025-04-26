@@ -1,7 +1,5 @@
     # Gère les intéractions d'une partie (un niveau)
 
-import pygame
-import Map
 from Map import Create_map
 from pygame import mouse
 import equation_trajectory
@@ -9,7 +7,6 @@ from Player import ThePlayer
 from bow import Bow, Arrow
 from Portal import Portal
 from sound_manager import SoundManager
-import time
 from Story_functions import *
 from chrono import Chrono
 from chrono import ClassementCSV
@@ -346,10 +343,11 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
             if level < level_number:
                 return "game", level+1, time
             else:
-                video_player = movie_manager.PngPlayer("end_story", screen, position=(0, 0), fps=24)
-                video_player.play()
                 if ranked:
                     classement.ajouter_score(name, classement._time_to_str(chrono.stop()))
+                else :
+                    video_player = movie_manager.PngPlayer("end_story", screen, position=(0, 0), fps=24)
+                    video_player.play()
                 return "menu", level, time
 
         # On affiche les boites de dialogue si besoin
