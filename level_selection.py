@@ -21,7 +21,7 @@ def Level_selection(screen, height, width, ranked):
     sono = SoundManager(False)
     font = pygame.font.Font(None, 50)
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
-    menu_button=pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (button_dim, button_dim))
+    menu_button=pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (75, 75))
     menu_rect=pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
     board=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (500, 300))
     button=pygame.transform.scale(pygame.image.load("assets/meni_menu/Vide.png"), (button_dim-10, button_dim-10))

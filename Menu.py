@@ -22,8 +22,12 @@ def menu(screen, height, width):
     skin_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Skin.png'), (button_height-15, button_height-15))
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
     leader_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Leader_board.png'), (button_height-15, button_height-15))
+    board=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (400, 300))
+    help_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/help.png'), (button_height, button_height))
+    instructions = ["Bienvenu dans Arctal !", "Le bouton tutoriel vous permet de démarrer un tuto" ,"rapide afin de vous expliquer les bases du jeu.", "Le bouton paramètre vous permet de gerer la musique, ","l'aide à la visée, ainsi que d'activer le mode chronométré", "Vous pouvez changer l'apparence de votre personnage","grace a l'onglet skin.", "Appuyez sur le bouton jouer afin d'etre redirigé vers la ","selection du chapitre de l'histoire (hors mode classé)","Le bouton trophé vous permet d'accéder au top 5 des ","meilleurs temps du mode chronométré", "Enfin, la croix vous permet de quitter le jeu", "BON JEU !"]
     screen.blit(background, (0, 0))
     font=pygame.font.Font(None, 60)
+    font2=pygame.font.Font(None, 20)
     text_play = font.render("Jouer", True, (255, 255, 255))
     text_tuto = font.render("Tutoriel", True, (255, 255, 255))
 
@@ -33,11 +37,13 @@ def menu(screen, height, width):
     skin_rect= pygame.Rect(width/2-(button_height-15)/2, 430, settings_button.get_width(), settings_button.get_height())
     leader_rect = pygame.Rect(width/2+(button_height-15)/2+5, 430, leader_button.get_width(), leader_button.get_height())
     exit_rect = pygame.Rect(width-button_height-35, 35, exit_button.get_width(), exit_button.get_height())
+    help_rect = pygame.Rect(35, 35, help_button.get_width(), help_button.get_height())
 
 
     # Affiche tous ces éléments
 
     screen.blit(button, play_rect)
+    screen.blit(help_button, help_rect)
     screen.blit(settings_button, settings_rect)
     screen.blit(exit_button, exit_rect)
     screen.blit(skin_button, skin_rect)
@@ -46,11 +52,19 @@ def menu(screen, height, width):
     screen.blit(text_tuto, (tutorial_rect[0]+15,tutorial_rect[1]+18 ,0, 0))
     screen.blit(text_play, (play_rect[0]+35,play_rect[1]+18 ,0, 0))
 
+    showing_help=False #variable pour savoir si le joueur est en train de cliquer sur le bouton help
+
     # Boucle qui s'éxecute tant que le joueur est sur le menu
 
     pygame.display.flip()
     in_game = True
     while in_game:
+
+        if showing_help: #si le joueur reste appuyé sur le bouton, les instructions s'affichent
+            screen.blit(board, (width/2 - board.get_width()/2, 150))
+            for i in range(len(instructions)):
+                text=font2.render(instructions[i], True, (255, 255, 255))
+                screen.blit(text, (width/2 - board.get_width()/2 + 20, 170+i*20))
 
         # Parcours les évènements possibles que le joueur peut lancer
 
@@ -94,7 +108,24 @@ def menu(screen, height, width):
                     pygame.quit()
                     return False
 
+                if help_rect.collidepoint(event.pos):
+                    showing_help=True
 
+
+            if event.type == pygame.MOUSEBUTTONUP: #quand le joueur arrete d'appuyer sur le bouton help, on remet tous les autres elements par dessus
+                showing_help=False
+                screen.blit(background, (0, 0))
+                screen.blit(button, play_rect)
+                screen.blit(help_button, help_rect)
+                screen.blit(settings_button, settings_rect)
+                screen.blit(exit_button, exit_rect)
+                screen.blit(skin_button, skin_rect)
+                screen.blit(leader_button, leader_rect)
+                screen.blit(button, tutorial_rect)
+                screen.blit(text_tuto, (tutorial_rect[0] + 15, tutorial_rect[1] + 18, 0, 0))
+                screen.blit(text_play, (play_rect[0] + 35, play_rect[1] + 18, 0, 0))
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return False
+
+        pygame.display.flip()

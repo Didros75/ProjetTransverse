@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="leaderboard">
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="commentation de certains modules délaissés par Julie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/best_time.csv" beforeDir="false" afterPath="$PROJECT_DIR$/best_time.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chrono.py" beforeDir="false" afterPath="$PROJECT_DIR$/chrono.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dialog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dialog.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/equation_trajectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/equation_trajectory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +158,7 @@
       <workItem from="1745508656028" duration="20314000" />
       <workItem from="1745605132522" duration="10339000" />
       <workItem from="1745689309254" duration="424000" />
-      <workItem from="1745820171468" duration="4349000" />
+      <workItem from="1745820171468" duration="11650000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -469,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745616220079</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="commentation de certains modules délaissés par Julie">
+      <option name="closed" value="true" />
+      <created>1745824585797</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1745824585797</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="Changes by morin" />
     <MESSAGE value="animation personnage et mouvements" />
     <MESSAGE value="map" />
@@ -512,13 +514,14 @@
     <MESSAGE value="Changes by julie" />
     <MESSAGE value="laser horizontaux + map de 5 a 12" />
     <MESSAGE value="leaderboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="leaderboard" />
+    <MESSAGE value="commentation de certains modules délaissés par Julie" />
+    <option name="LAST_COMMIT_MESSAGE" value="commentation de certains modules délaissés par Julie" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$main.coverage" NAME="main Coverage Results" MODIFIED="1745823705809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$main.coverage" NAME="main Coverage Results" MODIFIED="1745859771941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="main Coverage Results" MODIFIED="1743295234295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
