@@ -1,4 +1,4 @@
-    # Centralise toutes les éuqations liées au trajectoires qu'on utlise
+    # Centralise toutes les équations liées aux trajectoires qu'on utilise
 
 from math import *
 

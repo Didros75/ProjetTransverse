@@ -104,8 +104,6 @@ class Portal() :
                 # Vérifie si un bloc existe au dessus du portail et qu'il est dirigé vers le haut
 
                 if (tiles[i-60].image != Map.sky) and self.state == -2:
-                    pygame.draw.rect(screen, "white", tiles[i-60].rectangle)
-                    print(tiles[i-60].image)
                     return False
 
                 # Vérifie si un bloc existe en dessous du portail et qu'il est dirigé vers le bas

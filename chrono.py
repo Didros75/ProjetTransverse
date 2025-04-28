@@ -7,20 +7,21 @@ class Chrono:
         self.end_time = None
 
     def start(self):
+        """démare le chrono"""
         self.start_time = datetime.now()
         self.end_time = None
 
     def stop(self):
+        """stoppe le chrono et renvoie le temps passé"""
         self.end_time = datetime.now()
         elapsed = self.end_time - self.start_time
-        print("Temps :", elapsed)
         return elapsed
 
 class ClassementCSV:
     def __init__(self, chemin_csv):
         self.chemin = chemin_csv
         self.donnees = []
-        self._lire_csv()
+        self.read_csv()
 
     def _str_to_time(self, time_str):
         """Convertit une chaîne HH:MM:SS en timedelta."""
@@ -35,7 +36,7 @@ class ClassementCSV:
         total_seconds = int(delta.total_seconds())
         return str(timedelta(seconds=total_seconds))
 
-    def _lire_csv(self):
+    def read_csv(self):
         try:
             with open(self.chemin, mode="r", newline='') as fichier:
                 reader = csv.DictReader(fichier)
@@ -46,7 +47,8 @@ class ClassementCSV:
         except FileNotFoundError:
             self.donnees = []
 
-    def ajouter_score(self, nom, temps_str):
+    def add_score(self, nom, temps_str):
+        """ajoute le chrono obtenu au csv avec le nom entré, et le classe directement en fonction du meilleur temps, et remplace le score precedent s'il est meilleur."""
         nouveau_temps = self._str_to_time(temps_str)
         trouve = False
         score_modifie = False
@@ -65,9 +67,10 @@ class ClassementCSV:
 
         if score_modifie:
             self.donnees.sort(key=lambda x: x["temps"])
-            self._sauver_csv()
+            self.save_csv()
 
-    def _sauver_csv(self):
+    def save_csv(self):
+        """sauvegarde le csv"""
         with open(self.chemin, mode="w", newline='') as fichier:
             writer = csv.DictWriter(fichier, fieldnames=["nom", "temps"])
             writer.writeheader()
@@ -78,6 +81,7 @@ class ClassementCSV:
                 })
 
     def top_5(self):
+        """retourne les 5 meilleurs temps et les noms"""
         noms = [entry["nom"] for entry in self.donnees[:5]]
         temps = [self._time_to_str(entry["temps"]) for entry in self.donnees[:5]]
 

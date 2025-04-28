@@ -60,19 +60,19 @@ class ThePlayer(pygame.sprite.Sprite) :
         :param angle: Angle en radians représentant la direction de visée
         """
         if self.LEFT or self.RIGHT:
-            self.frame_count += self.animation_speed
-            if self.frame_count >= len(self.sprites_right):
+            self.frame_count += self.animation_speed #ajoute à chaque frame la variable animation_speed
+            if self.frame_count >= len(self.sprites_right): #si frame_count arrive à la fin de la liste des sprites, on retourne au premier
                 self.frame_count = 0
-            self.sprite_index = int(self.frame_count)
+            self.sprite_index = int(self.frame_count) #le sprite actif est défini par frame count arrondi
 
-            if self.RIGHT:
+            if self.RIGHT: #si le joueur regarde a droite, on pioche dans la liste sprites_right
                 self.image = self.sprites_right[self.sprite_index]
                 self.facingLeft = False
-            elif self.LEFT:
+            elif self.LEFT: #idem pour la gauche
                 self.image = self.sprites_left[self.sprite_index]
                 self.facingLeft = True
 
-        elif self.speed_x<=0.5:
+        elif self.speed_x<=0.5: #idem quand il ne bouge pas
             self.sprite_index += self.animation_speed
             if self.sprite_index >= len(self.sprites_idle):
                 self.sprite_index = 0

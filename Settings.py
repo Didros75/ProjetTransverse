@@ -2,10 +2,10 @@
 
 import pygame
 from sound_manager import SoundManager
+
 def ask_name(screen):
-    "Cette fonction permet de demander a l'utilisateur d'entrer son nom s'il choisit le mode competitif"
+    """Cette fonction permet de demander a l'utilisateur d'entrer son nom s'il choisit le mode competitif"""
     font = pygame.font.Font(None, 32)
-    clock = pygame.time.Clock()
     input_text = ""
     active = True
 
@@ -22,7 +22,6 @@ def ask_name(screen):
                 else:
                     input_text += event.unicode
 
-
         txt_instructions = font.render("Entrez votre nom :", True, (255, 255, 255))
         pygame.draw.rect(screen, (27, 20, 100), (270, 392, 300, 40))
         pygame.draw.rect(screen, (0, 0, 0), (270, 392, 300, 40), 2)
@@ -35,7 +34,7 @@ def ask_name(screen):
 
 def settings(screen, height, width, sound, help, chrono=False):
     """
-
+    gère les paramètres du jeu.
 
     :param screen: l'endroit où afficher le menu
     :param height: la largeur de l'écran (int)
@@ -44,7 +43,7 @@ def settings(screen, height, width, sound, help, chrono=False):
     :param help: Un booléen à True s'il y a de l'aide, False sinon
     :return: une chaine de caractère représentant le menu à afficher
     :return: un booléen si on doit afficher ou non l'aide
-    :retur: un booléen si la musique doit se jouer ou non
+    :return: un booléen si la musique doit se jouer ou non
     """
 
     # Initialise les éléments qui composent le menu des paramètres
@@ -64,8 +63,8 @@ def settings(screen, height, width, sound, help, chrono=False):
 
     text_parametres = title_font.render("Paramètres :", True, (255, 255, 255))
     text_son=font.render("Son : ", True, (255, 255, 255))
-    text_aide=font.render("Aides : ", True, (255, 255, 255))
-    text_chrono=font.render("Ranked : ", True, (255, 255, 255))
+    text_aide=font.render("Aide : ", True, (255, 255, 255))
+    text_chrono=font.render("Classé : ", True, (255, 255, 255))
 
 
     menu_rect=pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
@@ -153,6 +152,7 @@ def settings(screen, height, width, sound, help, chrono=False):
                     sono.play_button_sound()
                     help=True
 
+                #Active et desactive le mode chronometré, et demande un nom
                 if chrono_x_rect.collidepoint(event.pos):
                     sono.play_button_sound()
                     pygame.draw.rect(screen, (27, 20, 100), (270, 360, 300, 73))

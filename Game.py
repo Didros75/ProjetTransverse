@@ -304,7 +304,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                     if port.state==-2:  # Cas où le portail est orienté vers le haut
                         player.speed_y = -player.speed_y
                         player.position_y = port.rect.y-70
-                        player.position_x=port.rect.x+30
+                        player.position_x=port.rect.x+15
 
                     elif port.state==2: # Cas où le portail est orienté vers le bas
                         player.position_y = port.rect.y+10
@@ -313,7 +313,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                     elif port.state==-1:    # Cas où le portail est orienté vers la gauche
                         player.speed_x = -player.speed_x
                         player.position_y = port.rect.y
-                        player.position_x = port.rect.x -30
+                        player.position_x = port.rect.x -20
 
                     elif port.state == 1:   # Cas où le portail est orienté vers la droite
                         player.speed_x = -player.speed_x
@@ -344,7 +344,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                 return "game", level+1, time
             else:
                 if ranked:
-                    classement.ajouter_score(name, classement._time_to_str(chrono.stop()))
+                    classement.add_score(name, classement._time_to_str(chrono.stop()))
                 else :
                     video_player = movie_manager.PngPlayer("end_story", screen, position=(0, 0), fps=24)
                     video_player.play()
