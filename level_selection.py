@@ -73,7 +73,7 @@ def Level_selection(screen, height, width, ranked):
                         elif int(number) == 2:
                             return "game", 5
                         elif int(number) == 3:
-                            return "game", 12
+                            return "game", 10
 
             # Permet à l'utilisateur de quitter la page principale
 
