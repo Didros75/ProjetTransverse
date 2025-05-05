@@ -12,13 +12,13 @@ class Bow():
         Initialise les variables qui caractérisent l'arc
         """
 
-        # # Définie les images et paramètres utiles à l'affichage du joueur
+        # Définie les images et paramètres utiles à l'affichage du joueur
 
         self.images = [
             pygame.transform.scale(
-                pygame.image.load(f"assets/l0_arc{i}.png"),
-                (pygame.image.load(f"assets/l0_arc{i}.png").get_width() // 3,
-                 pygame.image.load(f"assets/l0_arc{i}.png").get_height() // 3)
+                pygame.image.load(f"assets/Bow/l0_arc{i}.png"),
+                (pygame.image.load(f"assets/Bow/l0_arc{i}.png").get_width() // 3,
+                 pygame.image.load(f"assets/Bow/l0_arc{i}.png").get_height() // 3)
             )
             for i in range(1, 5)
         ]
@@ -164,13 +164,13 @@ class Arrow() :
         """
         if tile.image == Map.img1 : # Vers le haut
             self.portal_state = -2
-            return tile.rectangle.left - 30, tile.rectangle.top - 50
+            return tile.rectangle.left - 30, tile.rectangle.top - 45
         elif tile.image == Map.img10 : # Vers la droite
             self.portal_state = 1
             return tile.rectangle.left - 15, tile.rectangle.top - 30
         elif tile.image == Map.img17 :  # Vers le bas
             self.portal_state = 2
-            return tile.rectangle.left - 30, tile.rectangle.top - 5
+            return tile.rectangle.left - 30, tile.rectangle.top - 10
         elif tile.image == Map.img8 :   # Vers la gauche
             self.portal_state = -1
             return tile.rectangle.left - 48, tile.rectangle.top - 30
@@ -178,28 +178,28 @@ class Arrow() :
         elif tile.image == Map.img0 :   # Coin en haut à gauche
             if self.rect.bottom - 15 <= tile.rectangle.top :
                 self.portal_state = -2
-                return tile.rectangle.left - 30, tile.rectangle.top - 50
+                return tile.rectangle.left - 30, tile.rectangle.top - 45
             else :
                 self.portal_state = -1
                 return tile.rectangle.left - 48, tile.rectangle.top - 30
         elif tile.image == Map.img2 :   # Coin en haut à droite
             if self.rect.bottom - 13 <= tile.rectangle.top :
                 self.portal_state = -2
-                return tile.rectangle.left - 30, tile.rectangle.top - 50
+                return tile.rectangle.left - 30, tile.rectangle.top - 45
             else :
                 self.portal_state = 1
                 return tile.rectangle.left - 15, tile.rectangle.top - 30
         elif tile.image == Map.img16 :  # Coin en bas à gauche
             if self.rect.top <= tile.rectangle.bottom :
                 self.portal_state = 2
-                return tile.rectangle.left - 30, tile.rectangle.top - 5
+                return tile.rectangle.left - 30, tile.rectangle.top - 10
             else :
                 self.portal_state = -1
                 return tile.rectangle.left - 48, tile.rectangle.top - 30
         else :  # Coin en bas à droite
             if self.rect.top - 5 <= tile.rectangle.bottom :
                 self.portal_state = 2
-                return tile.rectangle.left - 30, tile.rectangle.top - 5
+                return tile.rectangle.left - 30, tile.rectangle.top - 10
             else :
                 self.portal_state = 1
                 return tile.rectangle.left - 48, tile.rectangle.top - 30

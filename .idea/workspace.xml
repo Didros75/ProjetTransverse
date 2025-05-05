@@ -4,11 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="implementation du bouton de consigne dans le menu">
+    <list default="true" id="e11f0f7d-c0ca-4d91-bbf2-a350f30158ca" name="Changes" comment="correction de fautes d'othographe tah projet voltaire">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leader_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Leader_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/best_time.csv" beforeDir="false" afterPath="$PROJECT_DIR$/best_time.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/level_selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Portal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Story_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Story_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Design sans titre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/arrow_picto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/charging.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Sounds/charging.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/click.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Sounds/click.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fond0.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Backgrounds/fond0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fond1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Backgrounds/fond1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fond2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Backgrounds/fond2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l0_arc1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Bow/l0_arc1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l0_arc2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Bow/l0_arc2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l0_arc3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Bow/l0_arc3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/l0_arc4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Bow/l0_arc4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/musique.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Sounds/musique.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal1b.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal1b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal2b.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal2b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal3b.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal3b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal4b.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal4b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal5b.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal5b.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Portal/portal_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/portal_sound.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Sounds/portal_sound.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_time.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Csv files/best_time.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bow.py" beforeDir="false" afterPath="$PROJECT_DIR$/bow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dialog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Csv files/dialog.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skin_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/skin_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/sound_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +105,11 @@
       <recent name="C:\Users\julie\PycharmProjects\ProjetTransverse\assets_tiles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\julie\PycharmProjects\ProjetTransverse\assets_tiles" />
-      <recent name="C:\Users\julie\PycharmProjects\ProjetTransverse\assets" />
-      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\Maps" />
-      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse" />
-      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\carrés" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\Csv files" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets\Sounds" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets\Bow" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets\Backgrounds" />
+      <recent name="C:\Users\chaig\PycharmProjects\ProjetTransverse\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -159,7 +189,8 @@
       <workItem from="1745605132522" duration="10339000" />
       <workItem from="1745689309254" duration="424000" />
       <workItem from="1745820171468" duration="12506000" />
-      <workItem from="1746165782249" duration="523000" />
+      <workItem from="1746165782249" duration="583000" />
+      <workItem from="1746428939491" duration="1836000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -481,7 +512,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745859847299</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="correction de fautes d'othographe tah projet voltaire">
+      <option name="closed" value="true" />
+      <created>1746166356942</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1746166356942</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="animation personnage et mouvements" />
     <MESSAGE value="map" />
     <MESSAGE value="collisions suite" />
     <MESSAGE value="tentative de resolution de bugs et portails" />
@@ -524,13 +562,14 @@
     <MESSAGE value="leaderboard" />
     <MESSAGE value="commentation de certains modules délaissés par Julie" />
     <MESSAGE value="implementation du bouton de consigne dans le menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementation du bouton de consigne dans le menu" />
+    <MESSAGE value="correction de fautes d'othographe tah projet voltaire" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction de fautes d'othographe tah projet voltaire" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProjetTransverse$Player.coverage" NAME="Player Coverage Results" MODIFIED="1739215034860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Map.coverage" NAME="Map Coverage Results" MODIFIED="1739809035936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$test.coverage" NAME="test Coverage Results" MODIFIED="1739195140203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ProjetTransverse$main.coverage" NAME="main Coverage Results" MODIFIED="1746166163960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetTransverse$main.coverage" NAME="main Coverage Results" MODIFIED="1746430225266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ProjetTransverse$Game.coverage" NAME="main Coverage Results" MODIFIED="1743295234295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

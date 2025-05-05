@@ -11,10 +11,10 @@ class SoundManager:
         """
         pygame.mixer.init()
         self.sound = sound
-        self.music_file = "assets/musique.mp3"
-        self.button_sound = pygame.mixer.Sound("assets/click.mp3")
-        self.tp_sound = pygame.mixer.Sound("assets/portal_sound.mp3")
-        self.charging_sound = pygame.mixer.Sound("assets/charging.mp3")
+        self.music_file = "assets/Sounds/musique.mp3"
+        self.button_sound = pygame.mixer.Sound("assets/Sounds/click.mp3")
+        self.tp_sound = pygame.mixer.Sound("assets/Sounds/portal_sound.mp3")
+        self.charging_sound = pygame.mixer.Sound("assets/Sounds/charging.mp3")
         self.tp_sound.set_volume(0.2)
 
         self.tp_channel = pygame.mixer.Channel(1)

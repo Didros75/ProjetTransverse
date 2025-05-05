@@ -37,7 +37,7 @@ def dialog_box(line, screen, skin, index, talker=2):
 
     # ouvre le fichier où se situent les dialogues et récupère la ligne à afficher
 
-    with open('dialog.csv', newline='', encoding='utf-8') as fichier:
+    with open('Csv files/dialog.csv', newline='', encoding='utf-8') as fichier:
         lecteur = csv.reader(fichier, delimiter=';')
         lecteur = list(lecteur)
         ligne=lecteur[line]

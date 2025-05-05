@@ -18,11 +18,11 @@ def skin(screen, height, width, skin_num=0):
 
     # Définie les différentes couleurs de personnages possibles
 
-    list_name = ["Dark archer", "Crimson sniper", "Robin Hood", "Solar shooter"]
+    list_name = ["Archer sombre", "Poseidon", "Dracula", "La Banane"]
     skin = int(skin_num)
     skin_1= [pygame.image.load(f"assets/0/l0_sprite_{i}.png") for i in range(1, 5)]
-    skin_2= [pygame.image.load(f"assets/1/l0_sprite_{i}.png") for i in range(1, 5)] #90  sur https://pinetools.com/adjust-hue-image
-    skin_3=[pygame.image.load(f"assets/2/l0_sprite_{i}.png") for i in range(1, 5)] #200
+    skin_2= [pygame.image.load(f"assets/1/l0_sprite_{i}.png") for i in range(1, 5)] #changement des couleurs sur https://pinetools.com/adjust-hue-image
+    skin_3=[pygame.image.load(f"assets/2/l0_sprite_{i}.png") for i in range(1, 5)]
     skin_4 = [pygame.image.load(f"assets/3/l0_sprite_{i}.png") for i in range(1, 5)]
     skins=[skin_1, skin_2, skin_3, skin_4]
 

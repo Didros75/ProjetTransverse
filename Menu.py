@@ -24,7 +24,8 @@ def menu(screen, height, width):
     leader_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/Leader_board.png'), (button_height-15, button_height-15))
     board=pygame.transform.scale(pygame.image.load("assets/meni_menu/rectangle_long.png"), (400, 300))
     help_button=pygame.transform.scale(pygame.image.load('assets/meni_menu/help.png'), (button_height, button_height))
-    instructions = ["Bienvenu dans Arctal !", "Le bouton tutoriel vous permet de démarrer un tuto" ,"rapide afin de vous expliquer les bases du jeu.", "Le bouton paramètre vous permet de gérer la musique, ","l'aide à la visée, ainsi que d'activer le mode chronométré.", "Vous pouvez changer l'apparence de votre personnage","grâce a l'onglet skin.", "Appuyez sur le bouton jouer afin d'être redirigé vers la ","sélection du chapitre de l'histoire (hors mode classé).","Le bouton trophé vous permet d'accéder au top 5 des ","meilleurs temps du mode chronométré.", "Enfin, la croix vous permet de quitter le jeu.", "BON JEU !"]
+    instructions = ["Bienvenu dans Arctal !", "Le bouton tutoriel vous permet de démarrer un tuto" ,"rapide afin de vous expliquer les bases du jeu.", "Le bouton paramètre vous permet de gérer la musique, ","l'aide à la visée, ainsi que d'activer le mode chronométré.", "Vous pouvez changer l'apparence de votre personnage","grâce a l'onglet skin.", "Appuyez sur le bouton jouer afin d'être redirigé vers la ","sélection du chapitre de l'histoire (hors mode classé).","Le bouton trophé vous permet d'accéder au top 5 des ","meilleurs temps du mode chronométré.", "Enfin, la croix vous permet de quitter le jeu.", "BON JEU !"]#instructions
+
     screen.blit(background, (0, 0))
     font=pygame.font.Font(None, 60)
     font2=pygame.font.Font(None, 20)

@@ -17,9 +17,9 @@ class Portal() :
 
         self.num=num
         if self.num==1:
-            self.images = [pygame.transform.scale(pygame.image.load(f"assets/portal_{i}.png"), (90, 120)) for i in range(1, 6)]
+            self.images = [pygame.transform.scale(pygame.image.load(f"assets/Portal/portal_{i}.png"), (90, 120)) for i in range(1, 6)]
         else:
-            self.images = [pygame.transform.scale(pygame.image.load(f"assets/portal{i}b.png"), (90, 120)) for i in range(1, 6)]
+            self.images = [pygame.transform.scale(pygame.image.load(f"assets/Portal/portal{i}b.png"), (90, 120)) for i in range(1, 6)]
         self.image = self.images[0]
         self.frame=0
         self.animation_speed=0.1

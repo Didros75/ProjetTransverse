@@ -7,7 +7,7 @@ def leader_menu(screen, height, width):
     sono = SoundManager(False)
     font = pygame.font.Font(None, 45)
     title_font=pygame.font.Font(None, 55)
-    classement = ClassementCSV("best_time.csv")
+    classement = ClassementCSV("Csv files/best_time.csv")
     background = pygame.transform.scale(pygame.image.load("assets/Menu_image.jpg"), (width, height))
     menu_button = pygame.transform.scale(pygame.image.load("assets/meni_menu/Home.png"), (button_size, button_size))
     exit_button = pygame.transform.scale(pygame.image.load('assets/meni_menu/X.png'), (button_size, button_size))

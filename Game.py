@@ -28,7 +28,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
     :return: un entier un correspond au prochain niveau
     """
     sono=SoundManager(False)    # Le son
-    classement = ClassementCSV("best_time.csv") #le classement de la ranked
+    classement = ClassementCSV("Csv files/best_time.csv") #le classement de la ranked
 
     # Définit où commence les dialogues à chaque niveau et choisit le dialogue du level actuel
 
@@ -75,7 +75,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
         world=2
     level_number=12
 
-    background = pygame.image.load(f"assets/fond{str(world)}.png")
+    background = pygame.image.load(f"assets/Backgrounds/fond{str(world)}.png")
     background = pygame.transform.scale(background, (width, height))
 
     clock = pygame.time.Clock()
