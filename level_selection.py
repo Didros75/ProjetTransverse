@@ -15,6 +15,7 @@ def Level_selection(screen, height, width, ranked):
     """
 
     # Initialise tous les éléments nécessaires à la création du menu des niveaux
+
     if ranked:
         return "game", 1
     button_dim=100

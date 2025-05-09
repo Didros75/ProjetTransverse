@@ -26,6 +26,7 @@ img52 = pygame.image.load('assets_tiles/button_right.png')
 img_empty = pygame.image.load('assets_tiles/empty.png')
 img_empty_horizontal=pygame.image.load('assets_tiles/empty_horizontal.png')
 img54 = pygame.image.load('assets_tiles/laser_horizontal.png')
+
 class Tile() :
     def __init__(self, image, x, y) :
         """
