@@ -68,7 +68,7 @@ class SoundManager:
 
     def stop_charging_sound(self):
         """
-        Permet de lancer le son que fait la barre de chargement quand elle atteint sa puissance maximmum
+        Permet d'arreter le son que fait la barre de chargement quand elle atteint sa puissance maximmum
         """
         self.charging_channel.stop()
         self.charging_playing = False
