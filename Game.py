@@ -226,13 +226,13 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                 portal_2.state = arrow.portal_state
                 position_portal = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
                 portal_2.pos_x, portal_2.pos_y = position_portal[0], position_portal[1]
-                possible2 = portal_2.not_teleportable(tiles, collision, screen)
+                possible2 = portal_2.not_teleportable(tiles, collision)
 
             else :  # Cas où le joueur tire le portail 1
                 portal_1.state = arrow.portal_state
                 position_portal = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
                 portal_1.pos_x, portal_1.pos_y = position_portal[0], position_portal[1]
-                possible1 = portal_1.not_teleportable(tiles, collision, screen)
+                possible1 = portal_1.not_teleportable(tiles, collision)
 
         # on anime le joueur, on appelle les fonctions de mouvement et on l'affiche
 

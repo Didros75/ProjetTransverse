@@ -180,4 +180,3 @@ class Create_map() :
             if self.tiles[i].image != sky :
                 self.tiles[i].draw(self.surface)
         return self.tiles
-
