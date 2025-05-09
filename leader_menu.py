@@ -1,9 +1,16 @@
+    # Affiche et gère le leaderboard
+
 import pygame
 from sound_manager import SoundManager
 from chrono import ClassementCSV
 
 def leader_menu(screen, height, width):
-    """Fonction pour afficher le leader board, soit les 5 premiers noms et temps du fichier best_time.csv"""
+    """
+    Fonction pour afficher le leader board, soit les 5 premiers noms et temps du fichier best_time.csv
+    """
+
+    # Crée les éléments nécessaires au menu
+
     button_size=75
     sono = SoundManager(False)
     font = pygame.font.Font(None, 45)
@@ -16,6 +23,8 @@ def leader_menu(screen, height, width):
     text=title_font.render("Top 5 :", True, (255, 255, 255))
     menu_rect = pygame.Rect(35, 35, menu_button.get_width(), menu_button.get_height())
     exit_rect = pygame.Rect(width - button_size - 35, 35, exit_button.get_width(), exit_button.get_height())
+
+    # Affiche ces éléments
 
     screen.blit(background, (0, 0))
     screen.blit(board, (width/2 - board.get_width()/2, 150))
@@ -32,6 +41,9 @@ def leader_menu(screen, height, width):
         screen.blit(text_surface, (width/2-170, 230 + i * 40))
     pygame.display.flip()
     in_game = True
+
+    # Permet de retourner au menu ou de quitter le jeu
+
     while in_game:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:

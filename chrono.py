@@ -1,3 +1,5 @@
+    # Gère le chronomètre du mode classé et classe les meilleurs joueurs dans le fichier prévu à cet effet
+
 from datetime import datetime, timedelta
 import csv
 

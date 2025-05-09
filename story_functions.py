@@ -1,4 +1,4 @@
-    # Gère less dialogues des personnages
+    # Gère les dialogues des personnages
 
 import pygame
 import csv
@@ -8,7 +8,7 @@ height=600
 
 def dialog_box(line, screen, skin, index, talker=2):
     """
-    Affiche les dialogues des personnages au tutoriel et en début dde niveau
+    Affiche les dialogues des personnages au tutoriel et en début de niveau
 
     :param line: le numéro de la ligne de script qui va être affichée (int)
     :param screen:l'écran sur lequel afficher le dialogue

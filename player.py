@@ -2,7 +2,7 @@
 
 import math
 import pygame
-import Map
+import map
 
 class ThePlayer(pygame.sprite.Sprite) :
     def __init__(self, position_x, position_y,skin, gravity = 0.6) :
@@ -182,7 +182,7 @@ class ThePlayer(pygame.sprite.Sprite) :
 
         collisions = []
         for tile in tiles :
-            if self.rect_final.colliderect(tile.rectangle) and tile.image != Map.sky :
+            if self.rect_final.colliderect(tile.rectangle) and tile.image != map.sky :
 
                 # Gère les collisions avec les coins
 
@@ -193,7 +193,7 @@ class ThePlayer(pygame.sprite.Sprite) :
 
                 collisions.append((tile))
 
-                if tile.image == Map.img0 : # Coin en haut à gauche
+                if tile.image == map.img0 : # Coin en haut à gauche
                     if self.isgrounded :
                         if self.rect_final.bottom - 5 <= tile.rectangle.top :
                             top = True
@@ -204,7 +204,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                             top = True
                         else :
                             right = True
-                elif tile.image == Map.img2 : # Coin en haut à droite
+                elif tile.image == map.img2 : # Coin en haut à droite
                     if self.isgrounded:
                         if self.rect_final.bottom - 5 <= tile.rectangle.top:
                             top = True
@@ -216,41 +216,41 @@ class ThePlayer(pygame.sprite.Sprite) :
                         else:
                             left = True
 
-                if tile.image == Map.img16 : # Coins en bas
+                if tile.image == map.img16 : # Coins en bas
                     bottom = True
-                elif tile.image == Map.img18 :
+                elif tile.image == map.img18 :
                     bottom = True
 
-                if tile.image == Map.img1 or top : # Collision par le haut
+                if tile.image == map.img1 or top : # Collision par le haut
                     self.isgrounded = True
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.top - self.rect_final.height+1
                     self.rect_final.top = self.position_y
-                elif tile.image == Map.img17 or bottom : # Collision par le bas
+                elif tile.image == map.img17 or bottom : # Collision par le bas
                     self.speed_y = 0
                     self.acceleration_y = 0
                     self.position_y = tile.rectangle.bottom + 1
                     self.rect_final.top = self.position_y
-                if tile.image == Map.img8 or right : # Collision par la droite
+                if tile.image == map.img8 or right : # Collision par la droite
                     self.speed_x = 0
                     self.position_x = tile.rectangle.left - self.rect_final.width
                     self.rect_final.left = self.position_x
-                elif tile.image == Map.img10 or left : # Collision par la gauche
+                elif tile.image == map.img10 or left : # Collision par la gauche
                     self.speed_x = 0
                     self.position_x = tile.rectangle.right - 1
                     self.rect_final.left = self.position_x
 
                 # Collision avec un laser (on active la mort du joueur)
 
-                if tile.image == Map.img48 or tile.image==Map.img54:
+                if tile.image == map.img48 or tile.image==map.img54:
                     self.state = 1
 
-        # Change le statut di joueur (si il touche le sol ou non)
+        # Change le statut du joueur (si il touche le sol ou non)
 
         air=True
         for collide in collisions :
-            if collide.image == Map.img1 or collide.image == Map.img0 or collide.image == Map.img2 :
+            if collide.image == map.img1 or collide.image == map.img0 or collide.image == map.img2 :
                 air=False
         if air:
             self.isgrounded = False
