@@ -90,7 +90,7 @@ class Portal() :
                     return position[0] + 10, position[1]
         return position
 
-    def not_teleportable(self, tiles, tile_touched) :
+    def not_teleportable(self, tiles, tile_touched, laser) :
         """
         Vérifie qu'il est possible que le joueur puisse se téléporter
 
@@ -103,13 +103,19 @@ class Portal() :
 
                 # Vérifie si un bloc existe au dessus du portail et qu'il est dirigé vers le haut
 
-                if (tiles[i-60].image != (map.sky) or tiles[i-60].image == (map.img_empty or map.img_empty_horizontal)) and self.state == -2:
-                    return False
+                if self.state == -2:
+                    if (laser == False and tiles[i-30].image == map.img_empty) :
+                        return True
+                    if tiles[i-60].image != map.sky :
+                        return False
 
                 # Vérifie si un bloc existe en dessous du portail et qu'il est dirigé vers le bas
 
-                if (tiles[i+60].image != (map.sky) or tiles[i+60].image == (map.img_empty or map.img_empty_horizontal)) and self.state == 2:
-                    return False
+                elif self.state == 2 :
+                    if (laser == False and tiles[i+30].image == map.img_empty) :
+                        return True
+                    if tiles[i+60].image != map.sky :
+                        return False
         return True
 
     def delete_portal(self, second_portal) :

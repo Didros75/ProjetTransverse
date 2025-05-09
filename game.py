@@ -1,6 +1,6 @@
     # Gère les intéractions d'une partie (un niveau)
 
-from map import Create_map
+import map as Map
 from pygame import mouse
 import equation_trajectory
 from player import ThePlayer
@@ -57,9 +57,9 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
     # Création de la map et de l'arrière plan
 
     if level == 0 :
-            map = Create_map("maps/map_tutorial.csv", screen)
+            map = Map.Create_map("maps/map_tutorial.csv", screen)
     else:
-            map = Create_map(f"maps/map{level}.csv", screen)
+            map = Map.Create_map(f"maps/map{level}.csv", screen)
 
     if level == 1:
         chrono = Chrono()  # le chronomètre
@@ -93,7 +93,7 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
     shoted = False  # booléen si le joueur a tiré ou non
     shotable = False  # booléen s'il est possible de tirer ou non
     movable = False  # booléen si le joueur peut bouger ou non
-    laser = True    # booléen si les lasers sont activés ou non
+    laser = True    # booléen si les lasers sont horizontaux ou verticaux
 
     # Boucle qui s'exécute tant que le joueur est tpujours en train de jouer la partie
 
@@ -217,7 +217,14 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
 
         # Si la flèche a touché une tuile on récupère la position où va se situer le portail
 
-        if collision != 0 and collision != 1:
+
+        for tile in tiles :
+                if portal_1.rect.colliderect(tile.rectangle) and (tile.image == Map.img48 or tile.image == Map.img54) :
+                    portal_1 = Portal(-75, -75, 1)
+                elif portal_2.rect.colliderect(tile.rectangle) and (tile.image == Map.img48 or tile.image == Map.img54) :
+                    portal_2 = Portal(-75, -75, 2)
+
+        if collision != 0 and collision != 1 :
             position_portal = arrow.position_portal(collision)
 
             # On change la position du portail si besoin et on vérifie qu'il est possible de se téléporter
@@ -226,13 +233,13 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
                 portal_2.state = arrow.portal_state
                 position_portal = portal_2.change_position(collision, tiles, position_portal, arrow.portal_state)
                 portal_2.pos_x, portal_2.pos_y = position_portal[0], position_portal[1]
-                possible2 = portal_2.not_teleportable(tiles, collision)
+                possible2 = portal_2.not_teleportable(tiles, collision, laser)
 
             else :  # Cas où le joueur tire le portail 1
                 portal_1.state = arrow.portal_state
                 position_portal = portal_1.change_position(collision, tiles, position_portal, arrow.portal_state)
                 portal_1.pos_x, portal_1.pos_y = position_portal[0], position_portal[1]
-                possible1 = portal_1.not_teleportable(tiles, collision)
+                possible1 = portal_1.not_teleportable(tiles, collision, laser)
 
         # on anime le joueur, on appelle les fonctions de mouvement et on l'affiche
 
