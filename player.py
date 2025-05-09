@@ -246,7 +246,7 @@ class ThePlayer(pygame.sprite.Sprite) :
                 if tile.image == map.img48 or tile.image==map.img54:
                     self.state = 1
 
-        # Change le statut di joueur (si il touche le sol ou non)
+        # Change le statut du joueur (si il touche le sol ou non)
 
         air=True
         for collide in collisions :

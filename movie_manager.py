@@ -1,3 +1,5 @@
+    # Gère l’affichage d’une multitude de photos à la suite pour créer une cinématique
+
 import time
 import pygame
 import os
