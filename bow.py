@@ -3,7 +3,7 @@
 import pygame
 import math
 import equation_trajectory
-import Map
+import map
 from sound_manager import SoundManager
 
 class Bow():
@@ -124,21 +124,21 @@ class Arrow() :
         :return: la tuile touchée s'il y en a une, 1 si elle touche un objet et 0 sinon
         """
         for tile in tiles :
-            if self.rect.colliderect(tile.rectangle) and tile.image != Map.sky :
+            if self.rect.colliderect(tile.rectangle) and tile.image != map.sky :
 
                 # Collision avec les lasers
 
-                if tile.image==Map.img48 or tile.image == Map.img54 :
+                if tile.image==map.img48 or tile.image == map.img54 :
                     return False, 0
 
                 # Collision avec un boutton
 
-                elif tile.image==Map.img49 or tile.image==Map.img50 or tile.image==Map.img51 or tile.image==Map.img52 :
+                elif tile.image==map.img49 or tile.image==map.img50 or tile.image==map.img51 or tile.image==map.img52 :
                     self.sono.play_button_sound()
                     return False, 1
 
                 # Collision avec un tuile
-                if tile.image!=Map.img_empty and tile.image!=Map.img_empty_horizontal:
+                if tile.image!=map.img_empty and tile.image!=map.img_empty_horizontal:
                     return False, tile
 
         # Flèche qui déborde du cadre, sinon, elle retourne True car pas de collision
@@ -162,34 +162,34 @@ class Arrow() :
         :param tile: l'znsemble des tuiles présentes sur la map
         :return: la position du portail
         """
-        if tile.image == Map.img1 : # Vers le haut
+        if tile.image == map.img1 : # Vers le haut
             self.portal_state = -2
             return tile.rectangle.left - 30, tile.rectangle.top - 45
-        elif tile.image == Map.img10 : # Vers la droite
+        elif tile.image == map.img10 : # Vers la droite
             self.portal_state = 1
             return tile.rectangle.left - 15, tile.rectangle.top - 30
-        elif tile.image == Map.img17 :  # Vers le bas
+        elif tile.image == map.img17 :  # Vers le bas
             self.portal_state = 2
             return tile.rectangle.left - 30, tile.rectangle.top - 10
-        elif tile.image == Map.img8 :   # Vers la gauche
+        elif tile.image == map.img8 :   # Vers la gauche
             self.portal_state = -1
             return tile.rectangle.left - 48, tile.rectangle.top - 30
 
-        elif tile.image == Map.img0 :   # Coin en haut à gauche
+        elif tile.image == map.img0 :   # Coin en haut à gauche
             if self.rect.bottom - 15 <= tile.rectangle.top :
                 self.portal_state = -2
                 return tile.rectangle.left - 30, tile.rectangle.top - 45
             else :
                 self.portal_state = -1
                 return tile.rectangle.left - 48, tile.rectangle.top - 30
-        elif tile.image == Map.img2 :   # Coin en haut à droite
+        elif tile.image == map.img2 :   # Coin en haut à droite
             if self.rect.bottom - 13 <= tile.rectangle.top :
                 self.portal_state = -2
                 return tile.rectangle.left - 30, tile.rectangle.top - 45
             else :
                 self.portal_state = 1
                 return tile.rectangle.left - 15, tile.rectangle.top - 30
-        elif tile.image == Map.img16 :  # Coin en bas à gauche
+        elif tile.image == map.img16 :  # Coin en bas à gauche
             if self.rect.top <= tile.rectangle.bottom :
                 self.portal_state = 2
                 return tile.rectangle.left - 30, tile.rectangle.top - 10

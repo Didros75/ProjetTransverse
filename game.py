@@ -1,13 +1,13 @@
     # Gère les intéractions d'une partie (un niveau)
 
-from Map import Create_map
+from map import Create_map
 from pygame import mouse
 import equation_trajectory
-from Player import ThePlayer
+from player import ThePlayer
 from bow import Bow, Arrow
-from Portal import Portal
+from portal import Portal
 from sound_manager import SoundManager
-from Story_functions import *
+from story_functions import *
 from chrono import Chrono
 from chrono import ClassementCSV
 import movie_manager
@@ -57,9 +57,9 @@ def game(level, game, screen, height, width, world, help, skin, ranked=False, na
     # Création de la map et de l'arrière plan
 
     if level == 0 :
-            map = Create_map("Maps/map_tutorial.csv", screen)
+            map = Create_map("maps/map_tutorial.csv", screen)
     else:
-            map = Create_map(f"Maps/map{level}.csv", screen)
+            map = Create_map(f"maps/map{level}.csv", screen)
 
     if level == 1:
         chrono = Chrono()  # le chronomètre

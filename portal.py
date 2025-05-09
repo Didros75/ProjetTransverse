@@ -1,7 +1,7 @@
     # Gère le placement des portails et la téléportation
 
 import pygame
-import Map
+import map
 
 class Portal() :
     def __init__(self, x=0, y=0, num=1):
@@ -73,20 +73,20 @@ class Portal() :
 
                 # Collisions sur l'axe vertical (change la position en y)
 
-                if (state == 1 and tiles[i+31].image != Map.sky) or (state == -1 and tiles[i+29].image != Map.sky) :
+                if (state == 1 and tiles[i+31].image != map.sky) or (state == -1 and tiles[i+29].image != map.sky) :
                     return position[0], position[1] - 35
-                elif (state == 1 and tiles[i-29].image != Map.sky) or (state == -1 and tiles[i-31].image != Map.sky) :
+                elif (state == 1 and tiles[i-29].image != map.sky) or (state == -1 and tiles[i-31].image != map.sky) :
                     return position[0], position[1] + 15
-                elif (state == 1 and tiles[i+61].image != Map.sky) or (state == -1 and tiles[i+59].image != Map.sky) :
+                elif (state == 1 and tiles[i+61].image != map.sky) or (state == -1 and tiles[i+59].image != map.sky) :
                     return position[0], position[1] - 10
 
                 # Collisions sur l'axe en horizontal (change la position en x)
 
-                if (state == -2 and tiles[i-29].image != Map.sky) or (state == 2 and tiles[i+31].image != Map.sky) :
+                if (state == -2 and tiles[i-29].image != map.sky) or (state == 2 and tiles[i+31].image != map.sky) :
                     return position[0] - 45, position[1]
-                elif (state == -2 and tiles[i-28].image != Map.sky) or (state == 2 and tiles[i+32].image != Map.sky) :
+                elif (state == -2 and tiles[i-28].image != map.sky) or (state == 2 and tiles[i+32].image != map.sky) :
                     return position[0] - 10, position[1]
-                elif (state == -2 and tiles[i-31].image != Map.sky) or (state == 2 and tiles[i+29].image != Map.sky) :
+                elif (state == -2 and tiles[i-31].image != map.sky) or (state == 2 and tiles[i+29].image != map.sky) :
                     return position[0] + 10, position[1]
         return position
 
@@ -103,12 +103,12 @@ class Portal() :
 
                 # Vérifie si un bloc existe au dessus du portail et qu'il est dirigé vers le haut
 
-                if (tiles[i-60].image != (Map.sky) or tiles[i-60].image == (Map.img_empty or Map.img_empty_horizontal)) and self.state == -2:
+                if (tiles[i-60].image != (map.sky) or tiles[i-60].image == (map.img_empty or map.img_empty_horizontal)) and self.state == -2:
                     return False
 
                 # Vérifie si un bloc existe en dessous du portail et qu'il est dirigé vers le bas
 
-                if (tiles[i+60].image != (Map.sky) or tiles[i+60].image == (Map.img_empty or Map.img_empty_horizontal)) and self.state == 2:
+                if (tiles[i+60].image != (map.sky) or tiles[i+60].image == (map.img_empty or map.img_empty_horizontal)) and self.state == 2:
                     return False
         return True
 

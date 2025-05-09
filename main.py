@@ -1,12 +1,12 @@
     # Gère les intéractions du jeu complet
 
-import Game
-import Menu
-import Settings
+import game
+import menu
+import settings
 import pygame
 import level_selection
 import skin_manager
-import Leader_menu
+import leader_menu
 from sound_manager import SoundManager
 
 def begin_game() :
@@ -45,14 +45,14 @@ def begin_game() :
         # Appelle la classe tutoriel quand le joueur clique sur l'icone associée
 
         if window == "tuto":
-            list=Game.game(0, True, screen, height, width, world, help, skin)
+            list=game.game(0, True, screen, height, width, world, help, skin)
             window = list[0]
             level = list[1]
 
         # Appelle la classe menu quand le joueur clique sur l'icone associée
 
         if window == "menu" :
-            window = Menu.menu(screen, height, width)
+            window = menu.menu(screen, height, width)
 
         # Appelle la classe level quand le joueur clique sur l'icone associée
 
@@ -64,14 +64,14 @@ def begin_game() :
         # Appelle la classe Jeu quand le joueur clique sur l'icone associée
 
         if window == "game" :
-            list=Game.game(level, True, screen, height, width, world, help, skin, ranked, name, time)
+            list=game.game(level, True, screen, height, width, world, help, skin, ranked, name, time)
             window = list[0]
             level = list[1] #pareil ici, ca modifie le lvl où on est si on reussi a terminer le niveau (on return game et level = level + 1 pour que ca enchaine sur le level suivant)
             time=list[2]
         # Appelle la classe paramètres quand le joueur clique sur l'icone associée
 
         if window == "settings" :
-            list=Settings.settings(screen, height, width, sound, help)
+            list=settings.settings(screen, height, width, sound, help)
             window = list[0] #tous les parametres devront etre passés par ici pour faire le lien entre game et settings
             sound=list[1]
             help=list[2]
@@ -86,7 +86,7 @@ def begin_game() :
                 sono.resume_music()
 
         if window == "leaderboard" :
-            window=Leader_menu.leader_menu(screen, height, width)
+            window=leader_menu.leader_menu(screen, height, width)
 
     pygame.quit()
 
