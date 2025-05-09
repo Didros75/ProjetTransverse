@@ -37,13 +37,11 @@ class ClassementCSV:
         return str(timedelta(seconds=total_seconds))
 
     def read_csv(self):
+        """permet de recupérer les donnees de best_time.csv"""
         try:
             with open(self.chemin, mode="r", newline='') as fichier:
                 reader = csv.DictReader(fichier)
-                self.donnees = [
-                    {"nom": row["nom"], "temps": self._str_to_time(row["temps"])}
-                    for row in reader
-                ]
+                self.donnees = [{"nom": row["nom"], "temps": self._str_to_time(row["temps"])}for row in reader]
         except FileNotFoundError:
             self.donnees = []
 

@@ -3,6 +3,7 @@ from sound_manager import SoundManager
 from chrono import ClassementCSV
 
 def leader_menu(screen, height, width):
+    """Fonction pour afficher le leader board, soit les 5 premiers noms et temps du fichier best_time.csv"""
     button_size=75
     sono = SoundManager(False)
     font = pygame.font.Font(None, 45)
@@ -22,10 +23,10 @@ def leader_menu(screen, height, width):
     screen.blit(exit_button, exit_rect)
     screen.blit(text, (width/2-170, 175))
 
-    liste_players=classement.top_5()[0]
-    liste_temps=classement.top_5()[1]
+    liste_players=classement.top_5()[0]#recupère les 5 premiers noms
+    liste_temps=classement.top_5()[1]#recupère les 5 premiers temps
 
-    for i in range(len(liste_players)):
+    for i in range(len(liste_players)): #les affiche
         text=str(i+1 )+" "+str(liste_players[i]) +" "+ str(liste_temps[i])
         text_surface=font.render(text, True, (255, 255, 255))
         screen.blit(text_surface, (width/2-170, 230 + i * 40))
