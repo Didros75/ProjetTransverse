@@ -2,6 +2,7 @@
 
 import pygame
 from sound_manager import SoundManager
+import movie_manager
 
 def Level_selection(screen, height, width, ranked):
     """
@@ -70,6 +71,8 @@ def Level_selection(screen, height, width, ranked):
                     if rect.collidepoint(event.pos):
                         sono.play_button_sound()
                         if int(number) == 1:
+                            video_player = movie_manager.PngPlayer("begin_story", screen, position=(0, 0), fps=24)
+                            video_player.play()
                             return "game", 1
                         elif int(number) == 2:
                             return "game", 5
